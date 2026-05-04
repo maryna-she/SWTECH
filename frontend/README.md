@@ -1,73 +1,86 @@
-# React + TypeScript + Vite
+# Roamly Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Roamly is a travel shop for people who like simple, practical products for trips and outdoor activities.
 
-Currently, two official plugins are available:
+The frontend should feel clean, warm, and easy to use. The visual style is minimal travel/outdoor, not a busy adventure poster.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Brand
 
-## React Compiler
+Name: `Roamly`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Meaning: from "to roam", to travel or explore freely.
 
-## Expanding the ESLint configuration
+## Logo
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Main logo file:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+`src/assets/shop-logo.svg`
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Favicon:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+`public/favicon.svg`
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Logo rules:
+- Use the full `Roamly` wordmark on login and register screens.
+- Use the compass mark for favicon or small icon usage.
+- Keep the logo flat: no gradients, no shadows, no blurred background.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Compass parts in `shop-logo.svg`:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Colors
+
+Main palette:
+
+- Forest green: `#1F3D2B`
+- Sand: `#E8DCC5`
+- Black: `#0F120E`
+- Orange accent: `#D87532`
+
+Supporting colors:
+
+- Light surface: `#FFFAF1`
+- Input surface: `#FFFDF7`
+- Border sand: `#CFC1A6`
+- Muted text: `#596152`
+
+Rules:
+- Sand should be the main page background.
+- Forest green should be used for buttons, logo, active states, and small accents.
+- Orange should be used only as an accent, not as a main background.
+- Black should be used for headings and important text.
+- Avoid large dark green blocks on auth screens; they reduce the calm feeling.
+
+Color variables are defined in:
+
+`src/index.css`
+
+## Auth Screens
+
+Shared auth styles live in:
+
+`src/pages/Auth.css`
+
+Copy lives in:
+
+`src/pages/authCopy.ts`
+
+Login page:
+
+`src/pages/Login/LoginPage.tsx`
+
+Register page:
+
+`src/pages/Register/RegisterPage.tsx`
+## Development
+
+Install dependencies:
+
+`npm install`
+
+Run locally:
+
+`npm run dev`
+
+Build:
+
+`npm run build`

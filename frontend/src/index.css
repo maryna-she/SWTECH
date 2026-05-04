@@ -1,21 +1,22 @@
 :root {
-  --color-ink: #17202a;
-  --color-muted: #667085;
-  --color-subtle: #8b95a7;
-  --color-page: #f6f8fb;
-  --color-surface: #ffffff;
-  --color-surface-soft: #eef6f4;
-  --color-border: #d9e2ec;
-  --color-primary: #23746f;
-  --color-primary-strong: #155f5a;
-  --color-primary-soft: rgba(35, 116, 111, 0.12);
-  --color-secondary: #f2a65a;
-  --color-secondary-soft: rgba(242, 166, 90, 0.2);
+  /* Roamly Farbpalette: Sand als Basis, Gruen und Orange als Akzente. */
+  --color-ink: #0f120e;
+  --color-muted: #596152;
+  --color-subtle: #8f886f;
+  --color-page: #f7f1e5;
+  --color-surface: #fffaf1;
+  --color-surface-soft: #e8dcc5;
+  --color-border: #cfc1a6;
+  --color-primary: #1f3d2b;
+  --color-primary-strong: #102016;
+  --color-primary-soft: rgba(31, 61, 43, 0.1);
+  --color-secondary: #d87532;
+  --color-secondary-soft: rgba(216, 117, 50, 0.16);
   --color-danger: #c73e4f;
   --color-danger-soft: #fff0f2;
-  --color-success: #2f8f66;
-  --shadow-soft: 0 24px 70px rgba(23, 32, 42, 0.12);
-  --shadow-control: 0 12px 28px rgba(21, 95, 90, 0.16);
+  --color-success: #3b7a55;
+  --shadow-soft: 0 26px 72px rgba(15, 18, 14, 0.16);
+  --shadow-control: 0 14px 30px rgba(31, 61, 43, 0.24);
 
   --text: var(--color-muted);
   --text-h: var(--color-ink);
@@ -24,7 +25,7 @@
   --code-bg: var(--color-surface-soft);
   --accent: var(--color-primary);
   --accent-bg: var(--color-primary-soft);
-  --accent-border: rgba(35, 116, 111, 0.38);
+  --accent-border: rgba(216, 117, 50, 0.42);
   --social-bg: rgba(255, 255, 255, 0.66);
   --shadow: var(--shadow-soft);
 
@@ -45,23 +46,24 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-ink: #f4f7fb;
-    --color-muted: #aeb9c8;
-    --color-subtle: #7f8b9e;
-    --color-page: #101719;
-    --color-surface: #172326;
-    --color-surface-soft: #203336;
-    --color-border: #2b4247;
-    --color-primary: #5fd0c5;
-    --color-primary-strong: #8ee4dc;
-    --color-primary-soft: rgba(95, 208, 197, 0.16);
-    --color-secondary: #ffc277;
-    --color-secondary-soft: rgba(255, 194, 119, 0.14);
+    /* Dunkle Systemdarstellung, falls der Browser Dark Mode nutzt. */
+    --color-ink: #fffaf1;
+    --color-muted: #cec6b3;
+    --color-subtle: #9a927f;
+    --color-page: #0d110c;
+    --color-surface: #172218;
+    --color-surface-soft: #26341f;
+    --color-border: #3b4e37;
+    --color-primary: #e8dcc5;
+    --color-primary-strong: #fff3dc;
+    --color-primary-soft: rgba(232, 220, 197, 0.13);
+    --color-secondary: #f0a35b;
+    --color-secondary-soft: rgba(240, 163, 91, 0.18);
     --color-danger: #ff7a8b;
     --color-danger-soft: rgba(255, 122, 139, 0.12);
-    --color-success: #7edcae;
+    --color-success: #8fd4a7;
     --shadow-soft: 0 24px 70px rgba(0, 0, 0, 0.34);
-    --shadow-control: 0 12px 28px rgba(95, 208, 197, 0.18);
+    --shadow-control: 0 12px 28px rgba(240, 163, 91, 0.16);
     --text: var(--color-muted);
     --text-h: var(--color-ink);
     --bg: var(--color-page);
@@ -69,7 +71,7 @@
     --code-bg: var(--color-surface-soft);
     --accent: var(--color-primary);
     --accent-bg: var(--color-primary-soft);
-    --accent-border: rgba(95, 208, 197, 0.42);
+    --accent-border: rgba(232, 220, 197, 0.42);
     --social-bg: rgba(32, 51, 54, 0.7);
     --shadow: var(--shadow-soft);
   }
@@ -98,7 +100,7 @@ input {
 
 h1,
 h2 {
-  font-family: var(--heading);
+  font-family: var(--heading), system-ui, sans-serif;
   font-weight: 700;
   color: var(--text-h);
 }
@@ -111,7 +113,7 @@ code {
   display: inline-flex;
   border-radius: 4px;
   color: var(--text-h);
-  font-family: var(--mono);
+  font-family: var(--mono), ui-monospace, monospace;
   font-size: 15px;
   line-height: 135%;
   padding: 4px 8px;

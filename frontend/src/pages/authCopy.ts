@@ -1,6 +1,7 @@
 export type AuthLanguage = 'de' | 'en';
 
-export const LANGUAGE_STORAGE_KEY = 'shopLanguage';
+// Speichert die ausgewaehlte Sprache fuer die Auth-Seiten.
+export const LANGUAGE_STORAGE_KEY = 'roamlyLanguage';
 
 export const getInitialLanguage = (): AuthLanguage => {
   if (typeof window === 'undefined') return 'de';
@@ -11,10 +12,11 @@ export const saveLanguage = (language: AuthLanguage) => {
   localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
 };
 
+// Alle Texte fuer Login und Registrierung an einer Stelle.
 export const authCopy = {
   de: {
     common: {
-      brand: 'SW Shop',
+      brand: 'Roamly',
       languageLabel: 'Sprache wählen',
       german: 'Deutsch',
       english: 'English',
@@ -27,27 +29,27 @@ export const authCopy = {
       passwordShowLabel: 'Passwort anzeigen',
     },
     login: {
-      ariaBrand: 'Online-Shop',
-      kicker: 'Online-Shop',
-      title: 'Willkommen zurück in deinem Shop.',
-      intro: 'Melde dich an, um deinen Warenkorb, Bestellungen und Rücksendungen zu verwalten.',
-      headerKicker: 'Kundenkonto',
+      ariaBrand: 'Roamly Travel Shop',
+      kicker: 'Travel Shop',
+      title: 'Willkommen zurück bei Roamly.',
+      intro: 'Melde dich an und finde schnell alles für deine nächste Reise.',
+      headerKicker: 'Dein Konto',
       heading: 'Anmelden',
-      description: 'Nutze deine E-Mail und dein Passwort, um weiter einzukaufen.',
+      description: 'Mit deinem Konto kannst du weiter einkaufen und deine Bestellungen sehen.',
       submit: 'Anmelden',
       loading: 'Wird geladen...',
-      footer: 'Noch kein Kundenkonto?',
+      footer: 'Noch kein Roamly Konto?',
       footerLink: 'Jetzt registrieren',
       error: 'E-Mail oder Passwort falsch.',
     },
     register: {
-      ariaBrand: 'Online-Shop',
-      kicker: 'Online-Shop',
-      title: 'Erstelle dein Kundenkonto für den Shop.',
-      intro: 'Registriere dich, lege Produkte in den Warenkorb und behalte deine Bestellungen im Blick.',
-      headerKicker: 'Neues Kundenkonto',
+      ariaBrand: 'Roamly Travel Shop',
+      kicker: 'Choose your adventure',
+      title: 'Erstelle dein Roamly Konto.',
+      intro: 'Entdecke Produkte für Hiking, Camping und Surfing.',
+      headerKicker: 'Neues Konto',
       heading: 'Konto erstellen',
-      description: 'Wähle eine E-Mail und ein sicheres Passwort für deinen Shop-Zugang.',
+      description: 'Speichere deinen Warenkorb und behalte deine Bestellungen im Blick.',
       confirmPassword: 'Passwort bestätigen',
       confirmPlaceholder: 'Noch einmal eingeben',
       submit: 'Konto erstellen',
@@ -65,7 +67,7 @@ export const authCopy = {
   },
   en: {
     common: {
-      brand: 'SW Shop',
+      brand: 'Roamly',
       languageLabel: 'Choose language',
       german: 'Deutsch',
       english: 'English',
@@ -78,27 +80,27 @@ export const authCopy = {
       passwordShowLabel: 'Show password',
     },
     login: {
-      ariaBrand: 'Online shop',
-      kicker: 'Online shop',
-      title: 'Welcome back to your shop.',
-      intro: 'Sign in to manage your cart, orders, and return requests.',
-      headerKicker: 'Customer account',
+      ariaBrand: 'Roamly Travel Shop',
+      kicker: 'Travel shop',
+      title: 'Welcome back to Roamly.',
+      intro: 'Sign in and quickly find what you need for your next trip.',
+      headerKicker: 'Your account',
       heading: 'Sign in',
-      description: 'Use your email and password to continue shopping.',
+      description: 'Use your account to keep shopping and see your orders.',
       submit: 'Sign in',
       loading: 'Signing in...',
-      footer: 'No customer account yet?',
+      footer: 'No Roamly account yet?',
       footerLink: 'Create one now',
       error: 'Email or password is incorrect.',
     },
     register: {
-      ariaBrand: 'Online shop',
-      kicker: 'Online shop',
-      title: 'Create your customer account for the shop.',
-      intro: 'Register to add products to your cart and keep your orders in view.',
-      headerKicker: 'New customer account',
+      ariaBrand: 'Roamly Travel Shop',
+      kicker: 'Choose your adventure',
+      title: 'Create your Roamly account.',
+      intro: 'Discover products for hiking, camping, and surfing.',
+      headerKicker: 'New account',
       heading: 'Create account',
-      description: 'Choose an email and a secure password for your shop access.',
+      description: 'Save your cart and keep your orders easy to find.',
       confirmPassword: 'Confirm password',
       confirmPlaceholder: 'Enter it again',
       submit: 'Create account',

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { register } from '../../services/registerService';
 import { useAuth } from '../../context/AuthContext';
@@ -8,6 +8,7 @@ import shopLogo from '../../assets/shop-logo.svg';
 import '../Auth.css';
 
 const EyeIcon = ({ hidden }: { hidden: boolean }) => (
+  // Icon zum Ein- und Ausblenden des Passworts.
   <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false">
     <path d="M2.25 12s3.5-6.25 9.75-6.25S21.75 12 21.75 12s-3.5 6.25-9.75 6.25S2.25 12 2.25 12Z" />
     <circle cx="12" cy="12" r="2.7" />
@@ -16,6 +17,7 @@ const EyeIcon = ({ hidden }: { hidden: boolean }) => (
 );
 
 const getPasswordScore = (password: string) => {
+  // Zaehlt einfache Regeln fuer die Passwortstaerke.
   const checks = [
     password.length >= 8,
     /[A-Z]/.test(password),
@@ -42,6 +44,11 @@ const RegisterPage = () => {
   const passwordScore = getPasswordScore(password);
   const passwordLabel = copy.register.passwordLabels[passwordScore];
   const passwordsMatch = confirmPassword.length === 0 || password === confirmPassword;
+
+  useEffect(() => {
+    // Beim Wechsel zwischen Login und Registrierung oben starten.
+    window.scrollTo({ top: 0, left: 0 });
+  }, []);
 
   const handleLanguageChange = (nextLanguage: AuthLanguage) => {
     setLanguage(nextLanguage);

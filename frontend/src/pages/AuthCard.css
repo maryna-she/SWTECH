@@ -1,0 +1,112 @@
+/* Formular-Karte mit klarer Lesbarkeit und Roamly-Akzent. */
+.auth-card {
+  position: relative;
+  width: min(100%, 464px);
+  justify-self: center;
+  border: 1px solid color-mix(in srgb, var(--color-border), transparent 8%);
+  border-radius: 8px;
+  padding: clamp(24px, 4vw, 38px);
+  background: #fffaf1;
+  box-shadow: 0 28px 80px rgba(15, 18, 14, 0.2);
+  backdrop-filter: blur(18px);
+  animation: card-rise 600ms ease both;
+  overflow: hidden;
+}
+
+/* Schmale Markenlinie links in der Karte. */
+.auth-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: linear-gradient(180deg, #1f3d2b, #d87532);
+}
+
+/* Sehr dezenter Akzent oben rechts in der Karte. */
+.auth-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 118px;
+  height: 118px;
+  background: radial-gradient(circle at 100% 0, rgba(31, 61, 43, 0.12), transparent 66%);
+  pointer-events: none;
+}
+
+.auth-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Registrierung ist kompakter, damit weniger gescrollt werden muss. */
+.auth-shell--register .auth-brand {
+  gap: 12px;
+  padding-top: clamp(38px, 6vh, 62px);
+  padding-bottom: clamp(28px, 5vh, 52px);
+}
+
+.auth-shell--register .brand-logo-slot {
+  width: min(220px, 48vw);
+  margin-bottom: clamp(8px, 2vh, 20px);
+}
+
+.auth-shell--register .auth-brand h1 {
+  font-size: clamp(2.25rem, 4.7vw, 4.4rem);
+}
+
+.auth-shell--register .auth-panel {
+  padding: clamp(16px, 3vw, 34px);
+}
+
+.auth-shell--register .auth-card {
+  width: min(100%, 440px);
+  padding: clamp(18px, 2.8vw, 28px);
+}
+
+.auth-shell--register .language-switcher {
+  margin-bottom: 14px;
+}
+
+.auth-shell--register .auth-card-header {
+  margin-bottom: 18px;
+}
+
+.auth-shell--register .auth-card-header h2 {
+  font-size: 1.72rem;
+}
+
+.auth-shell--register .auth-form {
+  gap: 12px;
+}
+
+.auth-shell--register .auth-field {
+  gap: 6px;
+}
+
+.auth-shell--register .auth-field input {
+  min-height: 44px;
+}
+
+.auth-shell--register .password-meter span {
+  height: 4px;
+}
+
+.auth-shell--register .auth-submit {
+  min-height: 46px;
+}
+
+.auth-shell--register .auth-footer {
+  margin-top: 14px;
+}
+
+@keyframes card-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
