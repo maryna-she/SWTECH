@@ -34,7 +34,7 @@ Folgende Features **müssen** vollständig implementiert und testbar sein:
 - Rollenbasierte Zugriffskontrolle: `CUSTOMER`, `ADMIN`
 - Geschützte API-Endpunkte (nur mit gültigem Token zugänglich)
 
-### 3. 🛍Bestellung aufgeben
+### 3. Bestellung aufgeben
 - Produktliste anzeigen
 - Warenkorb: Produkte hinzufügen / entfernen / Menge ändern
 - Checkout-Prozess mit Bestellbestätigung
