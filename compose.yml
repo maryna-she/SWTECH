@@ -1,0 +1,32 @@
+# ── Lokale Entwicklung ─────────────────────────────────────────────────────────
+# Diese Datei wird vom spring-boot-docker-compose Plugin automatisch erkannt
+# und beim Start der Spring Boot Anwendung (z.B. in der IDE) verwendet.
+# Sie startet nur die Datenbank – Spring selbst läuft lokal auf dem Host.
+#
+# Starten:        Automatisch durch Spring Boot beim lokalen Start
+# Manuell:        docker compose up
+# Prod-Build:     docker compose -f compose.prod.yml up --build
+
+services:
+
+  mysql:
+    image: 'mysql:latest'
+    environment:
+      MYSQL_DATABASE: mydatabase
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: verysecret
+      MYSQL_USER: myuser
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-umyuser", "-psecret"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+volumes:
+  mysql-data:
+    driver: local

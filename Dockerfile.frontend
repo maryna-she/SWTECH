@@ -1,0 +1,23 @@
+# ── Stufe 1: Abhängigkeiten installieren ──────────────────────────────────────
+FROM node:22-alpine AS deps
+
+WORKDIR /app
+
+# Nur package.json zuerst kopieren → Layer-Cache für npm install
+COPY frontend/package.json ./
+RUN npm install
+
+# ── Stufe 2: Entwicklungsserver ───────────────────────────────────────────────
+FROM node:22-alpine AS dev
+
+WORKDIR /app
+
+# Installierte node_modules aus deps-Stufe übernehmen
+COPY --from=deps /app/node_modules ./node_modules
+
+# Quellcode kopieren (kein Bind-Mount)
+COPY frontend/my-react-app/ ./
+
+EXPOSE 3000
+
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "3000"]
