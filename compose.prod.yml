@@ -1,0 +1,49 @@
+# ── Docker-Build (Produktion / Staging) ───────────────────────────────────────
+# Startet MySQL + Spring Boot Backend als vollständige Container-Umgebung.
+# Das Frontend wird lokal gestartet (npm run dev).
+#
+# Starten: docker compose -f compose.prod.yml up --build
+
+services:
+
+  mysql:
+    image: 'mysql:latest'
+    environment:
+      MYSQL_DATABASE: mydatabase
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: verysecret
+      MYSQL_USER: myuser
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-umyuser", "-psecret"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - '8080:8080'
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/mydatabase
+      SPRING_DATASOURCE_USERNAME: myuser
+      SPRING_DATASOURCE_PASSWORD: secret
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      # Das Docker-Compose-Plugin ist im Container deaktiviert:
+      # Die DB wird hier von compose.prod.yml gestartet, nicht vom Plugin.
+      SPRING_DOCKER_COMPOSE_ENABLED: "false"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  mysql-data:
+    driver: local
