@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" role="img" aria-label="Roamly">
+  <rect width="64" height="64" rx="14" fill="#1F3D2B"/>
+  <circle cx="32" cy="32" r="21" fill="none" stroke="#E8DCC5" stroke-width="5"/>
+  <path d="M44.5 17.5 36.8 37.2 18.5 44.5 25.8 26.2 44.5 17.5Z" fill="#E8DCC5"/>
+  <path d="M44.5 17.5 36.8 37.2 25.8 26.2 44.5 17.5Z" fill="#C66B2D"/>
+  <circle cx="32" cy="32" r="3.5" fill="#1F3D2B"/>
+</svg>
