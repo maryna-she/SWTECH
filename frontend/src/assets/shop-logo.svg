@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="252" height="78" viewBox="0 0 252 78" fill="none" role="img" aria-labelledby="roamly-logo-title">
+  <title id="roamly-logo-title">Roamly</title>
+  <defs>
+    <style>
+      .word { fill: #1F3D2B; }
+      .caption { fill: #C66B2D; }
+      @media (prefers-color-scheme: dark) {
+        .word { fill: #E8DCC5; }
+        .caption { fill: #F0A35B; }
+      }
+    </style>
+  </defs>
+
+  <!-- Kompassmarke: flach, ohne Schatten oder Verlauf. -->
+  <circle cx="38" cy="39" r="26" fill="#1F3D2B"/>
+  <circle cx="38" cy="39" r="18" fill="none" stroke="#E8DCC5" stroke-width="4"/>
+  <!-- Kompassnadel: beide Pfade zusammen bilden die Richtung. -->
+  <path d="M48 29 41 43 28 50 35 36Z" fill="#E8DCC5"/>
+  <path d="M48 29 41 43 35 36Z" fill="#C66B2D"/>
+  <circle cx="38" cy="39" r="2.7" fill="#1F3D2B"/>
+
+  <!-- Wortmarke und kurzer Claim. -->
+  <text class="word" x="88" y="48" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="42" font-weight="900" letter-spacing="0">Roamly</text>
+  <text class="caption" x="91" y="68" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="900" letter-spacing="2.1">TRAVEL SHOP</text>
+</svg>
