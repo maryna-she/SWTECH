@@ -1,79 +1,92 @@
-/* Formular bleibt hell, damit Kontrast und Lesbarkeit stabil bleiben. */
-@media (prefers-color-scheme: dark) {
-  .auth-shell {
-    background: #172218;
-  }
-
-  .auth-card {
-    border-color: rgba(232, 220, 197, 0.42);
-    background: #fffaf1;
-  }
-
-  .auth-submit {
-    color: #ffffff;
-    background: linear-gradient(135deg, #1f3d2b, #102016 72%, #0f120e);
-  }
-}
-
-/* Mobile Ansicht: Inhalte werden untereinander angeordnet. */
+/* Mobile Ansicht für Login und Registrierung. */
 @media (max-width: 860px) {
   .auth-shell {
+    display: grid;
     grid-template-columns: 1fr;
-    background: var(--color-surface-soft);
+    min-height: 100svh;
+    background:
+      radial-gradient(circle at 12% 18%, var(--color-secondary-soft), transparent 28rem),
+      linear-gradient(135deg, #f7f1e5 0%, var(--color-surface) 58%, var(--color-surface-soft) 100%);
   }
 
   .auth-brand {
-    min-height: auto;
-    padding: 34px 24px 12px;
-    gap: 14px;
-  }
-
-  .brand-logo-slot {
-    width: min(210px, 70vw);
-    margin-bottom: 8px;
-  }
-
-  .auth-brand h1 {
-    font-size: clamp(2.2rem, 12vw, 3.6rem);
+    display: none;
   }
 
   .auth-panel {
-    align-items: start;
-    padding: 20px 16px 32px;
+    min-height: 100svh;
+    align-items: center;
+    padding: 14px;
   }
 
   .auth-card {
+    width: 100%;
+    max-width: 640px;
     border-radius: 8px;
+    padding: 22px 28px;
   }
 
-  /* Registrierung bleibt auch auf kleinen Screens etwas kompakter. */
-  .auth-shell--register .auth-brand {
-    padding: 24px 20px 8px;
+  .language-switcher {
+    margin-bottom: 16px;
   }
 
-  .auth-shell--register .brand-logo-slot {
-    width: min(168px, 58vw);
-    margin-bottom: 2px;
+  .auth-card-header {
+    margin-bottom: 18px;
   }
 
-  .auth-shell--register .auth-brand h1 {
-    font-size: clamp(1.9rem, 9.5vw, 2.8rem);
+  .auth-card-header h2 {
+    margin: 4px 0 6px;
+    font-size: 1.9rem;
   }
 
-  .auth-shell--register .auth-brand p:not(.auth-kicker) {
-    font-size: 0.96rem;
+  .auth-card-header p:not(.auth-kicker) {
+    font-size: 1rem;
+    line-height: 1.35;
   }
 
-  .auth-shell--register .auth-panel {
-    padding: 12px 14px 24px;
+  .auth-form {
+    gap: 14px;
+  }
+
+  .auth-field {
+    gap: 6px;
+  }
+
+  .auth-field input {
+    min-height: 48px;
+  }
+
+  .password-control input {
+    padding-right: 58px;
+  }
+
+  .ghost-btn {
+    width: 40px;
+    min-height: 40px;
+  }
+
+  .auth-submit {
+    min-height: 52px;
+  }
+
+  .auth-footer {
+    margin-top: 14px;
   }
 
   .auth-shell--register .auth-card {
-    padding: 18px;
+    padding: 18px 28px;
+  }
+
+  .auth-shell--register .auth-card-header,
+  .auth-shell--register .language-switcher {
+    margin-bottom: 12px;
+  }
+
+  .auth-shell--register .auth-form {
+    gap: 10px;
   }
 }
 
-/* Animationen fuer Nutzer mit reduzierter Bewegung minimieren. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

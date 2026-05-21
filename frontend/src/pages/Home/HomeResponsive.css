@@ -1,0 +1,60 @@
+/* Passt die Startseite an dunkle und kleine Bildschirme an. */
+@media (prefers-color-scheme: dark) {
+  .home-nav a,
+  .home-link-button {
+    background: rgba(23, 34, 24, 0.78);
+  }
+
+  .home-trip-panel {
+    background:
+      linear-gradient(180deg, rgba(23, 34, 24, 0.72), rgba(38, 52, 31, 0.7)),
+      url('../../assets/layered-landscape-logo.svg') center 24% / 220px no-repeat;
+  }
+}
+
+@media (max-width: 860px) {
+  .home-hero {
+    min-height: auto;
+    padding-top: 26px;
+    grid-template-columns: 1fr;
+  }
+
+  .home-trip-panel {
+    min-height: 420px;
+  }
+
+}
+
+@media (max-width: 560px) {
+  .home-brand {
+    font-size: 1.28rem;
+  }
+
+  .home-brand img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .home-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .home-nav {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .home-nav a,
+  .home-link-button {
+    width: 100%;
+  }
+
+  .home-trip-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .home-map-card--large {
+    min-height: 220px;
+  }
+}

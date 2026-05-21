@@ -1,0 +1,47 @@
+/* Auswahlfeld für die Sprache im Header. */
+.home-language-select {
+  position: relative;
+  display: inline-grid;
+}
+
+.home-language-select span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.home-language-select select {
+  width: 82px;
+  height: 52px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0 34px 0 20px;
+  color: var(--text-h);
+  background: rgba(255, 250, 241, 0.72);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  appearance: none;
+  line-height: 52px;
+}
+
+.home-language-select select:hover,
+.home-language-select select:focus {
+  border-color: var(--color-ink);
+  outline: none;
+}
+
+.home-language-select::after {
+  content: '';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--text-h);
+  border-bottom: 2px solid var(--text-h);
+  pointer-events: none;
+  transform: translateY(-65%) rotate(45deg);
+}

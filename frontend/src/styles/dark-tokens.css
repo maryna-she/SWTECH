@@ -1,0 +1,33 @@
+/* Farbwerte für Systeme mit dunklem Modus. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-ink: #fffaf1;
+    --color-muted: #cec6b3;
+    --color-subtle: #9a927f;
+    --color-page: #0d110c;
+    --color-surface: #172218;
+    --color-surface-soft: #26341f;
+    --color-border: #3b4e37;
+    --color-primary: #e8dcc5;
+    --color-primary-strong: #fff3dc;
+    --color-primary-soft: rgba(232, 220, 197, 0.13);
+    --color-secondary: #f0a35b;
+    --color-secondary-soft: rgba(240, 163, 91, 0.18);
+    --color-danger: #ff7a8b;
+    --color-danger-soft: rgba(255, 122, 139, 0.12);
+    --color-success: #8fd4a7;
+    --shadow-soft: 0 24px 70px rgba(0, 0, 0, 0.34);
+    --shadow-control: 0 12px 28px rgba(240, 163, 91, 0.16);
+
+    --text: var(--color-muted);
+    --text-h: var(--color-ink);
+    --bg: var(--color-page);
+    --border: var(--color-border);
+    --code-bg: var(--color-surface-soft);
+    --accent: var(--color-primary);
+    --accent-bg: var(--color-primary-soft);
+    --accent-border: rgba(232, 220, 197, 0.42);
+    --social-bg: rgba(32, 51, 54, 0.7);
+    --shadow: var(--shadow-soft);
+  }
+}

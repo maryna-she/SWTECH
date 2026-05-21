@@ -1,0 +1,89 @@
+/* Kopfzeile mit Logo, Navigation und Konto-Aktionen. */
+.home-header {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.home-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--text-h);
+  font-size: 1.48rem;
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.home-brand img {
+  width: 58px;
+  height: 58px;
+}
+
+.home-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.home-nav a,
+.home-link-button {
+  min-height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 15px;
+  color: var(--text-h);
+  background: rgba(255, 250, 241, 0.72);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.home-nav a:hover,
+.home-link-button:hover,
+.home-nav a:focus,
+.home-link-button:focus {
+  border-color: var(--color-ink);
+  outline: none;
+}
+
+.home-nav .home-account-link {
+  width: 52px;
+  height: 52px;
+  min-height: 52px;
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  line-height: 1;
+}
+
+.home-account-link svg {
+  width: 23px;
+  height: 23px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.home-nav .home-nav-cta {
+  color: #fffaf1;
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+}
+
+.home-user {
+  max-width: 180px;
+  overflow: hidden;
+  color: var(--text-h);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
