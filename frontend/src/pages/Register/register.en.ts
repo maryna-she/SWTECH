@@ -1,10 +1,36 @@
-// Englische Texte für Login und Registrierung.
-export const enAuthCopy = {
+export interface RegisterText {
   common: {
-    brand: 'Roamly',
-    languageLabel: 'Choose language',
-    german: 'Deutsch',
-    english: 'English',
+    email: string;
+    password: string;
+    name: string;
+    emailPlaceholder: string;
+    passwordPlaceholder: string;
+    passwordHideLabel: string;
+    passwordShowLabel: string;
+  };
+  register: {
+    ariaBrand: string;
+    headerKicker: string;
+    heading: string;
+    description: string;
+    confirmPassword: string;
+    confirmPlaceholder: string;
+    submit: string;
+    loading: string;
+    footer: string;
+    footerLink: string;
+    passwordLabels: string[];
+    meterLabel: string;
+    mismatchHint: string;
+    mismatchError: string;
+    shortPasswordError: string;
+    conflictError: string;
+    defaultError: string;
+  };
+}
+
+export const registerEn: RegisterText = {
+  common: {
     email: 'Email',
     password: 'Password',
     name: 'Name',
@@ -13,25 +39,8 @@ export const enAuthCopy = {
     passwordHideLabel: 'Hide password',
     passwordShowLabel: 'Show password',
   },
-  login: {
-    ariaBrand: 'Roamly Travel Shop',
-    kicker: 'Choose your adventure',
-    title: 'Welcome back to Roamly.',
-    intro: 'Sign in and quickly find what you need for your next trip.',
-    headerKicker: 'Your account',
-    heading: 'Sign in',
-    description: 'Use your account to keep shopping and see your orders.',
-    submit: 'Sign in',
-    loading: 'Signing in...',
-    footer: 'No Roamly account yet?',
-    footerLink: 'Create one now',
-    error: 'Email or password is incorrect.',
-  },
   register: {
     ariaBrand: 'Roamly Travel Shop',
-    kicker: 'Choose your adventure',
-    title: 'Create your Roamly account.',
-    intro: 'Discover products for hiking, camping, and surfing.',
     headerKicker: 'New account',
     heading: 'Create account',
     description: 'Save your cart and keep your orders easy to find.',
@@ -49,4 +58,4 @@ export const enAuthCopy = {
     conflictError: 'This email is already registered.',
     defaultError: 'Registration failed. Please try again.',
   },
-} as const;
+};

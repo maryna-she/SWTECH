@@ -1,9 +1,42 @@
-// Englische Texte für die Startseite.
-export const enHomeCopy = {
+export interface HomeText {
+  navLabel: string;
+  homeLabel: string;
+  home: string;
+  shop: string;
+  wishlistLabel: string;
+  cartLabel: string;
+  products: string;
+  categories: string;
+  discounts: string;
+  about: string;
+  contacts: string;
+  categoryItems: string[];
+  accountLabel: string;
+  logout: string;
+  kicker: string;
+  title: string;
+  intro: string;
+  createAccount: string;
+  existingAccount: string;
+  tripCategoriesLabel: string;
+  highlightsLabel: string;
+  cards: { category: string; title: string }[];
+  highlights: { title: string; text: string }[];
+}
+
+export const homeEn: HomeText = {
   navLabel: 'Main navigation',
   homeLabel: 'Roamly home',
-  login: 'Log in',
-  register: 'Register',
+  home: 'Home',
+  shop: 'Shop',
+  wishlistLabel: 'Open wishlist',
+  cartLabel: 'Open cart',
+  products: 'All products',
+  categories: 'Categories',
+  discounts: 'Discounts',
+  about: 'About us',
+  contacts: 'Contacts',
+  categoryItems: ['Hiking', 'Camping', 'Surfing'],
   accountLabel: 'Open account page',
   logout: 'Log out',
   kicker: 'Travel shop for every route',
@@ -23,4 +56,4 @@ export const enHomeCopy = {
     { title: 'Save your cart', text: 'Register once and come back to your trip plan later.' },
     { title: 'Track orders', text: 'Keep your account and future purchases in one simple place.' },
   ],
-} as const;
+};

@@ -1,9 +1,9 @@
 import type { FormEvent } from 'react';
-import type { AuthCopy } from '../authCopy';
 import RegisterPasswordField from './RegisterPasswordField';
+import type { RegisterText } from './register.en';
 
 interface RegisterFormProps {
-  copy: AuthCopy;
+  text: RegisterText;
   values: {
     name: string;
     email: string;
@@ -28,10 +28,10 @@ interface RegisterFormProps {
 }
 
 // Rendert alle Felder für die Konto-Erstellung.
-const RegisterForm = ({ copy, values, state, setters, onTogglePassword, onSubmit }: RegisterFormProps) => (
+const RegisterForm = ({ text, values, state, setters, onTogglePassword, onSubmit }: RegisterFormProps) => (
   <form onSubmit={onSubmit} className="auth-form">
     <div className="auth-field">
-      <label htmlFor="name">{copy.common.name}</label>
+      <label htmlFor="name">{text.common.name}</label>
       <input
         id="name"
         type="text"
@@ -44,11 +44,11 @@ const RegisterForm = ({ copy, values, state, setters, onTogglePassword, onSubmit
     </div>
 
     <div className="auth-field">
-      <label htmlFor="email">{copy.common.email}</label>
+      <label htmlFor="email">{text.common.email}</label>
       <input
         id="email"
         type="email"
-        placeholder={copy.common.emailPlaceholder}
+        placeholder={text.common.emailPlaceholder}
         value={values.email}
         onChange={(event) => setters.setEmail(event.target.value)}
         required
@@ -57,7 +57,7 @@ const RegisterForm = ({ copy, values, state, setters, onTogglePassword, onSubmit
     </div>
 
     <RegisterPasswordField
-      copy={copy}
+      text={text}
       password={values.password}
       showPassword={state.showPassword}
       passwordScore={state.passwordScore}
@@ -66,11 +66,11 @@ const RegisterForm = ({ copy, values, state, setters, onTogglePassword, onSubmit
     />
 
     <div className="auth-field">
-      <label htmlFor="confirmPassword">{copy.register.confirmPassword}</label>
+      <label htmlFor="confirmPassword">{text.register.confirmPassword}</label>
       <input
         id="confirmPassword"
         type="password"
-        placeholder={copy.register.confirmPlaceholder}
+        placeholder={text.register.confirmPlaceholder}
         value={values.confirmPassword}
         onChange={(event) => setters.setConfirmPassword(event.target.value)}
         required
@@ -78,14 +78,14 @@ const RegisterForm = ({ copy, values, state, setters, onTogglePassword, onSubmit
         aria-invalid={!state.passwordsMatch}
       />
       {!state.passwordsMatch && (
-        <p className="field-hint field-hint--danger">{copy.register.mismatchHint}</p>
+        <p className="field-hint field-hint--danger">{text.register.mismatchHint}</p>
       )}
     </div>
 
     {state.error && <p className="auth-error" aria-live="polite">{state.error}</p>}
 
     <button type="submit" className="auth-submit" disabled={state.loading}>
-      <span>{state.loading ? copy.register.loading : copy.register.submit}</span>
+      <span>{state.loading ? text.register.loading : text.register.submit}</span>
     </button>
   </form>
 );

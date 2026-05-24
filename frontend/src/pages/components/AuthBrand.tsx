@@ -1,23 +1,13 @@
-import landscapeLogo from '../../assets/layered-landscape-logo.svg';
+import authMountain from '../../assets/auth-mountain.jpg';
 
 interface AuthBrandProps {
   ariaLabel: string;
-  brand: string;
-  kicker: string;
-  title: string;
-  intro: string;
 }
 
-// Zeigt Logo, Marke und kurzen Einführungstext.
-const AuthBrand = ({ ariaLabel, brand, kicker, title, intro }: AuthBrandProps) => (
+// Zeigt auf Auth-Seiten ein ruhiges Outdoor-Bild statt grossem Text.
+const AuthBrand = ({ ariaLabel }: AuthBrandProps) => (
   <section className="auth-brand" aria-label={ariaLabel}>
-    <div className="brand-lockup">
-      <img src={landscapeLogo} alt="" className="brand-logo" aria-hidden="true" />
-      <span>{brand}</span>
-    </div>
-    <p className="auth-kicker">{kicker}</p>
-    <h1>{title}</h1>
-    <p>{intro}</p>
+    <img src={authMountain} alt="" aria-hidden="true" />
   </section>
 );
 

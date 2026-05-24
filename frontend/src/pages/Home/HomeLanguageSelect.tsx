@@ -1,24 +1,31 @@
-import type { AuthLanguage } from '../authCopy';
+import type { Language } from '../hooks/useAuthLanguage';
 
 interface HomeLanguageSelectProps {
-  language: AuthLanguage;
+  language: Language;
   label: string;
-  onChange: (language: AuthLanguage) => void;
+  onChange: (language: Language) => void;
 }
 
 // Auswahlfeld für die Sprache der Startseite.
 const HomeLanguageSelect = ({ language, label, onChange }: HomeLanguageSelectProps) => (
-  <label className="home-language-select">
-    <span>{label}</span>
-    <select
-      value={language}
-      aria-label={label}
-      onChange={(event) => onChange(event.target.value as AuthLanguage)}
+  <div className="home-language-select" aria-label={label}>
+    <button
+      type="button"
+      className={language === 'de' ? 'is-active' : ''}
+      onClick={() => onChange('de')}
+      aria-pressed={language === 'de'}
     >
-      <option value="de">DE</option>
-      <option value="en">EN</option>
-    </select>
-  </label>
+      DE
+    </button>
+    <button
+      type="button"
+      className={language === 'en' ? 'is-active' : ''}
+      onClick={() => onChange('en')}
+      aria-pressed={language === 'en'}
+    >
+      EN
+    </button>
+  </div>
 );
 
 export default HomeLanguageSelect;

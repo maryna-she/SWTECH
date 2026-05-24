@@ -1,10 +1,7 @@
-// Deutsche Texte für Login und Registrierung.
-export const deAuthCopy = {
+import type { RegisterText } from './register.en';
+
+export const registerDe: RegisterText = {
   common: {
-    brand: 'Roamly',
-    languageLabel: 'Sprache waehlen',
-    german: 'Deutsch',
-    english: 'English',
     email: 'E-Mail',
     password: 'Passwort',
     name: 'Name',
@@ -13,25 +10,8 @@ export const deAuthCopy = {
     passwordHideLabel: 'Passwort ausblenden',
     passwordShowLabel: 'Passwort anzeigen',
   },
-  login: {
-    ariaBrand: 'Roamly Travel Shop',
-    kicker: 'Wähle dein Abenteuer',
-    title: 'Willkommen zurück bei Roamly.',
-    intro: 'Melde dich an und finde schnell alles für deine nächste Reise.',
-    headerKicker: 'Dein Konto',
-    heading: 'Anmelden',
-    description: 'Mit deinem Konto kannst du weiter einkaufen und deine Bestellungen sehen.',
-    submit: 'Anmelden',
-    loading: 'Wird geladen...',
-    footer: 'Noch kein Roamly Konto?',
-    footerLink: 'Jetzt registrieren',
-    error: 'E-Mail oder Passwort falsch.',
-  },
   register: {
     ariaBrand: 'Roamly Travel Shop',
-    kicker: 'Wähle dein Abenteuer',
-    title: 'Erstelle dein Roamly Konto.',
-    intro: 'Entdecke Produkte für Hiking, Camping und Surfing.',
     headerKicker: 'Neues Konto',
     heading: 'Konto erstellen',
     description: 'Speichere deinen Warenkorb und behalte deine Bestellungen im Blick.',
@@ -49,4 +29,4 @@ export const deAuthCopy = {
     conflictError: 'Diese E-Mail ist bereits registriert.',
     defaultError: 'Registrierung fehlgeschlagen. Bitte versuche es erneut.',
   },
-} as const;
+};

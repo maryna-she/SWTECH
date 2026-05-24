@@ -1,22 +1,25 @@
 /* Mobile Ansicht für Login und Registrierung. */
 @media (max-width: 860px) {
   .auth-shell {
-    display: grid;
-    grid-template-columns: 1fr;
     min-height: 100svh;
     background:
       radial-gradient(circle at 12% 18%, var(--color-secondary-soft), transparent 28rem),
       linear-gradient(135deg, #f7f1e5 0%, var(--color-surface) 58%, var(--color-surface-soft) 100%);
   }
 
+  .auth-content {
+    grid-template-columns: 1fr;
+    padding: 22px 0 44px;
+  }
+
   .auth-brand {
-    display: none;
+    min-height: 280px;
   }
 
   .auth-panel {
-    min-height: 100svh;
+    min-height: auto;
     align-items: center;
-    padding: 14px;
+    padding: 0;
   }
 
   .auth-card {
@@ -24,10 +27,6 @@
     max-width: 640px;
     border-radius: 8px;
     padding: 22px 28px;
-  }
-
-  .language-switcher {
-    margin-bottom: 16px;
   }
 
   .auth-card-header {
@@ -77,8 +76,7 @@
     padding: 18px 28px;
   }
 
-  .auth-shell--register .auth-card-header,
-  .auth-shell--register .language-switcher {
+  .auth-shell--register .auth-card-header {
     margin-bottom: 12px;
   }
 

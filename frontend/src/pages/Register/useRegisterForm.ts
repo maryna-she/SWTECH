@@ -3,8 +3,8 @@ import type { FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/useAuth';
 import { register } from '../../services/registerService';
-import type { AuthCopy } from '../authCopy';
 import { getPasswordScore } from './passwordScore';
+import type { RegisterText } from './register.en';
 
 const isConflictError = (err: unknown) => (
   typeof err === 'object' &&
@@ -14,7 +14,7 @@ const isConflictError = (err: unknown) => (
   (err as { response: { status: number } }).response.status === 409
 );
 
-const useRegisterForm = (copy: AuthCopy) => {
+const useRegisterForm = (text: RegisterText) => {
   // Kapselt Eingaben, Prüfung und API-Aufruf der Registrierung.
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -33,12 +33,12 @@ const useRegisterForm = (copy: AuthCopy) => {
     setError('');
 
     if (password !== confirmPassword) {
-      setError(copy.register.mismatchError);
+      setError(text.register.mismatchError);
       return;
     }
 
     if (password.length < 8) {
-      setError(copy.register.shortPasswordError);
+      setError(text.register.shortPasswordError);
       return;
     }
 
@@ -48,7 +48,11 @@ const useRegisterForm = (copy: AuthCopy) => {
       loginUser(res.token, { email: res.email, name: res.name, role: res.role });
       navigate('/');
     } catch (err: unknown) {
-      setError(isConflictError(err) ? copy.register.conflictError : copy.register.defaultError);
+      setError(
+        isConflictError(err)
+          ? text.register.conflictError
+          : text.register.defaultError,
+      );
     } finally {
       setLoading(false);
     }

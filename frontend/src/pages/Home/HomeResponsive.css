@@ -1,10 +1,5 @@
 /* Passt die Startseite an dunkle und kleine Bildschirme an. */
 @media (prefers-color-scheme: dark) {
-  .home-nav a,
-  .home-link-button {
-    background: rgba(23, 34, 24, 0.78);
-  }
-
   .home-trip-panel {
     background:
       linear-gradient(180deg, rgba(23, 34, 24, 0.72), rgba(38, 52, 31, 0.7)),
@@ -13,6 +8,21 @@
 }
 
 @media (max-width: 860px) {
+  .home-header {
+    grid-template-columns: 1fr auto;
+  }
+
+  .home-menu {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-self: start;
+  }
+
+  .home-header-actions {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
   .home-hero {
     min-height: auto;
     padding-top: 26px;
@@ -36,18 +46,23 @@
   }
 
   .home-header {
-    align-items: flex-start;
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 
-  .home-nav {
+  .home-menu {
+    grid-column: 1;
     width: 100%;
+    justify-self: start;
     justify-content: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
   }
 
-  .home-nav a,
-  .home-link-button {
-    width: 100%;
+  .home-header-actions {
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: start;
+    flex-wrap: wrap;
   }
 
   .home-trip-panel {

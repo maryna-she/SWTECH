@@ -1,13 +1,13 @@
-import type { HomeCopy } from './homeCopy';
+import type { HomeText } from './home.en';
 
 interface HomeTripPanelProps {
-  copy: HomeCopy;
+  text: HomeText;
 }
 
 // Rendert die visuellen Karten der Reise-Kategorien.
-const HomeTripPanel = ({ copy }: HomeTripPanelProps) => (
-  <div className="home-trip-panel" aria-label={copy.tripCategoriesLabel}>
-    {copy.cards.map((card, index) => (
+const HomeTripPanel = ({ text }: HomeTripPanelProps) => (
+  <div className="home-trip-panel" aria-label={text.tripCategoriesLabel}>
+    {text.cards.map((card, index) => (
       <div
         key={card.category}
         className={index === 0 ? 'home-map-card home-map-card--large' : 'home-map-card'}

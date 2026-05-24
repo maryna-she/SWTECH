@@ -2,6 +2,7 @@
 :root {
   font: 16px/145% var(--sans);
   letter-spacing: 0;
+  scrollbar-gutter: stable;
   color-scheme: light dark;
   color: var(--text);
   background: var(--bg);

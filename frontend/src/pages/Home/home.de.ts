@@ -1,9 +1,18 @@
-// Deutsche Texte für die Startseite.
-export const deHomeCopy = {
+import type { HomeText } from './home.en';
+
+export const homeDe: HomeText = {
   navLabel: 'Hauptnavigation',
   homeLabel: 'Roamly Startseite',
-  login: 'Anmelden',
-  register: 'Registrieren',
+  home: 'Home',
+  shop: 'Shop',
+  wishlistLabel: 'Wunschliste öffnen',
+  cartLabel: 'Warenkorb öffnen',
+  products: 'Alle Produkte',
+  categories: 'Kategorien',
+  discounts: 'Rabatte',
+  about: 'Über uns',
+  contacts: 'Kontakt',
+  categoryItems: ['Hiking', 'Camping', 'Surfing'],
   accountLabel: 'Kontoseite öffnen',
   logout: 'Abmelden',
   kicker: 'Reise-Shop für jede Route',
@@ -23,4 +32,4 @@ export const deHomeCopy = {
     { title: 'Warenkorb speichern', text: 'Registriere dich einmal und plane später weiter.' },
     { title: 'Bestellungen verfolgen', text: 'Behalte dein Konto und Käufe an einem Ort.' },
   ],
-} as const;
+};

@@ -1,8 +1,8 @@
 import EyeIcon from '../components/EyeIcon';
-import type { AuthCopy } from '../authCopy';
+import type { RegisterText } from './register.en';
 
 interface RegisterPasswordFieldProps {
-  copy: AuthCopy;
+  text: RegisterText;
   password: string;
   showPassword: boolean;
   passwordScore: number;
@@ -12,23 +12,23 @@ interface RegisterPasswordFieldProps {
 
 // Zeigt Passwortfeld, Auge-Button und Stärke-Anzeige.
 const RegisterPasswordField = ({
-  copy,
+  text,
   password,
   showPassword,
   passwordScore,
   onPasswordChange,
   onTogglePassword,
 }: RegisterPasswordFieldProps) => {
-  const passwordLabel = copy.register.passwordLabels[passwordScore];
+  const passwordLabel = text.register.passwordLabels[passwordScore];
 
   return (
     <div className="auth-field">
-      <label htmlFor="password">{copy.common.password}</label>
+      <label htmlFor="password">{text.common.password}</label>
       <div className="password-control">
         <input
           id="password"
           type={showPassword ? 'text' : 'password'}
-          placeholder={copy.common.passwordPlaceholder}
+          placeholder={text.common.passwordPlaceholder}
           value={password}
           onChange={(event) => onPasswordChange(event.target.value)}
           required
@@ -38,12 +38,12 @@ const RegisterPasswordField = ({
           type="button"
           className="ghost-btn"
           onClick={onTogglePassword}
-          aria-label={showPassword ? copy.common.passwordHideLabel : copy.common.passwordShowLabel}
+          aria-label={showPassword ? text.common.passwordHideLabel : text.common.passwordShowLabel}
         >
           <EyeIcon hidden={showPassword} />
         </button>
       </div>
-      <div className="password-meter" aria-label={`${copy.register.meterLabel}: ${passwordLabel}`}>
+      <div className="password-meter" aria-label={`${text.register.meterLabel}: ${passwordLabel}`}>
         {[1, 2, 3, 4].map((score) => (
           <span key={score} className={passwordScore >= score ? 'is-active' : ''} />
         ))}

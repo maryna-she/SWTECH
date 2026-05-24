@@ -3,11 +3,12 @@ import type { FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/useAuth';
 import { login } from '../../services/authService';
-import { authCopy } from '../authCopy';
 import AuthPageLayout from '../components/AuthPageLayout';
 import useAuthLanguage from '../hooks/useAuthLanguage';
+import { loginDe } from './login.de';
+import { loginEn } from './login.en';
 import LoginForm from './LoginForm';
-import '../Auth.css';
+import '../Auth/Auth.css';
 
 const LoginPage = () => {
   // Verwaltet Eingaben, Sprache und Login-Status der Seite.
@@ -19,7 +20,7 @@ const LoginPage = () => {
   const { language, changeLanguage } = useAuthLanguage(() => setError(''));
   const { loginUser } = useAuth();
   const navigate = useNavigate();
-  const copy = authCopy[language];
+  const text = language === 'de' ? loginDe : loginEn;
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0 });
@@ -35,7 +36,7 @@ const LoginPage = () => {
       loginUser(res.token, { email: res.email, name: res.name, role: res.role });
       navigate('/');
     } catch {
-      setError(copy.login.error);
+      setError(text.login.error);
     } finally {
       setLoading(false);
     }
@@ -44,20 +45,19 @@ const LoginPage = () => {
   return (
     <AuthPageLayout
       variant="login"
-      brand={{ ...copy.login, name: copy.common.brand, ariaLabel: copy.login.ariaBrand }}
+      brand={{ ariaLabel: text.login.ariaBrand }}
       header={{
-        kicker: copy.login.headerKicker,
-        title: copy.login.heading,
-        description: copy.login.description,
+        kicker: text.login.headerKicker,
+        title: text.login.heading,
+        description: text.login.description,
       }}
       language={language}
-      languageLabel={copy.common.languageLabel}
       titleId="login-title"
       onLanguageChange={changeLanguage}
-      footer={<>{copy.login.footer} <Link to="/register">{copy.login.footerLink}</Link></>}
+      footer={<>{text.login.footer} <Link to="/register">{text.login.footerLink}</Link></>}
     >
       <LoginForm
-        copy={copy}
+        text={text}
         email={email}
         password={password}
         showPassword={showPassword}

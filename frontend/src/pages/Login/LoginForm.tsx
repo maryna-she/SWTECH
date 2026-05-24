@@ -1,9 +1,9 @@
 import EyeIcon from '../components/EyeIcon';
 import type { FormEvent } from 'react';
-import type { AuthCopy } from '../authCopy';
+import type { LoginText } from './login.en';
 
 interface LoginFormProps {
-  copy: AuthCopy;
+  text: LoginText;
   email: string;
   password: string;
   showPassword: boolean;
@@ -17,7 +17,7 @@ interface LoginFormProps {
 
 // Rendert das Login-Formular mit E-Mail und Passwort.
 const LoginForm = ({
-  copy,
+  text,
   email,
   password,
   showPassword,
@@ -30,11 +30,11 @@ const LoginForm = ({
 }: LoginFormProps) => (
   <form onSubmit={onSubmit} className="auth-form">
     <div className="auth-field">
-      <label htmlFor="email">{copy.common.email}</label>
+      <label htmlFor="email">{text.common.email}</label>
       <input
         id="email"
         type="email"
-        placeholder={copy.common.emailPlaceholder}
+        placeholder={text.common.emailPlaceholder}
         value={email}
         onChange={(event) => onEmailChange(event.target.value)}
         required
@@ -43,12 +43,12 @@ const LoginForm = ({
     </div>
 
     <div className="auth-field">
-      <label htmlFor="password">{copy.common.password}</label>
+      <label htmlFor="password">{text.common.password}</label>
       <div className="password-control">
         <input
           id="password"
           type={showPassword ? 'text' : 'password'}
-          placeholder={copy.common.passwordPlaceholder}
+          placeholder={text.common.passwordPlaceholder}
           value={password}
           onChange={(event) => onPasswordChange(event.target.value)}
           required
@@ -58,7 +58,7 @@ const LoginForm = ({
           type="button"
           className="ghost-btn"
           onClick={onTogglePassword}
-          aria-label={showPassword ? copy.common.passwordHideLabel : copy.common.passwordShowLabel}
+          aria-label={showPassword ? text.common.passwordHideLabel : text.common.passwordShowLabel}
         >
           <EyeIcon hidden={showPassword} />
         </button>
@@ -68,7 +68,7 @@ const LoginForm = ({
     {error && <p className="auth-error" aria-live="polite">{error}</p>}
 
     <button type="submit" className="auth-submit" disabled={loading}>
-      <span>{loading ? copy.login.loading : copy.login.submit}</span>
+      <span>{loading ? text.login.loading : text.login.submit}</span>
     </button>
   </form>
 );

@@ -3,9 +3,9 @@
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
   padding: 24px 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(210px, 260px) minmax(280px, 1fr) minmax(210px, 260px);
   align-items: center;
-  justify-content: space-between;
   gap: 18px;
 }
 
@@ -26,58 +26,92 @@
 }
 
 .home-nav {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
-  flex-wrap: wrap;
+  display: contents;
 }
 
-.home-nav a,
-.home-link-button {
-  min-height: 40px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 9px 15px;
+.home-menu {
+  grid-column: 2;
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.home-menu a,
+.home-menu button {
+  border: 0;
+  padding: 0;
   color: var(--text-h);
-  background: rgba(255, 250, 241, 0.72);
+  background: transparent;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 750;
   text-decoration: none;
   cursor: pointer;
 }
 
-.home-nav a:hover,
-.home-link-button:hover,
-.home-nav a:focus,
-.home-link-button:focus {
-  border-color: var(--color-ink);
+.home-menu a:hover,
+.home-menu button:hover,
+.home-menu a:focus,
+.home-menu button:focus {
+  color: var(--color-secondary);
   outline: none;
 }
 
-.home-nav .home-account-link {
-  width: 52px;
-  height: 52px;
-  min-height: 52px;
-  display: inline-grid;
-  place-items: center;
-  padding: 0;
-  line-height: 1;
+.home-header-actions {
+  grid-column: 3;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 11px;
 }
 
+.home-icon-button,
+.home-nav .home-account-link,
+.home-link-button {
+  width: 38px;
+  height: 38px;
+  min-height: 38px;
+  border: 0;
+  border-radius: 999px;
+  padding: 0;
+  display: inline-grid;
+  place-items: center;
+  color: var(--text-h);
+  background: transparent;
+  cursor: pointer;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.home-icon-button:hover,
+.home-nav .home-account-link:hover,
+.home-link-button:hover,
+.home-icon-button:focus,
+.home-nav .home-account-link:focus,
+.home-link-button:focus {
+  color: var(--color-secondary);
+  outline: none;
+}
+
+.home-icon-button svg,
 .home-account-link svg {
-  width: 23px;
-  height: 23px;
+  width: 22px;
+  height: 22px;
   display: block;
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.9;
+  stroke-width: 1.85;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-.home-nav .home-nav-cta {
-  color: #fffaf1;
-  border-color: var(--color-primary);
-  background: var(--color-primary);
+.home-link-button {
+  width: auto;
+  padding: 0 12px;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 750;
 }
 
 .home-user {

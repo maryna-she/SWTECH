@@ -1,0 +1,33 @@
+@import '/src/pages/Products/ProductsShell.css';
+@import '/src/pages/Products/ProductVisual.css';
+@import '/src/pages/Products/ProductCard.css';
+@import '/src/pages/Products/ProductsResponsive.css';
+
+.products-hero {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 42px 0 26px;
+}
+
+.products-hero h1 {
+  max-width: 780px;
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  line-height: 1;
+}
+
+.products-hero p:last-child {
+  max-width: 680px;
+  margin-top: 18px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.products-grid {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 22px 0 72px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
