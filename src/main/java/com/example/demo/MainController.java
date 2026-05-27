@@ -1,6 +1,8 @@
-package com.example.demo.accessingdatamysql;
+package com.example.demo;
 
 
+import com.example.demo.user.User;
+import com.example.demo.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
