@@ -1,4 +1,4 @@
-package com.example.demo.order;
+package java.com.shopproject.order;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

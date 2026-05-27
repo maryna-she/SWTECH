@@ -1,4 +1,4 @@
-package com.example.demo.product;
+package java.com.shopproject.product;
 
 import org.springframework.data.repository.CrudRepository;
 

@@ -1,6 +1,6 @@
-package com.example.demo.order;
+package java.com.shopproject.order;
 
-import com.example.demo.user.User;
+import java.com.shopproject.user.User;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
