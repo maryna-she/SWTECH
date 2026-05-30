@@ -14,6 +14,7 @@ export const loginDe: LoginText = {
     headerKicker: 'Dein Konto',
     heading: 'Anmelden',
     description: 'Mit deinem Konto kannst du weiter einkaufen und deine Bestellungen sehen.',
+    googleButton: 'Mit Google fortfahren',
     submit: 'Anmelden',
     loading: 'Wird geladen...',
     footer: 'Noch kein Roamly Konto?',

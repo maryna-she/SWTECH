@@ -1,5 +1,6 @@
 import EyeIcon from '../components/EyeIcon';
 import type { FormEvent } from 'react';
+import AuthSocialButton from '../components/AuthSocialButton';
 import type { LoginText } from './login.en';
 
 interface LoginFormProps {
@@ -70,6 +71,8 @@ const LoginForm = ({
     <button type="submit" className="auth-submit" disabled={loading}>
       <span>{loading ? text.login.loading : text.login.submit}</span>
     </button>
+
+    <AuthSocialButton label={text.login.googleButton} />
   </form>
 );
 

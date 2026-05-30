@@ -1,7 +1,7 @@
-@import '/src/pages/Products/ProductsShell.css';
-@import '/src/pages/Products/ProductVisual.css';
-@import '/src/pages/Products/ProductCard.css';
-@import '/src/pages/Products/ProductsResponsive.css';
+@import './ProductsShell.css';
+@import './ProductVisual.css';
+@import './ProductCard.css';
+@import './ProductsResponsive.css';
 
 .products-hero {
   width: min(1120px, calc(100% - 32px));

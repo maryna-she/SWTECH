@@ -1,4 +1,5 @@
 import type { FormEvent } from 'react';
+import AuthSocialButton from '../components/AuthSocialButton';
 import RegisterPasswordField from './RegisterPasswordField';
 import type { RegisterText } from './register.en';
 
@@ -87,6 +88,8 @@ const RegisterForm = ({ text, values, state, setters, onTogglePassword, onSubmit
     <button type="submit" className="auth-submit" disabled={state.loading}>
       <span>{state.loading ? text.register.loading : text.register.submit}</span>
     </button>
+
+    <AuthSocialButton label={text.register.googleButton} />
   </form>
 );
 

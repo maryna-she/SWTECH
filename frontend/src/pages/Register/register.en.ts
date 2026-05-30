@@ -15,6 +15,7 @@ export interface RegisterText {
     description: string;
     confirmPassword: string;
     confirmPlaceholder: string;
+    googleButton: string;
     submit: string;
     loading: string;
     footer: string;
@@ -46,6 +47,7 @@ export const registerEn: RegisterText = {
     description: 'Save your cart and keep your orders easy to find.',
     confirmPassword: 'Confirm password',
     confirmPlaceholder: 'Enter it again',
+    googleButton: 'Continue with Google',
     submit: 'Create account',
     loading: 'Creating account...',
     footer: 'Already have an account?',

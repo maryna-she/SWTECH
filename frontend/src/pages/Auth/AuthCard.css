@@ -1,34 +1,36 @@
-/* Formular-Karte. */
+/* Formularbereich im Modal. */
 .auth-card {
   position: relative;
-  width: min(100%, 560px);
-  justify-self: end;
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 40px 48px;
-  background: rgba(255, 250, 241, 0.86);
-  box-shadow: 0 24px 70px rgba(15, 18, 14, 0.14);
-  backdrop-filter: blur(14px);
-  animation: card-rise 600ms ease both;
-  overflow: hidden;
+  width: 100%;
 }
 
-.auth-card > * {
-  position: relative;
-  z-index: 1;
+.auth-card-header {
+  margin-bottom: 28px;
 }
 
-.auth-shell--register .auth-card {
-  width: min(100%, 560px);
-  padding: 24px 30px;
+.auth-card-header h2 {
+  margin: 8px 0 8px;
+  font-size: clamp(2.15rem, 4vw, 3.1rem);
+  line-height: 1.05;
+}
+
+.auth-card-header p:not(.auth-kicker) {
+  max-width: 420px;
+  color: var(--color-muted);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.auth-shell--register .auth-modal-top {
+  margin-bottom: 26px;
 }
 
 .auth-shell--register .auth-card-header {
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .auth-shell--register .auth-card-header h2 {
-  font-size: 1.82rem;
+  font-size: 2.25rem;
 }
 
 .auth-shell--register .auth-form {
@@ -54,15 +56,4 @@
 
 .auth-shell--register .auth-footer {
   margin-top: 10px;
-}
-
-@keyframes card-rise {
-  from {
-    opacity: 0;
-    transform: translateY(18px) scale(0.985);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
 }

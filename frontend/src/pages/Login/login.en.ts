@@ -12,6 +12,7 @@ export interface LoginText {
     headerKicker: string;
     heading: string;
     description: string;
+    googleButton: string;
     submit: string;
     loading: string;
     footer: string;
@@ -34,6 +35,7 @@ export const loginEn: LoginText = {
     headerKicker: 'Your account',
     heading: 'Sign in',
     description: 'Use your account to keep shopping and see your orders.',
+    googleButton: 'Continue with Google',
     submit: 'Sign in',
     loading: 'Signing in...',
     footer: 'No Roamly account yet?',

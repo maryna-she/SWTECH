@@ -1,32 +1,35 @@
-/* Mobile Ansicht für Login und Registrierung. */
+/* Mobile Ansicht fuer Login und Registrierung. */
 @media (max-width: 860px) {
   .auth-shell {
-    min-height: 100svh;
-    background:
-      radial-gradient(circle at 12% 18%, var(--color-secondary-soft), transparent 28rem),
-      linear-gradient(135deg, #f7f1e5 0%, var(--color-surface) 58%, var(--color-surface-soft) 100%);
+    padding: 14px;
   }
 
   .auth-content {
+    min-height: auto;
     grid-template-columns: 1fr;
-    padding: 22px 0 44px;
   }
 
   .auth-brand {
     min-height: 280px;
+    grid-row: 1;
   }
 
   .auth-panel {
     min-height: auto;
-    align-items: center;
-    padding: 0;
+    padding: 28px;
   }
 
-  .auth-card {
-    width: 100%;
-    max-width: 640px;
-    border-radius: 8px;
-    padding: 22px 28px;
+  .auth-close {
+    background: rgba(255, 250, 241, 0.86);
+  }
+
+  .auth-modal-top {
+    margin-bottom: 24px;
+  }
+
+  .auth-logo {
+    top: 18px;
+    left: 18px;
   }
 
   .auth-card-header {
@@ -72,16 +75,27 @@
     margin-top: 14px;
   }
 
-  .auth-shell--register .auth-card {
-    padding: 18px 28px;
-  }
-
   .auth-shell--register .auth-card-header {
     margin-bottom: 12px;
   }
 
   .auth-shell--register .auth-form {
     gap: 10px;
+  }
+}
+
+@media (max-width: 520px) {
+  .auth-modal-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .auth-panel {
+    padding: 24px 20px;
+  }
+
+  .auth-brand {
+    min-height: 220px;
   }
 }
 

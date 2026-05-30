@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react';
-import { homeDe } from '../Home/home.de';
-import { homeEn } from '../Home/home.en';
-import HomeHeader from '../Home/HomeHeader';
+import { Link } from 'react-router-dom';
+import HomeLanguageSelect from '../Home/HomeLanguageSelect';
 import type { Language } from '../hooks/useAuthLanguage';
 import AuthBrand from './AuthBrand';
 
@@ -34,19 +33,31 @@ const AuthPageLayout = ({
   onLanguageChange,
 }: AuthPageLayoutProps) => (
   <main className={`auth-shell auth-shell--${variant}`}>
-    <HomeHeader
-      text={language === 'de' ? homeDe : homeEn}
-      language={language}
-      onLanguageChange={onLanguageChange}
-    />
+    <section className="auth-content" aria-labelledby={titleId}>
+      <Link to="/" className="auth-close" aria-label={language === 'de' ? 'Schliessen' : 'Close'}>
+        <span aria-hidden="true" />
+      </Link>
 
-    <div className="auth-content">
-      <AuthBrand
-        ariaLabel={brand.ariaLabel}
-      />
+      <AuthBrand ariaLabel={brand.ariaLabel} />
 
-      <section className="auth-panel" aria-labelledby={titleId}>
+      <div className="auth-panel">
         <div className="auth-card">
+          <div className="auth-modal-top">
+            <div className="auth-tabs" aria-label={language === 'de' ? 'Auth navigation' : 'Auth navigation'}>
+              <Link to="/login" className={variant === 'login' ? 'is-active' : ''}>
+                {language === 'de' ? 'Anmelden' : 'Sign in'}
+              </Link>
+              <Link to="/register" className={variant === 'register' ? 'is-active' : ''}>
+                {language === 'de' ? 'Registrieren' : 'Register'}
+              </Link>
+            </div>
+            <HomeLanguageSelect
+              language={language}
+              label={language === 'de' ? 'Sprache wählen' : 'Choose language'}
+              onChange={onLanguageChange}
+            />
+          </div>
+
           <div className="auth-card-header">
             <p className="auth-kicker">{header.kicker}</p>
             <h2 id={titleId}>{header.title}</h2>
@@ -57,8 +68,8 @@ const AuthPageLayout = ({
 
           <p className="auth-footer">{footer}</p>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   </main>
 );
 

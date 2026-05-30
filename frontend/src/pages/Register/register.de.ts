@@ -17,6 +17,7 @@ export const registerDe: RegisterText = {
     description: 'Speichere deinen Warenkorb und behalte deine Bestellungen im Blick.',
     confirmPassword: 'Passwort bestätigen',
     confirmPlaceholder: 'Noch einmal eingeben',
+    googleButton: 'Mit Google fortfahren',
     submit: 'Konto erstellen',
     loading: 'Wird registriert...',
     footer: 'Bereits ein Konto?',
