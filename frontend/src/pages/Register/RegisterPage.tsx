@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import AuthPageLayout from '../components/AuthPageLayout';
 import useAuthLanguage from '../hooks/useAuthLanguage';
 import { registerDe } from './register.de';
@@ -35,11 +34,6 @@ const RegisterPage = () => {
       language={language}
       titleId="register-title"
       onLanguageChange={handleLanguageChange}
-      footer={
-        <>
-          {text.register.footer} <Link to="/login">{text.register.footerLink}</Link>
-        </>
-      }
     >
       <RegisterForm
         text={text}

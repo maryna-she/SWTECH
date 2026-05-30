@@ -8,6 +8,7 @@ interface AuthPageLayoutProps {
   variant: 'login' | 'register';
   brand: {
     ariaLabel: string;
+    imageSrc?: string;
   };
   header: {
     kicker: string;
@@ -16,7 +17,6 @@ interface AuthPageLayoutProps {
   };
   language: Language;
   titleId: string;
-  footer: ReactNode;
   children: ReactNode;
   onLanguageChange: (language: Language) => void;
 }
@@ -28,7 +28,6 @@ const AuthPageLayout = ({
   header,
   language,
   titleId,
-  footer,
   children,
   onLanguageChange,
 }: AuthPageLayoutProps) => (
@@ -38,7 +37,7 @@ const AuthPageLayout = ({
         <span aria-hidden="true" />
       </Link>
 
-      <AuthBrand ariaLabel={brand.ariaLabel} />
+      <AuthBrand ariaLabel={brand.ariaLabel} imageSrc={brand.imageSrc} />
 
       <div className="auth-panel">
         <div className="auth-card">
@@ -58,15 +57,15 @@ const AuthPageLayout = ({
             />
           </div>
 
-          <div className="auth-card-header">
-            <p className="auth-kicker">{header.kicker}</p>
-            <h2 id={titleId}>{header.title}</h2>
-            <p>{header.description}</p>
+          <div className="auth-form-box">
+            <div className="auth-card-header">
+              <p className="auth-kicker">{header.kicker}</p>
+              <h2 id={titleId}>{header.title}</h2>
+              <p>{header.description}</p>
+            </div>
+
+            {children}
           </div>
-
-          {children}
-
-          <p className="auth-footer">{footer}</p>
         </div>
       </div>
     </section>

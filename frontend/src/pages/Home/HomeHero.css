@@ -15,8 +15,12 @@
 }
 
 .home-kicker {
+  width: fit-content;
   margin-bottom: 14px;
-  color: var(--color-secondary);
+  border-radius: 999px;
+  padding: 4px 9px;
+  color: var(--color-button-hover-text);
+  background: var(--color-button-hover);
   font-size: 0.82rem;
   font-weight: 800;
   letter-spacing: 0;

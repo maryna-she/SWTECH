@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/useAuth';
 import { login } from '../../services/authService';
 import AuthPageLayout from '../components/AuthPageLayout';
@@ -54,7 +54,6 @@ const LoginPage = () => {
       language={language}
       titleId="login-title"
       onLanguageChange={changeLanguage}
-      footer={<>{text.login.footer} <Link to="/register">{text.login.footerLink}</Link></>}
     >
       <LoginForm
         text={text}

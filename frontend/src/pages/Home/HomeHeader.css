@@ -40,7 +40,9 @@
 .home-menu a,
 .home-menu button {
   border: 0;
-  padding: 0;
+  border-radius: 999px;
+  margin: -6px -10px;
+  padding: 6px 10px;
   color: var(--text-h);
   background: transparent;
   font: inherit;
@@ -54,8 +56,14 @@
 .home-menu button:hover,
 .home-menu a:focus,
 .home-menu button:focus {
-  color: var(--color-secondary);
+  color: var(--color-button-hover-text);
+  background: var(--color-button-hover);
   outline: none;
+}
+
+.home-menu button:hover,
+.home-menu button:focus {
+  background: var(--color-button-hover);
 }
 
 .home-header-actions {
@@ -90,7 +98,9 @@
 .home-icon-button:focus,
 .home-nav .home-account-link:focus,
 .home-link-button:focus {
-  color: var(--color-secondary);
+  color: var(--color-button-hover-text);
+  background: var(--color-button-hover);
+  box-shadow: var(--shadow-button-hover);
   outline: none;
 }
 

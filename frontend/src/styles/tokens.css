@@ -12,6 +12,10 @@
   --color-primary-soft: rgba(31, 61, 43, 0.1);
   --color-secondary: #d87532;
   --color-secondary-soft: rgba(216, 117, 50, 0.16);
+  --color-button-hover: #ffc727;
+  --color-button-hover-strong: #f0b400;
+  --color-button-hover-text: #1c1604;
+  --shadow-button-hover: 0 12px 26px rgba(255, 199, 39, 0.28);
   --color-danger: #c73e4f;
   --color-danger-soft: #fff0f2;
   --color-success: #3b7a55;

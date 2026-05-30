@@ -40,7 +40,7 @@ const RegisterPasswordField = ({
           onClick={onTogglePassword}
           aria-label={showPassword ? text.common.passwordHideLabel : text.common.passwordShowLabel}
         >
-          <EyeIcon hidden={showPassword} />
+          <EyeIcon open={showPassword} />
         </button>
       </div>
       <div className="password-meter" aria-label={`${text.register.meterLabel}: ${passwordLabel}`}>

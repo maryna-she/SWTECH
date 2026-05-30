@@ -33,6 +33,19 @@ input {
   font: inherit;
 }
 
+button {
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+button:hover:not(:disabled) {
+  color: var(--color-button-hover-text);
+  background-color: var(--color-button-hover);
+}
+
 h1,
 h2 {
   font-family: var(--heading), system-ui, sans-serif;

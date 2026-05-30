@@ -1,9 +1,9 @@
 /* Primärer Button für Login und Registrierung. */
 .auth-submit {
   position: relative;
-  min-height: 58px;
+  min-height: 48px;
   border: 0;
-  border-radius: 8px;
+  border-radius: 10px;
   color: #fffaf1;
   background: var(--color-primary);
   box-shadow: var(--shadow-control);
@@ -16,9 +16,9 @@
 
 .auth-social-btn {
   width: min(280px, 100%);
-  min-height: 42px;
+  min-height: 40px;
   border: 1px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: 10px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -55,8 +55,10 @@
 }
 
 .auth-submit:hover:not(:disabled) {
+  color: var(--color-button-hover-text);
+  background: var(--color-button-hover);
   transform: translateY(-2px);
-  box-shadow: 0 18px 36px rgba(15, 18, 14, 0.24);
+  box-shadow: var(--shadow-button-hover);
 }
 
 .auth-submit:hover:not(:disabled)::after {

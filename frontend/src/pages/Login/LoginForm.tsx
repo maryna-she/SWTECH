@@ -61,7 +61,7 @@ const LoginForm = ({
           onClick={onTogglePassword}
           aria-label={showPassword ? text.common.passwordHideLabel : text.common.passwordShowLabel}
         >
-          <EyeIcon hidden={showPassword} />
+          <EyeIcon open={showPassword} />
         </button>
       </div>
     </div>

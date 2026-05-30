@@ -91,7 +91,7 @@
 }
 
 .product-detail__details li {
-  border-left: 4px solid var(--color-secondary);
+  border-left: 4px solid var(--color-button-hover);
   padding: 8px 0 8px 14px;
   color: var(--text-h);
   background: rgba(255, 250, 241, 0.48);

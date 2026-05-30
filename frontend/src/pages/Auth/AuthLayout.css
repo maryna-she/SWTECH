@@ -1,8 +1,8 @@
 /* Modal-Layout fuer Login und Registrierung. */
 .auth-shell {
   position: relative;
-  min-height: 100svh;
-  overflow-x: hidden;
+  height: 100svh;
+  overflow: hidden;
   display: grid;
   place-items: center;
   padding: 28px;
@@ -18,20 +18,24 @@
   --color-secondary: #d87532;
   --color-secondary-soft: rgba(216, 117, 50, 0.16);
   background:
-    radial-gradient(circle at 14% 18%, rgba(216, 117, 50, 0.18), transparent 26rem),
-    linear-gradient(135deg, #f7f1e5 0%, var(--color-surface) 52%, var(--color-surface-soft) 100%);
+    radial-gradient(circle at 8% 92%, rgba(216, 117, 50, 0.16), transparent 16rem),
+    radial-gradient(circle at 92% 12%, rgba(31, 61, 43, 0.08), transparent 18rem),
+    #f5f1eb;
 }
 
 .auth-content {
   position: relative;
-  width: min(980px, 100%);
-  min-height: min(680px, calc(100svh - 56px));
-  border-radius: 8px;
+  width: min(1020px, 100%);
+  height: min(660px, calc(100svh - 56px));
+  border: 1px solid rgba(207, 193, 166, 0.48);
+  border-radius: 16px;
   overflow: hidden;
   display: grid;
-  grid-template-columns: minmax(360px, 1.08fr) minmax(360px, 0.92fr);
-  background: rgba(255, 250, 241, 0.94);
-  box-shadow: 0 30px 90px rgba(15, 18, 14, 0.2);
+  grid-template-columns: minmax(440px, 1.18fr) minmax(340px, 0.82fr);
+  background:
+    radial-gradient(circle at 24% 54%, rgba(255, 255, 255, 0.72), transparent 15rem),
+    #fffdf8;
+  box-shadow: 0 28px 80px rgba(15, 18, 14, 0.16);
 }
 
 .auth-close {
@@ -85,7 +89,9 @@
 
 .auth-close:hover,
 .auth-close:focus {
-  color: var(--color-secondary);
+  color: var(--color-button-hover-text);
+  background: var(--color-button-hover);
+  box-shadow: var(--shadow-button-hover);
   outline: none;
 }
 
@@ -99,23 +105,32 @@
   position: relative;
   min-height: inherit;
   overflow: hidden;
-  background: var(--color-surface-soft);
+  display: grid;
+  place-items: start center;
+  padding: 46px 18px 28px;
+  background: transparent;
 }
 
 .auth-brand > img {
-  width: 100%;
-  height: 100%;
-  min-height: inherit;
+  width: min(126%, 690px);
+  height: auto;
+  max-height: min(690px, calc(100svh - 86px));
   display: block;
-  object-fit: cover;
-  object-position: center 42%;
+  object-fit: contain;
+  filter: drop-shadow(0 22px 28px rgba(15, 18, 14, 0.1));
+  transform: translate(34px, -48px);
 }
 
 .auth-panel {
   min-height: inherit;
   display: grid;
-  align-items: center;
-  padding: 58px 58px 48px;
+  align-items: stretch;
+  padding: 46px 86px 36px 0;
+  background: transparent;
+}
+
+.auth-shell--register .auth-panel {
+  padding-top: 46px;
 }
 
 .auth-logo {
@@ -140,7 +155,7 @@
 }
 
 .auth-modal-top {
-  margin-bottom: 34px;
+  margin-bottom: 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -173,13 +188,13 @@
   left: 0;
   height: 2px;
   border-radius: 999px;
-  background: var(--color-secondary);
+  background: var(--color-button-hover);
 }
 
 /* Kleine Ueberschrift ueber den Formulartiteln. */
 .auth-kicker {
   margin: 0;
-  color: var(--color-secondary);
+  color: var(--color-button-hover);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.08em;
