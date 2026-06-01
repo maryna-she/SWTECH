@@ -1,0 +1,44 @@
+/* Visuelle Karten für Reise-Kategorien. */
+.home-trip-panel {
+  min-height: 520px;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 241, 0.72), rgba(232, 220, 197, 0.72)),
+    url('../../assets/layered-landscape-logo.svg') center 24% / 220px no-repeat;
+  box-shadow: var(--shadow-soft);
+}
+
+.home-map-card {
+  min-height: 150px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 8px;
+  background: rgba(15, 18, 14, 0.72);
+  color: #fffaf1;
+}
+
+.home-map-card--large {
+  grid-column: 1 / -1;
+  min-height: 300px;
+  background:
+    linear-gradient(180deg, rgba(15, 18, 14, 0.04), rgba(15, 18, 14, 0.78)),
+    var(--color-primary);
+}
+
+.home-map-card span {
+  margin-bottom: 6px;
+  color: rgba(255, 250, 241, 0.74);
+  font-size: 0.86rem;
+}
+
+.home-map-card strong {
+  color: #fffaf1;
+  font-size: 1.28rem;
+}

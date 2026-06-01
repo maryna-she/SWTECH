@@ -1,0 +1,37 @@
+/* Kompakter Sprachwechsel im Header. */
+.home-language-select {
+  min-height: 30px;
+  border: 1px solid rgba(207, 193, 166, 0.72);
+  border-radius: 999px;
+  padding: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  background: rgba(255, 250, 241, 0.34);
+}
+
+.home-language-select button {
+  min-width: 32px;
+  height: 26px;
+  border: 0;
+  border-radius: 999px;
+  padding: 0 8px;
+  color: var(--color-muted);
+  background: transparent;
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.home-language-select button:hover,
+.home-language-select button:focus {
+  color: var(--color-button-hover-text);
+  background: var(--color-button-hover);
+  outline: none;
+}
+
+.home-language-select button.is-active {
+  color: var(--color-button-hover-text);
+  background: var(--color-button-hover);
+}
