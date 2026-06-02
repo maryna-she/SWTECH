@@ -1,4 +1,4 @@
-package java.com.shopproject.product;
+package com.shopproject.product;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

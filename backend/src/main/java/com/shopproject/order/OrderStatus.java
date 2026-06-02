@@ -1,4 +1,4 @@
-package java.com.shopproject.order;
+package com.shopproject.order;
 
 public enum OrderStatus {
     CREATED,

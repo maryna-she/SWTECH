@@ -1,8 +1,8 @@
-package java.com.shopproject;
+package com.shopproject;
 
 
-import java.com.shopproject.user.User;
-import java.com.shopproject.user.UserRepository;
+import com.shopproject.user.User;
+import com.shopproject.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
