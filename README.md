@@ -142,5 +142,27 @@ ReturnRequest  (id, order_id, customer_id, reason, status, created_at)
 
 ## Lokales Setup
 
+Für das Testen des Projektes
+
+
+Backend starten:
+
+cd backend
+docker compose up -d mysql
+.\mvnw.cmd spring-boot:run -Dspring-boot.run.arguments=--spring.docker.compose.enabled=false
+Backend läuft dann unter:
+http://localhost:8080
+
+
+Frontend starten, in einem zweiten Terminal:
+
+cd frontend
+npm install
+npm run dev
+Frontend öffnen:
+
+http://localhost:5173
+Für das Backend werden Java 21+, Docker und ein freier Port 3306 für MySQL benötigt. Für das Frontend wird Node.js benötigt.
+
 TODO
 ---
