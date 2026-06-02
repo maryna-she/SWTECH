@@ -1,0 +1,108 @@
+@import './ProductsShell.css';
+@import './ProductVisual.css';
+@import './ProductsResponsive.css';
+
+.product-detail,
+.product-not-found {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.product-detail {
+  padding: 50px 0 78px;
+  display: grid;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: 54px;
+}
+
+.product-detail__content h1,
+.product-not-found h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 4.4rem);
+  line-height: 1;
+}
+
+.product-detail__description {
+  max-width: 620px;
+  margin-top: 20px;
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.product-detail__back,
+.product-not-found a {
+  width: fit-content;
+  min-height: 40px;
+  margin-bottom: 28px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 14px;
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-h);
+  background: rgba(255, 250, 241, 0.72);
+  text-decoration: none;
+}
+
+.product-detail__facts {
+  margin: 30px 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.product-detail__facts div {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  background: rgba(255, 250, 241, 0.76);
+}
+
+.product-detail__facts dt {
+  color: var(--color-subtle);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.product-detail__facts dd {
+  margin: 6px 0 0;
+  color: var(--text-h);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.product-detail__details {
+  margin-top: 30px;
+}
+
+.product-detail__details h2 {
+  margin: 0 0 12px;
+  font-size: 1.22rem;
+}
+
+.product-detail__details ul {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  list-style: none;
+}
+
+.product-detail__details li {
+  border-left: 4px solid var(--color-button-hover);
+  padding: 8px 0 8px 14px;
+  color: var(--text-h);
+  background: rgba(255, 250, 241, 0.48);
+}
+
+.product-not-found {
+  padding: 72px 0;
+}
+
+.product-not-found p {
+  max-width: 520px;
+  margin: 18px 0 24px;
+  line-height: 1.7;
+}

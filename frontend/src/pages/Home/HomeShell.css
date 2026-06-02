@@ -1,0 +1,9 @@
+/* Hintergrund und Grundfläche der Startseite. */
+.home-shell {
+  width: 100%;
+  min-height: 100svh;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 12% 18%, var(--color-secondary-soft), transparent 28rem),
+    linear-gradient(135deg, var(--bg) 0%, var(--color-surface) 58%, var(--color-surface-soft) 100%);
+}

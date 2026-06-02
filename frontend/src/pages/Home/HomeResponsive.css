@@ -1,0 +1,75 @@
+/* Passt die Startseite an dunkle und kleine Bildschirme an. */
+@media (prefers-color-scheme: dark) {
+  .home-trip-panel {
+    background:
+      linear-gradient(180deg, rgba(23, 34, 24, 0.72), rgba(38, 52, 31, 0.7)),
+      url('../../assets/layered-landscape-logo.svg') center 24% / 220px no-repeat;
+  }
+}
+
+@media (max-width: 860px) {
+  .home-header {
+    grid-template-columns: 1fr auto;
+  }
+
+  .home-menu {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-self: start;
+  }
+
+  .home-header-actions {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .home-hero {
+    min-height: auto;
+    padding-top: 26px;
+    grid-template-columns: 1fr;
+  }
+
+  .home-trip-panel {
+    min-height: 420px;
+  }
+
+}
+
+@media (max-width: 560px) {
+  .home-brand {
+    font-size: 1.28rem;
+  }
+
+  .home-brand img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .home-header {
+    grid-template-columns: 1fr;
+  }
+
+  .home-menu {
+    grid-column: 1;
+    width: 100%;
+    justify-self: start;
+    justify-content: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .home-header-actions {
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: start;
+    flex-wrap: wrap;
+  }
+
+  .home-trip-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .home-map-card--large {
+    min-height: 220px;
+  }
+}

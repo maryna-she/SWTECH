@@ -1,0 +1,31 @@
+@media (max-width: 920px) {
+  .products-grid,
+  .product-detail {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .product-detail {
+    align-items: start;
+  }
+}
+
+@media (max-width: 720px) {
+  .products-grid,
+  .product-detail,
+  .product-detail__facts {
+    grid-template-columns: 1fr;
+  }
+
+  .products-hero {
+    padding-top: 22px;
+  }
+
+  .product-detail {
+    padding-top: 22px;
+    gap: 28px;
+  }
+
+  .product-visual--hero {
+    min-height: 360px;
+  }
+}
