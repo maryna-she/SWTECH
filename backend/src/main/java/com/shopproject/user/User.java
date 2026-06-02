@@ -1,4 +1,4 @@
-package com.example.demo.accessingdatamysql;
+package com.shopproject.user;
 
 
 import org.jspecify.annotations.Nullable;
@@ -12,17 +12,27 @@ import jakarta.persistence.Id;
 public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private @Nullable Integer id;
+    private @Nullable Long id;
 
     private String name;
 
     private String email;
 
-    public Integer getId() {
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
