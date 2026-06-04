@@ -1,0 +1,9 @@
+@import '../Home/HomeHeader.css';
+@import '../Home/HomeLanguageSelect.css';
+@import 'AuthLayout.css';
+@import 'AuthCard.css';
+@import 'AuthForm.css';
+@import 'AuthPassword.css';
+@import 'AuthSubmit.css';
+@import 'AuthDark.css';
+@import 'AuthResponsive.css';

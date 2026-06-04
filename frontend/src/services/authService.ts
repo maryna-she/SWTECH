@@ -5,7 +5,7 @@ export const API = axios.create({
   baseURL: 'http://localhost:8080/api',
 });
 
-// JWT Token automatisch mitsenden
+// Sendet den JWT-Token automatisch mit.
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
   if (token) {

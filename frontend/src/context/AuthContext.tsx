@@ -1,18 +1,10 @@
-import { createContext, useContext, useState, useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import type { User } from '../types';
-
-interface AuthContextType {
-  user: User | null;
-  token: string | null;
-  loginUser: (token: string, user: User) => void;
-  logoutUser: () => void;
-  isAuthenticated: boolean;
-}
-
-const AuthContext = createContext<AuthContextType | null>(null);
+import { AuthContext } from './authContextCore';
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  // Speichert Login-Daten und macht sie für alle Seiten verfügbar.
   const [token, setToken] = useState<string | null>(localStorage.getItem('token'));
   const [user, setUser] = useState<User | null>(() => {
     const stored = localStorage.getItem('user');
@@ -44,10 +36,3 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     </AuthContext.Provider>
   );
 };
-
-export const useAuth = () => {
-  const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error('useAuth must be used within AuthProvider');
-  return ctx;
-};
-
