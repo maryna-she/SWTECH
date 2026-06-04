@@ -1,6 +1,6 @@
 package com.shopproject.order;
 
-import com.shopproject.product.Product;
+import com.shopproject.products.ProductEntity;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -21,7 +21,7 @@ public class OrderItem {
     //Welches Produkt wurde bestellt?
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false)
-    private Product product;
+    private ProductEntity product;
 
     @Column(nullable = false)
     private Integer quantity;
@@ -33,7 +33,7 @@ public class OrderItem {
     public OrderItem(){
     }
 
-    public OrderItem(ShopOrder shopOrder, Product product, Integer quantity, BigDecimal unitPrice){
+    public OrderItem(ShopOrder shopOrder, ProductEntity product, Integer quantity, BigDecimal unitPrice){
         this.shopOrder = shopOrder;
         this.product = product;
         this.quantity = quantity;
@@ -52,11 +52,11 @@ public class OrderItem {
         this.shopOrder = shopOrder;
     }
 
-    public Product getProduct() {
+    public ProductEntity getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(ProductEntity product) {
         this.product = product;
     }
 
