@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Die Präsentationsschicht (REST-API).
+ * Verarbeitet eingehende HTTP-Requests, delegiert die Logik an den ProductsService
+ * und gibt formatierte HTTP-Antworten (ResponseEntity inkl. Statuscode und Body als JSON) zurück.
+ */
 @RestController
 @RequestMapping(path="/products")
 public class ProductsController {
@@ -30,7 +35,7 @@ public class ProductsController {
 
     @GetMapping
     public ResponseEntity<List<Product>> getAllProducts(
-            @RequestParam(name = "name", required = false) Long roomId
+            @RequestParam(name = "name", required = false) String name
     ) {
         log.info("Called getAllProducts");
         return ResponseEntity.ok(productsService.getAllProducts());

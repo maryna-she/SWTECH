@@ -8,6 +8,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Die Geschäftslogikschicht (Service Layer).
+ * Orchestriert die Datenabfrage über das Repository, wendet Geschäftsregeln an und
+ * nutzt den Mapper, um Datenbank-Entitäten in DTOs umzuwandeln, bevor sie an den Controller übergeben werden.
+ */
 @Service
 public class ProductsService {
     private static final Logger log = LoggerFactory.getLogger(ProductsService.class);

@@ -8,6 +8,10 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.util.UUID;
 
+/**
+ * Repräsentiert das Datenbankmodell (Entity).
+ * Diese Klasse ist direkt an die Struktur der Tabelle "products" in der Datenbank gebunden.
+ */
 @Entity
 @Table(name = "products")
 @Getter

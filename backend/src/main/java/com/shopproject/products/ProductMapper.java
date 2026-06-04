@@ -2,6 +2,11 @@ package com.shopproject.products;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Konvertiert Daten zwischen dem Datenbankmodell (ProductEntity) und dem DTO (Product).
+ * Trennt die Datenbanklogik strikt von der Geschäftslogik, indem Objekte für die
+ * jeweilige Schicht passend umgewandelt werden.
+ */
 @Component
 public class ProductMapper {
 
