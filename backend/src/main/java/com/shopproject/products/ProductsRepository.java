@@ -1,7 +1,7 @@
 package com.shopproject.products;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 
-public interface ProductsRepository extends CrudRepository<ProductEntity, UUID> {
+public interface ProductsRepository extends JpaRepository<ProductEntity, UUID> {
 }

@@ -54,5 +54,13 @@ public class ProductEntity {
 //     */
 //    @Column(nullable = false)
 //    private LocalDateTime updatedAt;
+
+    public ProductEntity(UUID id, String name, String description, BigDecimal price, Integer stockQuantity) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+    }
 }
 

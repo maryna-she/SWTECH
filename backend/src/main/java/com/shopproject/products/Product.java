@@ -1,5 +1,7 @@
 package com.shopproject.products;
 
+import lombok.Getter;
+
 import java.math.BigDecimal;
 import java.util.UUID;
 
