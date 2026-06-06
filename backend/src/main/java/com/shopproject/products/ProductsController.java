@@ -40,11 +40,17 @@ public class ProductsController {
 
     @Operation(
             summary = "Alle Produkte abrufen",
-            description = "Liefert eine Liste aller verfügbaren Produkte zurück."
+            description = "Liefert eine Liste von Produkten zurück. Unterstützt optionale Filter nach Name sowie Pagination über Seitenzahl und Seitengröße."
     )
     @GetMapping
-    public ResponseEntity<List<Product>> getAllProducts() {
+    public ResponseEntity<List<Product>> getAllProducts(
+            @RequestParam(name = "name", required = false) String name,
+            @RequestParam(name = "pageSize", required = false) Integer pageSize,
+            @RequestParam(name = "pageNumber", required = false) Integer pageNumber
+    ) {
         log.info("Called getAllProducts");
-        return ResponseEntity.ok(productsService.getAllProducts());
+        return ResponseEntity.ok(productsService.searchAllByFilter(
+                new ProductSearchFilter(name, pageSize, pageNumber)
+        ));
     }
 }

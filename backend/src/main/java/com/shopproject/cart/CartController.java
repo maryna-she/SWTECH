@@ -1,6 +1,8 @@
 package com.shopproject.cart;
 
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -10,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/carts")
+@RequestMapping("/users/{userId}/cart")
 class CartController {
     private static final Logger log = LoggerFactory.getLogger(CartController.class);
 
@@ -24,9 +26,9 @@ class CartController {
             summary = "Warenkorb des Benutzers abrufen",
             description = "Gibt den aktuellen Zustand des Warenkorbs anhand der UUID des Benutzers zurück."
     )
-    @GetMapping(path="/user/{userId}")
+    @GetMapping
     public ResponseEntity<Cart> getCart(@PathVariable UUID userId) {
-        log.info("Called getCart by userId: userId=" + userId);
+        log.info("Called getCart by userId: userId={}", userId);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(cartService.getCartByUserId(userId));
     }
@@ -39,17 +41,14 @@ class CartController {
                     Existiert das Produkt bereits im Warenkorb, wird die Menge entsprechend erhöht.
                     """
     )
-    @PostMapping(path="/user/{userId}/items")
+    @PostMapping(path="/items")
     public ResponseEntity<Cart> addItem(
             @PathVariable UUID userId,
-            @RequestParam UUID productId,
-            @RequestParam Integer quantity
+            @RequestParam @NotNull UUID productId,
+            @RequestParam @Positive @NotNull Integer quantity
     ) {
         log.info("Adding item to cart: userId={}, productId={}, quantity={}",
                 userId, productId, quantity);
-        if (quantity <= 0) {
-            return ResponseEntity.badRequest().build();
-        }
         return ResponseEntity.status(HttpStatus.OK)
                 .body(cartService.addQuantityToItem(userId, productId, quantity));
     }
@@ -61,18 +60,14 @@ class CartController {
                     Eine bereits vorhandene Menge wird durch den angegebenen Wert ersetzt.
                     """
     )
-    @PutMapping("/user/{userId}/items")
+    @PutMapping("/items/{productId}")
     public ResponseEntity<Cart> setItemQuantity(
             @PathVariable UUID userId,
-            @RequestParam UUID productId,
-            @RequestParam Integer quantity
+            @PathVariable UUID productId,
+            @RequestParam @Positive @NotNull Integer quantity
     ) {
         log.info("Setting exact quantity in cart: userId={}, productId={}, newQuantity={}",
                 userId, productId, quantity);
-        if (quantity <= 0) {
-            return ResponseEntity.badRequest().build();
-        }
-
         return ResponseEntity.ok(
                 cartService.setExactQuantity(userId, productId, quantity)
         );
@@ -82,10 +77,10 @@ class CartController {
             summary = "Produkt aus dem Warenkorb entfernen",
             description = "Entfernt das angegebene Produkt vollständig aus dem Warenkorb des Benutzers."
     )
-    @DeleteMapping(path="/user/{userId}/items")
+    @DeleteMapping(path="/items/{productId}")
     public ResponseEntity<Cart> removeItem(
             @PathVariable UUID userId,
-            @RequestParam UUID productId
+            @PathVariable UUID productId
     ) {
         log.info("Removing item from cart: userId={}, productId={}", userId, productId);
         return ResponseEntity.status(HttpStatus.OK)
