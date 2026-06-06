@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-@Controller
+@RestController
 @RequestMapping("/carts")
 class CartController {
     private static final Logger log = LoggerFactory.getLogger(CartController.class);
