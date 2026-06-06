@@ -1,5 +1,6 @@
 package com.shopproject.products;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,10 @@ public class ProductsController {
     }
 
 
+    @Operation(
+            summary = "Produkt anhand der ID abrufen",
+            description = "Liefert die Details eines Produkts anhand seiner eindeutigen UUID zurück."
+    )
     @GetMapping(path="/{id}")
     public ResponseEntity<Product> getProduct(@PathVariable UUID id) {
         log.info("Called getProductById: id=" + id);
@@ -33,10 +38,12 @@ public class ProductsController {
                 .body(productsService.getProductById(id));
     }
 
+    @Operation(
+            summary = "Alle Produkte abrufen",
+            description = "Liefert eine Liste aller verfügbaren Produkte zurück."
+    )
     @GetMapping
-    public ResponseEntity<List<Product>> getAllProducts(
-            @RequestParam(name = "name", required = false) String name
-    ) {
+    public ResponseEntity<List<Product>> getAllProducts() {
         log.info("Called getAllProducts");
         return ResponseEntity.ok(productsService.getAllProducts());
     }
