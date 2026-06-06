@@ -26,9 +26,8 @@ class CartService {
     }
 
     @Transactional
-    public Cart addItemToCart(UUID userId, UUID productId, Integer quantity) {
-        CartEntity cartEntity = repository.findByUserId(userId)
-                .orElseGet(() -> repository.save(new CartEntity(null, userId)));
+    public Cart addQuantityToItem(UUID userId, UUID productId, Integer quantity) {
+        CartEntity cartEntity = getOrCreateCart(userId);
 
         cartEntity.getItems().stream()
                 .filter(item -> item.getProductId().equals(productId))
@@ -40,5 +39,35 @@ class CartService {
 
         CartEntity savedCart = repository.save(cartEntity);
         return mapper.toDomain(savedCart);
+    }
+
+    @Transactional
+    public Cart setExactQuantity(UUID userId, UUID productId, Integer exactQuantity) {
+        CartEntity cartEntity = getOrCreateCart(userId);
+
+        cartEntity.getItems().stream()
+                .filter(item -> item.getProductId().equals(productId))
+                .findFirst()
+                .ifPresentOrElse(
+                        existingItem -> existingItem.setQuantity(exactQuantity),
+                        () -> cartEntity.addItem(new CartItemEntity(null, productId, exactQuantity))
+                );
+
+        return mapper.toDomain(repository.save(cartEntity));
+    }
+
+    @Transactional
+    public Cart removeItem(UUID userId, UUID productId) {
+        CartEntity cartEntity = repository.findByUserId(userId)
+                .orElseThrow(() -> new IllegalArgumentException("Cart not found for user: " + userId));
+
+        cartEntity.getItems().removeIf(item -> item.getProductId().equals(productId));
+
+        return mapper.toDomain(repository.save(cartEntity));
+    }
+
+    private CartEntity getOrCreateCart(UUID userId) {
+        return repository.findByUserId(userId)
+                .orElseGet(() -> repository.save(new CartEntity(null, userId)));
     }
 }
