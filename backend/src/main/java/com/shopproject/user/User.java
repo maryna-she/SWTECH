@@ -1,22 +1,21 @@
 package com.shopproject.user;
 
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.jspecify.annotations.Nullable;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import java.util.UUID;
 
 @Setter
 @Getter
 @Entity // This tells Hibernate to make a table out of this class
 public class User {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private @Nullable Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(columnDefinition = "BINARY(16)")
+    private @Nullable UUID id;
 
     private String name;
 
