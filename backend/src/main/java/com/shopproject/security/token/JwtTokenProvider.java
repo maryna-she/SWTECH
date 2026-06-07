@@ -16,7 +16,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Component
-class JwtTokenProvider implements TokenProvider {
+public class JwtTokenProvider implements TokenProvider {
     private final SecretKey key;
     private final long expirationMs;
 
