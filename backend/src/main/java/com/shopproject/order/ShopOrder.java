@@ -1,6 +1,6 @@
 package com.shopproject.order;
 
-import com.shopproject.user.User;
+import com.shopproject.user.model.UserEntity;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -18,7 +18,7 @@ public class ShopOrder {
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private User customer;
+    private UserEntity customer;
 
     private LocalDateTime createdAt;
 
@@ -43,11 +43,11 @@ public class ShopOrder {
         this.createdAt = createdAt;
     }
 
-    public User getCustomer() {
+    public UserEntity getCustomer() {
         return customer;
     }
 
-    public void setCustomer(User customer) {
+    public void setCustomer(UserEntity customer) {
         this.customer = customer;
     }
 
