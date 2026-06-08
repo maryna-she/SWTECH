@@ -7,6 +7,11 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Base64;
 
+/**
+ * Komponente für die Verschlüsselung und Überprüfung von Passwörtern.
+ * Verwendet den SHA-256 Algorithmus in Kombination mit einem kryptografischen "Salt",
+ * um die Passwörter sicher in der Datenbank zu speichern.
+ */
 @Component
 public class SimpleSha256Encoder implements PasswordEncoder {
 

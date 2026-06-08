@@ -14,6 +14,11 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.UUID;
 
+/**
+ * Ein Sicherheitsfilter, der bei jedem eingehenden HTTP-Request ausgeführt wird.
+ * Prüft den Authorization-Header auf ein gültiges JWT-Token und authentifiziert den
+ * Benutzer im Security-Kontext der Anwendung, falls das Token gültig ist.
+ */
 @Component
 class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final JwtTokenProvider tokenProvider;

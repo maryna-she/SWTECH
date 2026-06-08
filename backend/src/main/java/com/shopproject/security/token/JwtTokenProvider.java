@@ -15,6 +15,11 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * Verwaltet den Lebenszyklus der JWT-Tokens.
+ * Zuständig für die Generierung neuer Tokens nach dem Login, die Validierung bei
+ * eingehenden Anfragen sowie die Entwertung (Blacklisting) beim Logout.
+ */
 @Component
 public class JwtTokenProvider implements TokenProvider {
     private final SecretKey key;

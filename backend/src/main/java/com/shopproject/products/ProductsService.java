@@ -1,6 +1,6 @@
 package com.shopproject.products;
 
-import jakarta.persistence.EntityNotFoundException;
+import com.shopproject.exception.ResourceNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Pageable;
@@ -27,7 +27,7 @@ public class ProductsService {
 
     public Product getProductById(UUID id) {
         ProductEntity productEntity = repository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Not found product by id = " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Not found product by id = " + id));
 
         return mapper.toDomain(productEntity);
     }

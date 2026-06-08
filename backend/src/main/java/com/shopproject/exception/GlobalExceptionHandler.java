@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.LocalDateTime;
 
+/**
+ * Zentrale Anlaufstelle für die Fehlerbehandlung (Global Error Handler).
+ * Fängt Exceptions anwendungsweit ab und wandelt sie in strukturierte,
+ * lesbare HTTP-Antworten (ErrorResponse) um.
+ */
 @RestControllerAdvice
 class GlobalExceptionHandler {
     private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
@@ -30,6 +35,12 @@ class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleNotFound(ResourceNotFoundException ex, HttpServletRequest request) {
         log.warn("Resource not found: {} - Path: {}", ex.getMessage(), request.getRequestURI());
         return createResponse(HttpStatus.NOT_FOUND, ex.getMessage(), request.getRequestURI());
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ErrorResponse> handleIllegalArgument(IllegalArgumentException ex, HttpServletRequest request) {
+        log.warn("Bad request arguments: {} - Path: {}", ex.getMessage(), request.getRequestURI());
+        return createResponse(HttpStatus.BAD_REQUEST, ex.getMessage(), request.getRequestURI());
     }
 
     @ExceptionHandler(Exception.class)

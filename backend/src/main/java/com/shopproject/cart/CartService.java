@@ -1,5 +1,6 @@
 package com.shopproject.cart;
 
+import com.shopproject.exception.ResourceNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -59,7 +60,7 @@ class CartService {
     @Transactional
     public Cart removeItem(UUID userId, UUID productId) {
         CartEntity cartEntity = repository.findByUserId(userId)
-                .orElseThrow(() -> new IllegalArgumentException("Cart not found for user: " + userId));
+                .orElseThrow(() -> new ResourceNotFoundException("Cart not found for user: " + userId));
 
         cartEntity.getItems().removeIf(item -> item.getProductId().equals(productId));
 

@@ -59,10 +59,14 @@ public class AuthService {
     }
 
     public User getCurrentUser(String authHeader) {
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            throw new UnauthorizedException("Fehlender oder ungültiger Authorization-Header.");
+        }
+
         String token = authHeader.substring(7);
         UUID id = tokenProvider.getUserIdFromToken(token);
         UserEntity userEntity = repository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Not found user by id = " + id));
+                .orElseThrow(() -> new UnauthorizedException("Benutzer existiert nicht mehr. Token ist ungültig."));
         return mapper.toDomain(userEntity);
     }
 }
