@@ -1,12 +1,15 @@
 package com.shopproject.user.service;
 
 import com.shopproject.exception.*;
+import com.shopproject.products.Product;
+import com.shopproject.products.ProductEntity;
 import com.shopproject.security.crypto.PasswordEncoder;
 import com.shopproject.user.UserMapper;
 import com.shopproject.user.UserRepository;
 import com.shopproject.user.dto.DeleteRequest;
 import com.shopproject.user.dto.RegisterRequest;
 import com.shopproject.user.model.*;
+import jakarta.persistence.EntityNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

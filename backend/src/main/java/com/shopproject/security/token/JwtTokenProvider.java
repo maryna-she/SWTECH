@@ -55,7 +55,6 @@ public class JwtTokenProvider implements TokenProvider {
         }
     }
 
-    // Метод потребуется на уровне конфигурации Spring Security (в JwtAuthenticationFilter)
     public boolean validateToken(String token) {
         if (blacklist.contains(token)) {
             return false;
@@ -69,7 +68,6 @@ public class JwtTokenProvider implements TokenProvider {
         }
     }
 
-    // Метод потребуется для извлечения данных пользователя при авторизации запросов
     public UUID getUserIdFromToken(String token) {
         Claims claims = Jwts.parser()
                 .verifyWith(key)

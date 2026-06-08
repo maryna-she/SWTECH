@@ -65,4 +65,10 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("users/me")
+    public ResponseEntity<User> getCurrentUser(@RequestHeader(HttpHeaders.AUTHORIZATION) String authHeader) {
+        log.info("Received GET /api/auth/users/me request");
+        return ResponseEntity.ok(authService.getCurrentUser(authHeader));
+    }
+
 }

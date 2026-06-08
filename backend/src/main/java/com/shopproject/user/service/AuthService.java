@@ -3,25 +3,32 @@ package com.shopproject.user.service;
 import com.shopproject.exception.*;
 import com.shopproject.security.crypto.PasswordEncoder;
 import com.shopproject.security.token.TokenProvider;
+import com.shopproject.user.UserMapper;
 import com.shopproject.user.UserRepository;
 import com.shopproject.user.dto.AuthResponse;
 import com.shopproject.user.dto.LoginRequest;
+import com.shopproject.user.model.User;
 import com.shopproject.user.model.UserEntity;
+import jakarta.persistence.EntityNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.UUID;
 
 @Service
 public class AuthService {
     private static final Logger log = LoggerFactory.getLogger(AuthService.class);
 
     private final UserRepository repository;
+    private final UserMapper mapper;
     private final PasswordEncoder passwordEncoder;
     private final TokenProvider tokenProvider;
 
-    public AuthService(UserRepository repository, PasswordEncoder passwordEncoder, TokenProvider tokenProvider) {
+    public AuthService(UserRepository repository, UserMapper mapper, PasswordEncoder passwordEncoder, TokenProvider tokenProvider) {
         this.repository = repository;
+        this.mapper = mapper;
         this.passwordEncoder = passwordEncoder;
         this.tokenProvider = tokenProvider;
     }
@@ -49,5 +56,13 @@ public class AuthService {
     public void logout(String token) {
         tokenProvider.invalidateToken(token);
         log.info("Token invalidated for logout");
+    }
+
+    public User getCurrentUser(String authHeader) {
+        String token = authHeader.substring(7);
+        UUID id = tokenProvider.getUserIdFromToken(token);
+        UserEntity userEntity = repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Not found user by id = " + id));
+        return mapper.toDomain(userEntity);
     }
 }

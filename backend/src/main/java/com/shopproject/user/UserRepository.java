@@ -1,6 +1,7 @@
 package com.shopproject.user;
 
 
+import com.shopproject.user.model.User;
 import com.shopproject.user.model.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -14,4 +15,6 @@ public interface UserRepository extends JpaRepository<UserEntity, UUID> {
     Optional<UserEntity> findByEmailAndIsDeletedFalse(String email);
     Optional<UserEntity> findByIdAndIsDeletedFalse(UUID id);
     boolean existsByEmail(String email);
+
+    UserEntity getUserEntityById(UUID id);
 }
