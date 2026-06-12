@@ -3,6 +3,7 @@ package com.shopproject.products;
 import jakarta.persistence.EntityNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,9 +32,23 @@ public class ProductsService {
         return mapper.toDomain(productEntity);
     }
 
-    public List<Product> getAllProducts() {
-        List<ProductEntity> allEntities = repository.findAll();
+    public List<Product> searchAllByFilter(ProductSearchFilter filter) {
+        int pageSize = filter.pageSize() != null
+                ? filter.pageSize() : 10;
+        int pageNumber = filter.pageNumber() != null
+                ? filter.pageNumber() : 0;
 
-        return allEntities.stream().map(mapper::toDomain).toList();
+        Pageable pageable = Pageable
+                .ofSize(pageSize)
+                .withPage(pageNumber);
+
+        List<ProductEntity> allEntities = repository.searchAllByFilter(
+                filter.name(),
+                pageable
+        );
+
+        return allEntities.stream()
+                .map(mapper::toDomain)
+                .toList();
     }
 }
