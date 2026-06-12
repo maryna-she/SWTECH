@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.UUID;
+
 
 @Setter
 @Getter
@@ -14,23 +16,26 @@ import lombok.Setter;
 public class ReturnRequestEntity
 {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(columnDefinition = "BINARY(16)")
+    private UUID id;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id", nullable = false)
+    @JoinColumn(nullable = false)
     private ShopOrder shopOrder;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "oder_item_id", nullable = false)
+    @JoinColumn(nullable = false)
     private OrderItem orderItem;
 
 
+    @Column(nullable = false)
     private String returnReason;
 
 
+    @Column(nullable = false)
     private ReturnStatus returnStatus;
 
 

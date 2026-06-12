@@ -1,9 +1,10 @@
 package com.shopproject.returns;
 
 
+import java.util.UUID;
 public class ReturnNotFoundException extends RuntimeException
 {
-    public ReturnNotFoundException(Long id)
+    public ReturnNotFoundException(UUID id)
     {
         super("Return Not Found with ID: " + id);
     }
