@@ -1,6 +1,9 @@
 package com.shopproject.cart;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import org.slf4j.Logger;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
+@Tag(name = "Cart", description = "Endpoints für den Benutzer-Warenkorb")
 @RestController
 @RequestMapping("/users/{userId}/cart")
 class CartController {
@@ -41,6 +45,11 @@ class CartController {
                     Existiert das Produkt bereits im Warenkorb, wird die Menge entsprechend erhöht.
                     """
     )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Produkt erfolgreich hinzugefügt"),
+            @ApiResponse(responseCode = "400", description = "Ungültige Eingabedaten (z.B. negative Menge)"),
+            @ApiResponse(responseCode = "404", description = "Benutzer oder Produkt existiert nicht")
+    })
     @PostMapping(path="/items")
     public ResponseEntity<Cart> addItem(
             @PathVariable UUID userId,
@@ -60,6 +69,11 @@ class CartController {
                     Eine bereits vorhandene Menge wird durch den angegebenen Wert ersetzt.
                     """
     )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Produktmenge erfolgreich festgelegt"),
+            @ApiResponse(responseCode = "400", description = "Ungültige Eingabedaten (z.B. negative Menge)"),
+            @ApiResponse(responseCode = "404", description = "Benutzer oder Produkt existiert nicht")
+    })
     @PutMapping("/items/{productId}")
     public ResponseEntity<Cart> setItemQuantity(
             @PathVariable UUID userId,
@@ -77,6 +91,10 @@ class CartController {
             summary = "Produkt aus dem Warenkorb entfernen",
             description = "Entfernt das angegebene Produkt vollständig aus dem Warenkorb des Benutzers."
     )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Produkt erfolgreich entfernt"),
+            @ApiResponse(responseCode = "404", description = "Benutzer existiert nicht")
+    })
     @DeleteMapping(path="/items/{productId}")
     public ResponseEntity<Cart> removeItem(
             @PathVariable UUID userId,
