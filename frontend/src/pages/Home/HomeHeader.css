@@ -116,6 +116,29 @@
   stroke-linejoin: round;
 }
 
+.home-cart-link {
+  position: relative;
+}
+
+.home-cart-link span {
+  min-width: 18px;
+  height: 18px;
+  border: 2px solid #fffaf1;
+  border-radius: 999px;
+  padding: 0 4px;
+  position: absolute;
+  top: -3px;
+  right: -5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fffaf1;
+  background: var(--color-primary);
+  font-size: 0.68rem;
+  font-weight: 850;
+  line-height: 1;
+}
+
 .home-link-button {
   width: auto;
   padding: 0 12px;

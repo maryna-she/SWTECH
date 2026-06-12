@@ -1,0 +1,239 @@
+@import '../Home/HomeShell.css';
+@import '../Home/HomeHeader.css';
+@import '../Home/HomeLanguageSelect.css';
+
+.about-shell {
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(238, 234, 216, 0.76), rgba(244, 239, 222, 0.9)),
+    var(--color-page);
+}
+
+.about-page {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto 0;
+  padding: 34px;
+  border: 1px solid rgba(35, 57, 39, 0.15);
+  border-radius: 8px 8px 0 0;
+  background: rgba(246, 242, 225, 0.9);
+  box-shadow: 0 26px 70px rgba(25, 31, 23, 0.12);
+}
+
+.about-top {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+  gap: 34px;
+  align-items: stretch;
+}
+
+.about-top__content {
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-kicker {
+  margin: 0 0 18px;
+  color: var(--color-subtle);
+  font-size: 0.72rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.about-page h1 {
+  margin: 0;
+  color: #243b28;
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 0.9;
+}
+
+.about-hero-photo {
+  height: 420px;
+  margin: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #d8d2bb;
+}
+
+.about-hero-photo img,
+.about-editorial__image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.about-lead {
+  margin: 22px 0 0;
+  color: #223826;
+  font-size: clamp(1.2rem, 2.1vw, 1.75rem);
+  font-weight: 650;
+  line-height: 1.18;
+}
+
+.about-note {
+  margin: 16px 0 0;
+  color: rgba(36, 59, 40, 0.72);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.about-editorial {
+  padding-top: 58px;
+  display: grid;
+  grid-template-columns: minmax(180px, 0.72fr) minmax(0, 1fr) minmax(240px, 0.82fr);
+  gap: 42px;
+  align-items: start;
+}
+
+.about-editorial__label span,
+.about-values span,
+.about-cta p {
+  color: #223826;
+  font-size: 0.78rem;
+  font-weight: 850;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.about-editorial__label h2 {
+  margin: 22px 0 0;
+  max-width: 260px;
+  color: #243b28;
+  font-size: clamp(1.28rem, 2vw, 1.78rem);
+  line-height: 1.16;
+}
+
+.about-editorial__copy {
+  padding-top: 0;
+}
+
+.about-editorial__copy p,
+.about-editorial__image p,
+.about-values p {
+  margin: 0;
+  color: rgba(36, 59, 40, 0.76);
+  font-size: 0.95rem;
+  line-height: 1.72;
+}
+
+.about-editorial__copy p + p {
+  margin-top: 18px;
+}
+
+.about-editorial__image {
+  align-self: start;
+}
+
+.about-editorial__image img {
+  height: 220px;
+  border-radius: 8px;
+}
+
+.about-editorial__image div {
+  margin-top: 18px;
+}
+
+.about-editorial__image h3 {
+  margin: 0 0 10px;
+  color: #243b28;
+  font-size: 1.02rem;
+}
+
+.about-values {
+  padding-top: 26px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.about-values article {
+  border: 1px solid rgba(36, 59, 40, 0.14);
+  border-radius: 8px;
+  padding: 18px;
+  background: rgba(255, 250, 241, 0.44);
+}
+
+.about-values p {
+  margin-top: 14px;
+}
+
+.about-cta {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto 56px;
+  padding: 74px 24px 78px;
+  border: 1px solid rgba(35, 57, 39, 0.12);
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+  background: rgba(231, 227, 207, 0.88);
+  text-align: center;
+}
+
+.about-cta p {
+  margin: 0;
+  color: rgba(36, 59, 40, 0.62);
+  text-decoration: none;
+}
+
+.about-cta h2 {
+  width: min(620px, 100%);
+  margin: 18px auto 26px;
+  color: #243b28;
+  font-size: clamp(1.7rem, 3.6vw, 3.05rem);
+  font-weight: 500;
+  line-height: 1.04;
+}
+
+.about-cta a {
+  min-height: 42px;
+  border: 1px solid rgba(36, 59, 40, 0.28);
+  border-radius: 999px;
+  padding: 0 20px;
+  display: inline-flex;
+  align-items: center;
+  color: #243b28;
+  background: transparent;
+  font-size: 0.8rem;
+  font-weight: 850;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.about-cta a:hover,
+.about-cta a:focus {
+  color: #fffaf1;
+  background: #243b28;
+  outline: none;
+}
+
+@media (max-width: 900px) {
+  .about-page {
+    padding: 38px 18px 46px;
+  }
+
+  .about-top,
+  .about-editorial,
+  .about-values {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .about-top__content {
+    min-height: auto;
+  }
+
+  .about-hero-photo {
+    height: 300px;
+  }
+
+  .about-values {
+    padding-top: 30px;
+  }
+
+  .about-editorial__label h2 {
+    max-width: 100%;
+  }
+}

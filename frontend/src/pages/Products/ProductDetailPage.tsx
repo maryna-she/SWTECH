@@ -1,12 +1,13 @@
 import { Link, useParams } from 'react-router-dom';
+import { useCart } from '../../context/useCart';
 import useAuthLanguage from '../hooks/useAuthLanguage';
 import HomeHeader from '../Home/HomeHeader';
 import { homeDe } from '../Home/home.de';
 import { homeEn } from '../Home/home.en';
-import { findProduct } from './products';
 import { productsDe } from './products.de';
 import { productsEn } from './products.en';
 import ProductVisual from './ProductVisual';
+import { useProductCatalog } from './useProductCatalog';
 import './ProductDetailPage.css';
 
 const ProductDetailPage = () => {
@@ -14,9 +15,11 @@ const ProductDetailPage = () => {
   const { language, changeLanguage } = useAuthLanguage();
   const headerText = language === 'de' ? homeDe : homeEn;
   const text = language === 'de' ? productsDe : productsEn;
-  const product = findProduct(productId);
+  const { products, isLoading } = useProductCatalog();
+  const product = products.find((candidate) => candidate.id === productId);
+  const { addItem } = useCart();
 
-  if (!product) {
+  if (!product && !isLoading) {
     return (
       <main className="home-shell products-shell">
         <HomeHeader
@@ -32,6 +35,10 @@ const ProductDetailPage = () => {
         </section>
       </main>
     );
+  }
+
+  if (!product) {
+    return null;
   }
 
   return (
@@ -67,6 +74,14 @@ const ProductDetailPage = () => {
               <dd>{text.categories[product.category]}</dd>
             </div>
           </dl>
+
+          <button
+            type="button"
+            className="product-detail__cart"
+            onClick={() => addItem(product.id)}
+          >
+            {text.addToCart}
+          </button>
 
           <section className="product-detail__details" aria-labelledby="details-title">
             <h2 id="details-title">{text.detailsLabel}</h2>

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useCart } from '../../context/useCart';
 import { useAuth } from '../../context/useAuth';
 import landscapeLogo from '../../assets/layered-landscape-logo.svg';
 import type { Language } from '../hooks/useAuthLanguage';
@@ -16,7 +17,8 @@ interface HomeHeaderProps {
 
 // Zeigt Logo, Sprache und Konto-Aktionen.
 const HomeHeader = ({ text, language, onLanguageChange }: HomeHeaderProps) => {
-  const { isAuthenticated, user, logoutUser } = useAuth();
+  const { isAuthenticated } = useAuth();
+  const { totalItems } = useCart();
 
   return (
     <header className="home-header">
@@ -36,21 +38,17 @@ const HomeHeader = ({ text, language, onLanguageChange }: HomeHeaderProps) => {
           <button type="button" className="home-icon-button" aria-label={text.wishlistLabel}>
             <HomeHeaderIcon name="heart" />
           </button>
-          <button type="button" className="home-icon-button" aria-label={text.cartLabel}>
+          <Link to="/cart" className="home-icon-button home-cart-link" aria-label={text.cartLabel}>
             <HomeHeaderIcon name="bag" />
-          </button>
-          {isAuthenticated ? (
-            <>
-              <span className="home-user">{user?.name ?? user?.email}</span>
-              <button type="button" className="home-link-button" onClick={logoutUser}>
-                {text.logout}
-              </button>
-            </>
-          ) : (
-            <Link to="/login" className="home-account-link" aria-label={text.accountLabel}>
-              <AccountIcon />
-            </Link>
-          )}
+            {totalItems > 0 && <span>{totalItems}</span>}
+          </Link>
+          <Link
+            to={isAuthenticated ? '/account' : '/login'}
+            className="home-account-link"
+            aria-label={text.accountLabel}
+          >
+            <AccountIcon />
+          </Link>
         </div>
       </nav>
     </header>

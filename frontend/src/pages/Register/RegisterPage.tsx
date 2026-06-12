@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import AuthPageLayout from '../components/AuthPageLayout';
+import { travelPhotos } from '../../assets/travelPhotos';
 import useAuthLanguage from '../hooks/useAuthLanguage';
 import { registerDe } from './register.de';
 import { registerEn } from './register.en';
@@ -25,7 +26,7 @@ const RegisterPage = () => {
   return (
     <AuthPageLayout
       variant="register"
-      brand={{ ariaLabel: text.register.ariaBrand }}
+      brand={{ ariaLabel: text.register.ariaBrand, imageSrc: travelPhotos.auth }}
       header={{
         kicker: text.register.headerKicker,
         title: text.register.heading,

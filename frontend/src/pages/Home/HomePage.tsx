@@ -1,4 +1,6 @@
+import type { CSSProperties } from 'react';
 import useAuthLanguage from '../hooks/useAuthLanguage';
+import { travelPhotos } from '../../assets/travelPhotos';
 import HomeHeader from './HomeHeader';
 import HomeTripPanel from './HomeTripPanel';
 import { homeDe } from './home.de';
@@ -19,7 +21,11 @@ const HomePage = () => {
       />
 
       {/* Einstieg mit Angebot und Link zur Registrierung. */}
-      <section className="home-hero" aria-labelledby="home-title">
+      <section
+        className="home-hero"
+        aria-labelledby="home-title"
+        style={{ '--home-hero-photo': `url(${travelPhotos.homeHero})` } as CSSProperties}
+      >
         <div className="home-hero-text">
           <p className="home-kicker">{text.kicker}</p>
           <h1 id="home-title">{text.title}</h1>

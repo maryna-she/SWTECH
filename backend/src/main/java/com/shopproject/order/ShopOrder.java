@@ -16,8 +16,13 @@ public class ShopOrder {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(
+            name = "customer_id",
+            nullable = false,
+            columnDefinition = "BINARY(16)",
+            foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT)
+    )
     private UserEntity customer;
 
     private LocalDateTime createdAt;

@@ -4,7 +4,27 @@ export interface ProductText {
   title: string;
   intro: string;
   allProducts: string;
+  allCategories: string;
+  categoryFilterLabel: string;
+  collectionDescriptions: {
+    all: string;
+    hiking: string;
+    camping: string;
+    surfing: string;
+  };
+  filtersLabel: string;
+  noResults: string;
+  resultsCount: (count: number) => string;
+  searchLabel: string;
+  searchPlaceholder: string;
+  sortLabel: string;
+  sortOptions: {
+    featured: string;
+    priceAsc: string;
+    ratingDesc: string;
+  };
   viewProduct: string;
+  addToCart: string;
   categoryLabel: string;
   priceLabel: string;
   ratingLabel: string;
@@ -25,7 +45,27 @@ export const productsEn: ProductText = {
   title: 'Gear for hiking, camping, and surfing.',
   intro: 'Pick outdoor essentials for your next route.',
   allProducts: 'All products',
+  allCategories: 'All',
+  categoryFilterLabel: 'Filter products by category',
+  collectionDescriptions: {
+    all: 'Everything for the route',
+    hiking: 'Light layers and packs',
+    camping: 'Shelter, light, and comfort',
+    surfing: 'Water-ready essentials',
+  },
+  filtersLabel: 'Product filters',
+  noResults: 'No products match these filters.',
+  resultsCount: (count) => `${count} ${count === 1 ? 'product' : 'products'} shown`,
+  searchLabel: 'Search',
+  searchPlaceholder: 'Search gear',
+  sortLabel: 'Sort by',
+  sortOptions: {
+    featured: 'Featured',
+    priceAsc: 'Lowest price',
+    ratingDesc: 'Top rating',
+  },
   viewProduct: 'View product',
+  addToCart: 'Add to cart',
   categoryLabel: 'Category',
   priceLabel: 'Price',
   ratingLabel: 'Rating',

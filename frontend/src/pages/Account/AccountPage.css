@@ -1,0 +1,379 @@
+@import '../Home/HomeShell.css';
+@import '../Home/HomeHeader.css';
+@import '../Home/HomeLanguageSelect.css';
+
+.account-shell {
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(238, 234, 216, 0.76), rgba(244, 239, 222, 0.9)),
+    var(--color-page);
+}
+
+.account-page {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto 56px;
+  padding: 34px;
+  border: 1px solid rgba(35, 57, 39, 0.15);
+  border-radius: 8px;
+  background: rgba(246, 242, 225, 0.92);
+  box-shadow: 0 26px 70px rgba(25, 31, 23, 0.12);
+}
+
+.account-hero {
+  min-height: 310px;
+  border-radius: 8px;
+  padding: 34px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+  gap: 28px;
+  align-items: end;
+  color: #fffaf1;
+  background:
+    linear-gradient(90deg, rgba(24, 45, 30, 0.88), rgba(24, 45, 30, 0.28)),
+    url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80') center / cover;
+}
+
+.account-page__header {
+  max-width: 690px;
+}
+
+.account-kicker,
+.account-trip > div > p,
+.account-section-heading p {
+  margin: 0 0 16px;
+  color: #f0b42d;
+  font-size: 0.72rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.account-page h1 {
+  margin: 0;
+  color: inherit;
+  font-size: clamp(2.7rem, 6vw, 5.4rem);
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 0.92;
+}
+
+.account-page__header p:last-child {
+  max-width: 520px;
+  margin: 18px 0 0;
+  color: rgba(255, 250, 241, 0.86);
+  font-size: 1.06rem;
+  line-height: 1.65;
+}
+
+.account-identity {
+  border: 1px solid rgba(255, 250, 241, 0.26);
+  border-radius: 8px;
+  padding: 18px;
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  background: rgba(255, 250, 241, 0.16);
+  backdrop-filter: blur(12px);
+}
+
+.account-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #243b28;
+  background: #fffaf1;
+  font-size: 1.15rem;
+  font-weight: 900;
+}
+
+.account-identity strong,
+.account-identity span {
+  min-width: 0;
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.account-identity strong {
+  font-size: 1.06rem;
+}
+
+.account-identity span {
+  margin-top: 5px;
+  color: rgba(255, 250, 241, 0.78);
+  font-size: 0.9rem;
+}
+
+.account-stats {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.account-stat,
+.account-profile,
+.account-actions article,
+.account-orders article {
+  border: 1px solid rgba(36, 59, 40, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 250, 241, 0.54);
+}
+
+.account-stat {
+  min-height: 112px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.account-stat strong {
+  color: #243b28;
+  font-size: 2.15rem;
+  line-height: 1;
+}
+
+.account-stat span {
+  color: rgba(36, 59, 40, 0.64);
+  font-size: 0.78rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.account-layout {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.account-profile {
+  padding: 24px;
+}
+
+.account-profile dl,
+.account-trip dl {
+  margin: 0;
+  display: grid;
+  gap: 20px;
+}
+
+.account-profile div,
+.account-trip dl div {
+  display: grid;
+  gap: 6px;
+}
+
+.account-profile dt,
+.account-trip dt {
+  color: rgba(36, 59, 40, 0.58);
+  font-size: 0.76rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.account-profile dd,
+.account-trip dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: #243b28;
+  font-size: 1.04rem;
+  font-weight: 750;
+}
+
+.account-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.account-actions article {
+  min-height: 210px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.account-actions h2,
+.account-trip h2,
+.account-section-heading h2 {
+  margin: 0;
+  color: #243b28;
+  font-size: 1.32rem;
+  line-height: 1.12;
+}
+
+.account-actions p,
+.account-trip span,
+.account-orders p {
+  margin: 14px 0 22px;
+  color: rgba(36, 59, 40, 0.72);
+  line-height: 1.62;
+}
+
+.account-actions a,
+.account-actions button,
+.account-trip a {
+  min-height: 42px;
+  border: 1px solid rgba(36, 59, 40, 0.28);
+  border-radius: 999px;
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #243b28;
+  background: transparent;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 850;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.account-actions a,
+.account-trip a {
+  align-self: flex-start;
+}
+
+.account-actions button {
+  grid-column: 1 / -1;
+  justify-self: start;
+  background: #243b28;
+  color: #fffaf1;
+}
+
+.account-actions a:hover,
+.account-actions a:focus,
+.account-actions button:hover,
+.account-actions button:focus,
+.account-trip a:hover,
+.account-trip a:focus {
+  color: #fffaf1;
+  background: #243b28;
+  outline: none;
+}
+
+.account-trip {
+  margin-top: 18px;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
+  overflow: hidden;
+  background: rgba(231, 227, 207, 0.88);
+}
+
+.account-trip img {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  display: block;
+  object-fit: cover;
+}
+
+.account-trip > div {
+  padding: 30px;
+}
+
+.account-trip > div > span {
+  display: block;
+}
+
+.account-trip dl {
+  margin: 26px 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.account-orders {
+  margin-top: 28px;
+}
+
+.account-section-heading {
+  margin-bottom: 16px;
+}
+
+.account-section-heading p {
+  color: rgba(36, 59, 40, 0.62);
+}
+
+.account-order-list {
+  display: grid;
+  gap: 12px;
+}
+
+.account-orders article {
+  padding: 18px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(160px, 0.8fr) auto;
+  gap: 16px;
+  align-items: center;
+}
+
+.account-orders span {
+  display: block;
+  color: rgba(36, 59, 40, 0.56);
+  font-size: 0.75rem;
+  font-weight: 850;
+}
+
+.account-orders strong {
+  margin-top: 4px;
+  display: block;
+  color: #243b28;
+}
+
+.account-orders p {
+  margin: 0;
+}
+
+.account-orders em {
+  border-radius: 999px;
+  padding: 7px 12px;
+  color: #243b28;
+  background: rgba(240, 180, 45, 0.28);
+  font-size: 0.78rem;
+  font-style: normal;
+  font-weight: 850;
+}
+
+@media (max-width: 960px) {
+  .account-hero,
+  .account-layout,
+  .account-trip {
+    grid-template-columns: 1fr;
+  }
+
+  .account-stats,
+  .account-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .account-trip img {
+    min-height: 260px;
+  }
+
+  .account-trip dl,
+  .account-orders article {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .account-page {
+    padding: 18px;
+  }
+
+  .account-hero {
+    padding: 24px;
+  }
+
+  .account-stats,
+  .account-actions {
+    grid-template-columns: 1fr;
+  }
+}

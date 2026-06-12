@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/useAuth';
-import { login } from '../../services/authService';
+import { travelPhotos } from '../../assets/travelPhotos';
+import { loginWithProfile } from '../../services/authService';
 import AuthPageLayout from '../components/AuthPageLayout';
 import useAuthLanguage from '../hooks/useAuthLanguage';
 import { loginDe } from './login.de';
@@ -32,9 +33,9 @@ const LoginPage = () => {
     setLoading(true);
 
     try {
-      const res = await login({ email, password });
-      loginUser(res.token, { email: res.email, name: res.name, role: res.role });
-      navigate('/');
+      const res = await loginWithProfile({ email, password });
+      loginUser(res.token, res.user);
+      navigate('/account');
     } catch {
       setError(text.login.error);
     } finally {
@@ -45,7 +46,7 @@ const LoginPage = () => {
   return (
     <AuthPageLayout
       variant="login"
-      brand={{ ariaLabel: text.login.ariaBrand }}
+      brand={{ ariaLabel: text.login.ariaBrand, imageSrc: travelPhotos.auth }}
       header={{
         kicker: text.login.headerKicker,
         title: text.login.heading,

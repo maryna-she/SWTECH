@@ -1,12 +1,12 @@
 /* Primärer Button für Login und Registrierung. */
 .auth-submit {
   position: relative;
-  min-height: 48px;
+  min-height: 52px;
   border: 0;
-  border-radius: 10px;
+  border-radius: 4px;
   color: #fffaf1;
   background: var(--color-primary);
-  box-shadow: var(--shadow-control);
+  box-shadow: none;
   font: inherit;
   font-weight: 850;
   cursor: pointer;
@@ -15,17 +15,17 @@
 }
 
 .auth-social-btn {
-  width: min(280px, 100%);
+  width: 100%;
   min-height: 40px;
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
+  border: 1px solid rgba(15, 18, 14, 0.18);
+  border-radius: 4px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   justify-self: center;
   gap: 10px;
   color: var(--color-muted);
-  background: rgba(255, 253, 247, 0.78);
+  background: #fffdf8;
   font: inherit;
   font-size: 0.9rem;
   font-weight: 800;
@@ -57,8 +57,8 @@
 .auth-submit:hover:not(:disabled) {
   color: var(--color-button-hover-text);
   background: var(--color-button-hover);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-button-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(15, 18, 14, 0.12);
 }
 
 .auth-submit:hover:not(:disabled)::after {

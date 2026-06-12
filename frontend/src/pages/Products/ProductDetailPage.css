@@ -77,6 +77,26 @@
   margin-top: 30px;
 }
 
+.product-detail__cart {
+  min-height: 46px;
+  margin-top: 24px;
+  border: 0;
+  border-radius: 8px;
+  padding: 0 18px;
+  color: #fffaf1;
+  background: var(--color-primary);
+  font: inherit;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.product-detail__cart:hover,
+.product-detail__cart:focus {
+  background: var(--color-button-hover);
+  box-shadow: var(--shadow-button-hover);
+  outline: none;
+}
+
 .product-detail__details h2 {
   margin: 0 0 12px;
   font-size: 1.22rem;
