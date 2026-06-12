@@ -1,9 +1,10 @@
 package com.shopproject.order;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public record OrderItemResponse(
-        Long productId,
+        UUID productId,
         String productName,
         Integer quantity,
         BigDecimal unitPrice,

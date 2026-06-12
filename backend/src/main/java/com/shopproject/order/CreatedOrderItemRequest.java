@@ -1,7 +1,9 @@
 package com.shopproject.order;
 
+import java.util.UUID;
+
 public record CreatedOrderItemRequest (
-    Long pruductId,
+   UUID productId,
     Integer quantity
     ){
 }

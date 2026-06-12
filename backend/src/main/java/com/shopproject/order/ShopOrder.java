@@ -1,12 +1,13 @@
 package com.shopproject.order;
 
-import com.shopproject.user.User;
+import com.shopproject.user.model.UserEntity;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "shop_orders")
@@ -14,11 +15,11 @@ public class ShopOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private UUID id;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private User customer;
+    private UserEntity customer;
 
     private LocalDateTime createdAt;
 
@@ -43,15 +44,15 @@ public class ShopOrder {
         this.createdAt = createdAt;
     }
 
-    public User getCustomer() {
+    public UserEntity getCustomer() {
         return customer;
     }
 
-    public void setCustomer(User customer) {
+    public void setCustomer(UserEntity customer) {
         this.customer = customer;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
