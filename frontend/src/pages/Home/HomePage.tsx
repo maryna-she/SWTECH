@@ -10,35 +10,46 @@ import { homeEn } from './home.en';
 import './HomePage.css';
 
 const HomePage = () => {
-  // Verbindet Startseite, Sprache und übersetzte Inhalte.
   const { language, changeLanguage } = useAuthLanguage();
   const text = language === 'de' ? homeDe : homeEn;
 
   return (
     <main className="home-shell">
-      <HomeHeader
-        text={text}
-        language={language}
-        onLanguageChange={changeLanguage}
-      />
 
-      <section
-        className="home-hero"
-        aria-labelledby="home-title"
-        style={{ '--home-hero-photo': `url(${travelPhotos.homeHero})` } as CSSProperties}
+      {/* ── Full-screen hero with header overlaid ── */}
+      <div
+        className="home-viewport"
+        style={{ '--home-hero-photo': `url(${travelPhotos.heroTrail})` } as CSSProperties}
       >
-        <div className="home-hero-text">
-          <h1 id="home-title">{text.title}</h1>
-          <p className="home-intro">{text.intro}</p>
-          <HomeHeroActions text={text} />
-        </div>
+        <HomeHeader
+          text={text}
+          language={language}
+          onLanguageChange={changeLanguage}
+        />
 
-        <div className="home-hero-gallery" aria-hidden="true">
-          <img className="home-hero-gallery__main" src={travelPhotos.heroTrail} alt="" />
-        </div>
-      </section>
+        <section className="home-hero" aria-labelledby="home-title">
+          <div className="home-hero-content">
+            <h1 id="home-title">{text.title}</h1>
+            <p className="home-intro">{text.intro}</p>
+            <HomeHeroActions text={text} />
+          </div>
 
-      <section className="home-category-section" aria-labelledby="home-categories-title">
+          <div className="home-hero-scroll" aria-hidden="true">
+            <span />
+          </div>
+        </section>
+      </div>
+
+      {/* ── Stats strip ── */}
+      <div className="home-stats-strip" aria-hidden="true">
+        <div><strong>2 000+</strong><span>{language === 'de' ? 'Produkte' : 'Products'}</span></div>
+        <div><strong>50+</strong><span>{language === 'de' ? 'Marken' : 'Brands'}</span></div>
+        <div><strong>120+</strong><span>{language === 'de' ? 'Länder beliefert' : 'Countries shipped'}</span></div>
+        <div><strong>4.9★</strong><span>{language === 'de' ? 'Kundenbewertung' : 'Customer rating'}</span></div>
+      </div>
+
+      {/* ── Category tiles ── */}
+      <section className="home-categories" aria-labelledby="home-categories-title">
         <div className="home-section-heading">
           <p>{text.tripCategoriesLabel}</p>
           <h2 id="home-categories-title">{text.categories}</h2>
@@ -46,7 +57,9 @@ const HomePage = () => {
         <HomeTripPanel text={text} />
       </section>
 
+      {/* ── Feature highlights ── */}
       <HomeHighlights text={text} />
+
     </main>
   );
 };

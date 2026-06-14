@@ -17,7 +17,7 @@ export const homeDe: HomeText = {
   logout: 'Abmelden',
   kicker: 'Reise-Shop für jede Route',
   title: 'Plane deinen nächsten Outdoor-Trip mit Roamly.',
-  intro: 'Finde Ausrüstung für Hiking, Camping und Surfing an einem Ort. Erstelle ein Konto, um deinen Warenkorb und deine Bestellungen zu speichern.',
+  intro: 'Ausrüsten. Aufbrechen. Nicht zurückblicken.',
   createAccount: 'Konto erstellen',
   existingAccount: 'Ich habe schon ein Konto',
   tripCategoriesLabel: 'Ausgewählte Reise-Kategorien',

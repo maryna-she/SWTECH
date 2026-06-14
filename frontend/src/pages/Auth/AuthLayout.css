@@ -1,4 +1,4 @@
-/* Modal-Layout fuer Login und Registrierung. */
+/* Auth modal: login and register layout. */
 .auth-shell {
   position: relative;
   height: 100svh;
@@ -6,21 +6,21 @@
   display: grid;
   place-items: center;
   padding: 36px;
-  --color-ink: #0f120e;
-  --color-muted: #596152;
-  --color-subtle: #8f886f;
-  --color-surface: #fffaf1;
-  --color-surface-soft: #e8dcc5;
-  --color-border: #cfc1a6;
-  --color-primary: #1f3d2b;
-  --color-primary-strong: #102016;
-  --color-primary-soft: rgba(31, 61, 43, 0.1);
-  --color-secondary: #d87532;
-  --color-secondary-soft: rgba(216, 117, 50, 0.16);
+  --color-ink:          #0C1C10;
+  --color-muted:        #3D5448;
+  --color-subtle:       #7D9485;
+  --color-surface:      #FDFAF4;
+  --color-surface-soft: #EAE4D5;
+  --color-border:       #D3CDB8;
+  --color-primary:        #1A3A27;
+  --color-primary-strong: #0E2117;
+  --color-primary-soft:   rgba(26, 58, 39, 0.09);
+  --color-secondary:      #E8682C;
+  --color-secondary-soft: rgba(232, 104, 44, 0.12);
   background:
-    radial-gradient(circle at 8% 92%, rgba(216, 117, 50, 0.16), transparent 16rem),
-    radial-gradient(circle at 92% 12%, rgba(31, 61, 43, 0.08), transparent 18rem),
-    #f5f1eb;
+    radial-gradient(circle at 6% 94%, rgba(232, 104, 44, 0.14), transparent 18rem),
+    radial-gradient(circle at 94% 10%, rgba(26, 58, 39, 0.07), transparent 20rem),
+    #F2EEE6;
 }
 
 .auth-content {
@@ -29,12 +29,12 @@
   min-height: min(700px, calc(100svh - 72px));
   height: min(760px, calc(100svh - 72px));
   border: 0;
-  border-radius: 0;
+  border-radius: 20px;
   overflow: hidden;
   display: grid;
   grid-template-columns: minmax(420px, 1fr) minmax(420px, 522px);
-  background: #fffdf8;
-  box-shadow: 0 24px 70px rgba(15, 18, 14, 0.14);
+  background: #FDFAF4;
+  box-shadow: 0 28px 80px rgba(12, 28, 16, 0.16);
 }
 
 .auth-close {
@@ -49,9 +49,9 @@
   align-items: center;
   justify-content: center;
   color: var(--text-h);
-  border: 1px solid rgba(207, 193, 166, 0.72);
-  background: rgba(255, 250, 241, 0.95);
-  box-shadow: 0 10px 24px rgba(15, 18, 14, 0.08);
+  border: 1px solid rgba(211, 205, 184, 0.80);
+  background: rgba(253, 250, 244, 0.96);
+  box-shadow: 0 8px 22px rgba(12, 28, 16, 0.08);
   text-decoration: none;
 }
 
@@ -106,7 +106,7 @@
   overflow: hidden;
   display: block;
   padding: 0;
-  background: #1f3d2b;
+  background: #1A3A27;
 }
 
 .auth-brand > img {
@@ -114,16 +114,15 @@
   height: 100%;
   display: block;
   object-fit: cover;
-  filter: saturate(0.96) contrast(1.02);
-  transform: none;
+  filter: saturate(0.94) contrast(1.04);
 }
 
 .auth-brand::after {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(15, 18, 14, 0.04), rgba(15, 18, 14, 0.62)),
-    linear-gradient(90deg, rgba(15, 18, 14, 0.2), transparent 58%);
+    linear-gradient(180deg, rgba(9, 26, 16, 0.04), rgba(9, 26, 16, 0.65)),
+    linear-gradient(100deg, rgba(9, 26, 16, 0.22), transparent 55%);
   content: '';
 }
 
@@ -132,7 +131,7 @@
   display: grid;
   align-items: start;
   padding: 20px 72px 64px;
-  background: #fffdf8;
+  background: #FDFAF4;
 }
 
 .auth-shell--register .auth-panel {
@@ -149,9 +148,11 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: var(--color-ink);
+  color: #F5F1E9;
+  font-family: var(--heading), system-ui, sans-serif;
   font-size: 1.05rem;
-  font-weight: 850;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   text-decoration: none;
 }
 
@@ -179,9 +180,12 @@
 .auth-tabs a {
   position: relative;
   color: var(--color-subtle);
-  font-size: 0.9rem;
+  font-family: var(--heading), system-ui, sans-serif;
+  font-size: 0.88rem;
   font-weight: 800;
+  letter-spacing: 0.01em;
   text-decoration: none;
+  transition: color 180ms ease;
 }
 
 .auth-tabs a.is-active {
@@ -196,15 +200,15 @@
   left: 0;
   height: 2px;
   border-radius: 999px;
-  background: var(--color-button-hover);
+  background: var(--color-secondary);
 }
 
-/* Kleine Ueberschrift ueber den Formulartiteln. */
 .auth-kicker {
   margin: 0;
-  color: var(--color-button-hover);
-  font-size: 0.78rem;
+  color: var(--color-secondary);
+  font-family: var(--heading), system-ui, sans-serif;
+  font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
 }

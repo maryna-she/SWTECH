@@ -43,7 +43,7 @@ class SecurityConfiguration {
 
                 // 3. Настройка правил доступа
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/register", "/api/auth/login", "/products/**").permitAll()
+                        .requestMatchers("/api/auth/register", "/api/auth/login", "/api/auth/logout", "/products/**").permitAll()
                         // Alles für Swagger-UI
                         .requestMatchers(
                                 "/v3/api-docs/**",

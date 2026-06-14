@@ -5,10 +5,12 @@
 
 .auth-card-header h2 {
   margin: 4px 0 6px;
-  color: #0f120e;
-  font-size: 1.62rem;
-  line-height: 1.12;
-  letter-spacing: 0;
+  color: #0C1C10;
+  font-family: var(--heading), system-ui, sans-serif;
+  font-size: 1.65rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
 }
 
 .auth-card-header p:not(.auth-kicker) {
@@ -18,7 +20,7 @@
   margin-left: 0;
   color: var(--color-muted);
   font-size: 0.92rem;
-  line-height: 1.45;
+  line-height: 1.50;
 }
 
 .auth-form {
@@ -55,7 +57,7 @@
 }
 
 .auth-shell--register .auth-field label {
-  font-size: 0.8rem;
+  font-size: 0.80rem;
 }
 
 .auth-shell--register .password-control input {
@@ -87,19 +89,19 @@
 }
 
 .auth-field label {
-  color: #0f120e;
+  color: #0C1C10;
   font-size: 0.82rem;
-  font-weight: 750;
+  font-weight: 600;
 }
 
 .auth-field input {
   width: 100%;
-  min-height: 56px;
-  border: 1px solid rgba(15, 18, 14, 0.34);
-  border-radius: 4px;
+  min-height: 52px;
+  border: 1px solid rgba(12, 28, 16, 0.26);
+  border-radius: 10px;
   padding: 0 15px;
-  color: #0f120e;
-  background: #fffdf8;
+  color: #0C1C10;
+  background: #FDFAF4;
   font: inherit;
   outline: none;
   transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
@@ -129,9 +131,9 @@
 }
 
 .auth-error {
-  border: 1px solid color-mix(in srgb, var(--color-danger), transparent 58%);
-  border-radius: 8px;
-  padding: 11px 13px;
+  border: 1px solid color-mix(in srgb, var(--color-danger), transparent 55%);
+  border-radius: 10px;
+  padding: 11px 14px;
   color: var(--color-danger);
   background: var(--color-danger-soft);
   font-size: 0.9rem;
@@ -146,8 +148,8 @@
 }
 
 .auth-footer a {
-  color: var(--color-primary);
-  font-weight: 800;
+  color: var(--color-secondary);
+  font-weight: 700;
   text-decoration: none;
 }
 

@@ -1,28 +1,36 @@
-/* Kopfzeile mit Logo, Navigation und Konto-Aktionen. */
+/* Floating header — transparent over hero, always on top. */
 .home-header {
-  width: min(1120px, calc(100% - 32px));
-  margin: 0 auto;
-  padding: 18px 0;
-  display: grid;
-  grid-template-columns: minmax(210px, 260px) minmax(280px, 1fr) minmax(210px, 260px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  width: 100%;
+  padding: 22px 48px;
+  display: flex;
   align-items: center;
-  gap: 18px;
+  justify-content: space-between;
+  gap: 24px;
+  background: linear-gradient(to bottom, rgba(9, 26, 16, 0.55), transparent);
 }
 
 .home-brand {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-  color: var(--text-h);
-  font-size: 1.48rem;
+  gap: 12px;
+  color: #F5F1E9;
+  font-family: var(--heading), system-ui, sans-serif;
+  font-size: 1.28rem;
   font-weight: 800;
+  letter-spacing: -0.03em;
   line-height: 1;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .home-brand img {
-  width: 58px;
-  height: 58px;
+  width: 46px;
+  height: 46px;
 }
 
 .home-nav {
@@ -30,48 +38,41 @@
 }
 
 .home-menu {
-  grid-column: 2;
-  justify-self: center;
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 6px;
 }
 
 .home-menu a,
 .home-menu button {
   border: 0;
   border-radius: 999px;
-  margin: -6px -10px;
-  padding: 6px 10px;
-  color: var(--text-h);
+  padding: 7px 14px;
+  color: rgba(245, 241, 233, 0.85);
   background: transparent;
   font: inherit;
-  font-size: 0.88rem;
-  font-weight: 750;
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   text-decoration: none;
   cursor: pointer;
+  transition: color 180ms ease, background-color 180ms ease;
 }
 
 .home-menu a:hover,
 .home-menu button:hover,
 .home-menu a:focus,
 .home-menu button:focus {
-  color: var(--color-button-hover-text);
-  background: var(--color-button-hover);
+  color: #F5F1E9;
+  background: rgba(245, 241, 233, 0.18);
   outline: none;
 }
 
-.home-menu button:hover,
-.home-menu button:focus {
-  background: var(--color-button-hover);
-}
-
 .home-header-actions {
-  grid-column: 3;
-  justify-self: end;
   display: flex;
   align-items: center;
-  gap: 11px;
+  gap: 6px;
+  flex-shrink: 0;
 }
 
 .home-icon-button,
@@ -85,11 +86,13 @@
   padding: 0;
   display: inline-grid;
   place-items: center;
-  color: var(--text-h);
-  background: transparent;
+  color: rgba(245, 241, 233, 0.88);
+  background: rgba(245, 241, 233, 0.12);
+  backdrop-filter: blur(8px);
   cursor: pointer;
   line-height: 1;
   text-decoration: none;
+  transition: color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
 }
 
 .home-icon-button:hover,
@@ -106,12 +109,12 @@
 
 .home-icon-button svg,
 .home-account-link svg {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   display: block;
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.85;
+  stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -123,34 +126,70 @@
 .home-cart-link span {
   min-width: 18px;
   height: 18px;
-  border: 2px solid #fffaf1;
+  border: 2px solid #091A10;
   border-radius: 999px;
-  padding: 0 4px;
+  padding: 0 3px;
   position: absolute;
   top: -3px;
   right: -5px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #fffaf1;
-  background: var(--color-primary);
-  font-size: 0.68rem;
-  font-weight: 850;
+  color: #FDFAF4;
+  background: var(--color-secondary);
+  font-size: 0.64rem;
+  font-weight: 800;
   line-height: 1;
 }
 
 .home-link-button {
   width: auto;
-  padding: 0 12px;
+  padding: 0 14px;
   font: inherit;
-  font-size: 0.86rem;
-  font-weight: 750;
+  font-size: 0.80rem;
+  font-weight: 700;
 }
 
 .home-user {
-  max-width: 180px;
+  max-width: 140px;
   overflow: hidden;
-  color: var(--text-h);
+  color: rgba(245, 241, 233, 0.88);
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* On pages that DON'T wrap header in .home-viewport,
+   override to a normal solid header */
+:not(.home-viewport) > .home-header {
+  position: relative;
+  padding: 16px 24px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: none;
+}
+
+:not(.home-viewport) > .home-header .home-brand,
+:not(.home-viewport) > .home-header .home-menu a,
+:not(.home-viewport) > .home-header .home-menu button,
+:not(.home-viewport) > .home-header .home-user {
+  color: var(--text-h);
+}
+
+:not(.home-viewport) > .home-header .home-menu a:hover,
+:not(.home-viewport) > .home-header .home-menu button:hover {
+  color: var(--color-button-hover-text);
+  background: var(--color-button-hover);
+}
+
+:not(.home-viewport) > .home-header .home-icon-button,
+:not(.home-viewport) > .home-header .home-account-link {
+  color: var(--text-h);
+  background: transparent;
+  backdrop-filter: none;
+}
+
+:not(.home-viewport) > .home-header .home-icon-button:hover,
+:not(.home-viewport) > .home-header .home-account-link:hover {
+  color: var(--color-button-hover-text);
+  background: var(--color-button-hover);
 }

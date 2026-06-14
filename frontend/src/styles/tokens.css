@@ -1,39 +1,54 @@
-/* Zentrale Farben, Schatten und Schriften. */
+/* Design tokens: colours, shadows, typography. */
 :root {
-  --color-ink: #0f120e;
-  --color-muted: #596152;
-  --color-subtle: #8f886f;
-  --color-page: #f7f1e5;
-  --color-surface: #fffaf1;
-  --color-surface-soft: #e8dcc5;
-  --color-border: #cfc1a6;
-  --color-primary: #1f3d2b;
-  --color-primary-strong: #102016;
-  --color-primary-soft: rgba(31, 61, 43, 0.1);
-  --color-secondary: #d87532;
-  --color-secondary-soft: rgba(216, 117, 50, 0.16);
-  --color-button-hover: #ffc727;
-  --color-button-hover-strong: #f0b400;
-  --color-button-hover-text: #1c1604;
-  --shadow-button-hover: 0 12px 26px rgba(255, 199, 39, 0.28);
-  --color-danger: #c73e4f;
-  --color-danger-soft: #fff0f2;
-  --color-success: #3b7a55;
-  --shadow-soft: 0 26px 72px rgba(15, 18, 14, 0.16);
-  --shadow-control: 0 14px 30px rgba(31, 61, 43, 0.24);
+  /* ── Text ──────────────────────────── */
+  --color-ink:          #0C1C10;
+  --color-muted:        #3D5448;
+  --color-subtle:       #7D9485;
 
-  --text: var(--color-muted);
-  --text-h: var(--color-ink);
-  --bg: var(--color-page);
-  --border: var(--color-border);
-  --code-bg: var(--color-surface-soft);
-  --accent: var(--color-primary);
-  --accent-bg: var(--color-primary-soft);
-  --accent-border: rgba(216, 117, 50, 0.42);
-  --social-bg: rgba(255, 255, 255, 0.66);
-  --shadow: var(--shadow-soft);
+  /* ── Surfaces ──────────────────────── */
+  --color-page:         #F5F1E9;
+  --color-surface:      #FDFAF4;
+  --color-surface-soft: #EAE4D5;
+  --color-border:       #D3CDB8;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* ── Brand – Forest Green ───────────── */
+  --color-primary:        #1A3A27;
+  --color-primary-strong: #0E2117;
+  --color-primary-soft:   rgba(26, 58, 39, 0.09);
+
+  /* ── Brand – Sunset Orange ──────────── */
+  --color-secondary:      #E8682C;
+  --color-secondary-soft: rgba(232, 104, 44, 0.12);
+
+  /* ── Interactive ─────────────────────  */
+  --color-button-hover:        #E8682C;
+  --color-button-hover-strong: #CC4F1A;
+  --color-button-hover-text:   #FFFCF4;
+  --shadow-button-hover: 0 10px 26px rgba(232, 104, 44, 0.30);
+
+  /* ── Utility ────────────────────────── */
+  --color-danger:      #C94040;
+  --color-danger-soft: #FFF0F0;
+  --color-success:     #2B6B4A;
+
+  /* ── Shadows ────────────────────────── */
+  --shadow-soft:    0 20px 60px rgba(12, 28, 16, 0.13);
+  --shadow-control: 0 12px 28px rgba(26, 58, 39, 0.22);
+
+  /* ── Semantic aliases ───────────────── */
+  --text:          var(--color-muted);
+  --text-h:        var(--color-ink);
+  --bg:            var(--color-page);
+  --border:        var(--color-border);
+  --code-bg:       var(--color-surface-soft);
+  --accent:        var(--color-primary);
+  --accent-bg:     var(--color-primary-soft);
+  --accent-border: rgba(232, 104, 44, 0.42);
+  --social-bg:     rgba(255, 255, 255, 0.66);
+  --shadow:        var(--shadow-soft);
+
+  /* ── Typography ─────────────────────── */
+  --sans:    'Inter',      system-ui, -apple-system, sans-serif;
+  --heading: 'Montserrat', system-ui, sans-serif;
+  --mono:    ui-monospace, Consolas, monospace;
 }

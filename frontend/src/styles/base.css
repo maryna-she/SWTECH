@@ -1,6 +1,6 @@
-/* Basisregeln für Layout, Text und Formularfelder. */
+/* Global layout, typography and form defaults. */
 :root {
-  font: 16px/145% var(--sans);
+  font: 16px/1.55 var(--sans);
   letter-spacing: 0;
   scrollbar-gutter: stable;
   color-scheme: light dark;
@@ -35,10 +35,11 @@ input {
 
 button {
   transition:
-    background-color 180ms ease,
-    color 180ms ease,
-    box-shadow 180ms ease,
-    transform 180ms ease;
+    background-color 200ms ease,
+    color 200ms ease,
+    box-shadow 200ms ease,
+    border-color 200ms ease,
+    transform 200ms ease;
 }
 
 button:hover:not(:disabled) {
@@ -47,9 +48,11 @@ button:hover:not(:disabled) {
 }
 
 h1,
-h2 {
+h2,
+h3 {
   font-family: var(--heading), system-ui, sans-serif;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   color: var(--text-h);
 }
 

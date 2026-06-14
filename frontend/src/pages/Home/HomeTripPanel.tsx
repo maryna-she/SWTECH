@@ -8,7 +8,8 @@ interface HomeTripPanelProps {
   text: HomeText;
 }
 
-// Rendert die visuellen Karten der Reise-Kategorien.
+const categoryPhotos = [travelPhotos.hiking, travelPhotos.camping, travelPhotos.surfing];
+
 const HomeTripPanel = ({ text }: HomeTripPanelProps) => (
   <div className="home-trip-panel" aria-label={text.tripCategoriesLabel}>
     {text.cards.map((card, index) => {
@@ -18,16 +19,15 @@ const HomeTripPanel = ({ text }: HomeTripPanelProps) => (
         <Link
           key={card.category}
           to={createCategoryLink(category)}
-          className={index === 0 ? 'home-map-card home-map-card--large' : 'home-map-card'}
-          style={{
-            '--trip-photo': `url(${
-              index === 0 ? travelPhotos.hiking : index === 1 ? travelPhotos.camping : travelPhotos.surfing
-            })`,
-          } as CSSProperties}
+          className="home-trip-card"
+          style={{ '--trip-photo': `url(${categoryPhotos[index]})` } as CSSProperties}
         >
-          <span className="home-map-card__image" aria-hidden="true" />
-          <span className="home-map-card__category">{card.category}</span>
-          <strong>{card.title}</strong>
+          <div className="home-trip-card__overlay" aria-hidden="true" />
+          <div className="home-trip-card__content">
+            <span className="home-trip-card__label">{card.category}</span>
+            <strong className="home-trip-card__title">{card.title}</strong>
+            <span className="home-trip-card__arrow">→</span>
+          </div>
         </Link>
       );
     })}

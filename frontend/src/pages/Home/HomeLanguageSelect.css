@@ -1,13 +1,13 @@
-/* Kompakter Sprachwechsel im Header. */
+/* Compact language toggle in the header. */
 .home-language-select {
   min-height: 30px;
-  border: 1px solid rgba(207, 193, 166, 0.72);
+  border: 1px solid rgba(211, 205, 184, 0.80);
   border-radius: 999px;
   padding: 2px;
   display: inline-flex;
   align-items: center;
   gap: 2px;
-  background: rgba(255, 250, 241, 0.34);
+  background: rgba(253, 250, 244, 0.40);
 }
 
 .home-language-select button {
@@ -19,8 +19,9 @@
   color: var(--color-muted);
   background: transparent;
   font: inherit;
-  font-size: 0.72rem;
-  font-weight: 800;
+  font-size: 0.70rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   cursor: pointer;
 }
 

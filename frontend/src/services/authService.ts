@@ -21,3 +21,6 @@ export const loginWithProfile = async (data: LoginRequest) => {
   return { token: auth.token, user };
 };
 
+export const logout = (): Promise<void> =>
+  API.post('/auth/logout').then(() => undefined);
+
