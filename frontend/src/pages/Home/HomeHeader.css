@@ -2,7 +2,7 @@
 .home-header {
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 24px 0;
+  padding: 18px 0;
   display: grid;
   grid-template-columns: minmax(210px, 260px) minmax(280px, 1fr) minmax(210px, 260px);
   align-items: center;

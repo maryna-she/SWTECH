@@ -1,6 +1,8 @@
 export const travelPhotos = {
   homeHero:
     'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80',
+  heroTrail:
+    'https://images.unsplash.com/photo-1569428052470-7fad602457ea?auto=format&fit=crop&w=1600&q=80',
   hiking:
     'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80',
   camping:

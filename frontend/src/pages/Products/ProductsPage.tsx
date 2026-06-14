@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import useAuthLanguage from '../hooks/useAuthLanguage';
 import HomeHeader from '../Home/HomeHeader';
 import { homeDe } from '../Home/home.de';
@@ -11,6 +12,7 @@ import {
   type ProductCategoryFilter,
   type ProductSort,
 } from './productCatalogFilters';
+import { readCategoryFromUrl } from './productCategoryUrl';
 import { productsDe } from './products.de';
 import { productsEn } from './products.en';
 import { useProductCatalog } from './useProductCatalog';
@@ -18,7 +20,10 @@ import './ProductsPage.css';
 
 const ProductsPage = () => {
   const { language, changeLanguage } = useAuthLanguage();
-  const [category, setCategory] = useState<ProductCategoryFilter>('all');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [category, setCategory] = useState<ProductCategoryFilter>(() =>
+    readCategoryFromUrl(searchParams.get('category')),
+  );
   const [query, setQuery] = useState('');
   const [sort, setSort] = useState<ProductSort>('featured');
   const { products, isLoading } = useProductCatalog();
@@ -38,6 +43,15 @@ const ProductsPage = () => {
     [category, language, products, query, sort],
   );
 
+  useEffect(() => {
+    setCategory(readCategoryFromUrl(searchParams.get('category')));
+  }, [searchParams]);
+
+  const changeCategory = (nextCategory: ProductCategoryFilter) => {
+    setCategory(nextCategory);
+    setSearchParams(nextCategory === 'all' ? {} : { category: nextCategory });
+  };
+
   return (
     <main className="home-shell products-shell">
       <HomeHeader
@@ -50,7 +64,7 @@ const ProductsPage = () => {
         text={text}
         activeCategory={category}
         counts={collectionCounts}
-        onCategoryChange={setCategory}
+        onCategoryChange={changeCategory}
       />
 
       <ProductFilters

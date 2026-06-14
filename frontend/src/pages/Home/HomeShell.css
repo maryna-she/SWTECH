@@ -4,6 +4,7 @@
   min-height: 100svh;
   color: var(--text);
   background:
-    radial-gradient(circle at 12% 18%, var(--color-secondary-soft), transparent 28rem),
-    linear-gradient(135deg, var(--bg) 0%, var(--color-surface) 58%, var(--color-surface-soft) 100%);
+    linear-gradient(180deg, rgba(255, 250, 241, 0.94), rgba(247, 241, 229, 0.96)),
+    radial-gradient(circle at 12% 16%, var(--color-secondary-soft), transparent 26rem),
+    var(--bg);
 }
