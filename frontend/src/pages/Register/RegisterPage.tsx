@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import AuthPageLayout from '../components/AuthPageLayout';
 import { travelPhotos } from '../../assets/travelPhotos';
-import useAuthLanguage from '../hooks/useAuthLanguage';
+import useLanguage from '../../context/useLanguage';
 import { registerDe } from './register.de';
 import { registerEn } from './register.en';
 import RegisterForm from './RegisterForm';
@@ -10,7 +10,7 @@ import '../Auth/Auth.css';
 
 const RegisterPage = () => {
   // Verbindet Uebersetzung, Layout und Registrierungsformular.
-  const { language, changeLanguage } = useAuthLanguage();
+  const { language, changeLanguage } = useLanguage();
   const text = language === 'de' ? registerDe : registerEn;
   const form = useRegisterForm(text);
 

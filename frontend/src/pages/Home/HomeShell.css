@@ -4,9 +4,16 @@
   min-height: 100svh;
   color: var(--text);
   background: var(--color-page);
+  /* offset fixed header on non-home pages */
+  padding-top: var(--header-h, 74px);
 }
 
-/* Viewport wrapper: header + hero share 100svh */
+/* Home page: header overlays the hero, no padding needed */
+.home-page-shell {
+  padding-top: 0;
+}
+
+/* Viewport wrapper: full-screen hero */
 .home-viewport {
   --home-hero-photo: none;
   position: relative;

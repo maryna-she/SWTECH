@@ -1,32 +1,33 @@
 import type { CSSProperties } from 'react';
-import useAuthLanguage from '../hooks/useAuthLanguage';
+import useLanguage from '../../context/useLanguage';
 import { travelPhotos } from '../../assets/travelPhotos';
 import HomeHeader from './HomeHeader';
 import HomeHeroActions from './HomeHeroActions';
-import HomeHighlights from './HomeHighlights';
+import HomeManifesto from './HomeManifesto';
 import HomeTripPanel from './HomeTripPanel';
+import HomeFeatured from './HomeFeatured';
+import HomeReviews from './HomeReviews';
 import { homeDe } from './home.de';
 import { homeEn } from './home.en';
 import './HomePage.css';
 
 const HomePage = () => {
-  const { language, changeLanguage } = useAuthLanguage();
+  const { language, changeLanguage } = useLanguage();
   const text = language === 'de' ? homeDe : homeEn;
 
   return (
-    <main className="home-shell">
+    <main className="home-shell home-page-shell">
+      <HomeHeader
+        text={text}
+        language={language}
+        onLanguageChange={changeLanguage}
+      />
 
-      {/* ── Full-screen hero with header overlaid ── */}
+      {/* ── Full-screen hero ── */}
       <div
         className="home-viewport"
         style={{ '--home-hero-photo': `url(${travelPhotos.heroTrail})` } as CSSProperties}
       >
-        <HomeHeader
-          text={text}
-          language={language}
-          onLanguageChange={changeLanguage}
-        />
-
         <section className="home-hero" aria-labelledby="home-title">
           <div className="home-hero-content">
             <h1 id="home-title">{text.title}</h1>
@@ -40,13 +41,8 @@ const HomePage = () => {
         </section>
       </div>
 
-      {/* ── Stats strip ── */}
-      <div className="home-stats-strip" aria-hidden="true">
-        <div><strong>2 000+</strong><span>{language === 'de' ? 'Produkte' : 'Products'}</span></div>
-        <div><strong>50+</strong><span>{language === 'de' ? 'Marken' : 'Brands'}</span></div>
-        <div><strong>120+</strong><span>{language === 'de' ? 'Länder beliefert' : 'Countries shipped'}</span></div>
-        <div><strong>4.9★</strong><span>{language === 'de' ? 'Kundenbewertung' : 'Customer rating'}</span></div>
-      </div>
+      {/* ── Brand manifesto ── */}
+      <HomeManifesto />
 
       {/* ── Category tiles ── */}
       <section className="home-categories" aria-labelledby="home-categories-title">
@@ -57,8 +53,11 @@ const HomePage = () => {
         <HomeTripPanel text={text} />
       </section>
 
-      {/* ── Feature highlights ── */}
-      <HomeHighlights text={text} />
+      {/* ── Featured products ── */}
+      <HomeFeatured language={language} homeText={text} />
+
+      {/* ── Customer reviews ── */}
+      <HomeReviews text={text} />
 
     </main>
   );

@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { useCart } from '../../context/useCart';
-import useAuthLanguage from '../hooks/useAuthLanguage';
+import useLanguage from '../../context/useLanguage';
 import HomeHeader from '../Home/HomeHeader';
 import { homeDe } from '../Home/home.de';
 import { homeEn } from '../Home/home.en';
@@ -12,7 +12,7 @@ import './ProductDetailPage.css';
 
 const ProductDetailPage = () => {
   const { productId } = useParams();
-  const { language, changeLanguage } = useAuthLanguage();
+  const { language, changeLanguage } = useLanguage();
   const headerText = language === 'de' ? homeDe : homeEn;
   const text = language === 'de' ? productsDe : productsEn;
   const { products, isLoading } = useProductCatalog();
@@ -54,6 +54,9 @@ const ProductDetailPage = () => {
 
         <div className="product-detail__content">
           <Link to="/products" className="product-detail__back">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M19 12H5M12 5l-7 7 7 7"/>
+            </svg>
             {text.backToProducts}
           </Link>
           <p className="home-kicker">{text.categories[product.category]}</p>
@@ -67,7 +70,7 @@ const ProductDetailPage = () => {
             </div>
             <div>
               <dt>{text.ratingLabel}</dt>
-              <dd>{product.rating}</dd>
+              <dd>★ {product.rating}</dd>
             </div>
             <div>
               <dt>{text.categoryLabel}</dt>

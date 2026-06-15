@@ -1,24 +1,48 @@
-/* Floating header — transparent over hero, always on top. */
+/* Smart fixed header — dark-transparent on home, solid on all other pages. */
+:root {
+  --header-h: 74px;
+}
+
 .home-header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 50;
+  z-index: 100;
   width: 100%;
-  padding: 22px 48px;
+  padding: 14px 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  background: linear-gradient(to bottom, rgba(9, 26, 16, 0.55), transparent);
+  transition:
+    transform 320ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 300ms ease,
+    border-color 300ms ease;
 }
 
+/* Hide on scroll down */
+.home-header.is-hidden {
+  transform: translateY(-100%);
+}
+
+/* ── Solid (shop, about, contacts…) ── */
+.home-header--solid {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ── Hero (home page, transparent → solid on scroll) ── */
+.home-header--hero {
+  background: linear-gradient(to bottom, rgba(9, 26, 16, 0.55), transparent);
+  border-bottom: none;
+}
+
+/* ── Brand ── */
 .home-brand {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  color: #F5F1E9;
   font-family: var(--heading), system-ui, sans-serif;
   font-size: 1.28rem;
   font-weight: 800;
@@ -26,13 +50,18 @@
   line-height: 1;
   text-decoration: none;
   flex-shrink: 0;
+  transition: color 200ms ease;
 }
+
+.home-header--solid .home-brand { color: var(--color-ink); }
+.home-header--hero  .home-brand { color: #F5F1E9; }
 
 .home-brand img {
-  width: 46px;
-  height: 46px;
+  width: 40px;
+  height: 40px;
 }
 
+/* ── Nav ── */
 .home-nav {
   display: contents;
 }
@@ -40,15 +69,13 @@
 .home-menu {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
 }
 
-.home-menu a,
-.home-menu button {
+.home-menu a {
   border: 0;
   border-radius: 999px;
   padding: 7px 14px;
-  color: rgba(245, 241, 233, 0.85);
   background: transparent;
   font: inherit;
   font-size: 0.84rem;
@@ -59,19 +86,23 @@
   transition: color 180ms ease, background-color 180ms ease;
 }
 
-.home-menu a:hover,
-.home-menu button:hover,
-.home-menu a:focus,
-.home-menu button:focus {
-  color: #F5F1E9;
-  background: rgba(245, 241, 233, 0.18);
-  outline: none;
-}
+/* Solid nav */
+.home-header--solid .home-menu a { color: var(--text); }
+.home-header--solid .home-menu a:hover,
+.home-header--solid .home-menu a:focus { color: var(--color-button-hover-text); background: var(--color-button-hover); outline: none; }
+.home-header--solid .home-menu a.active { color: #fff; background: var(--color-secondary); }
 
+/* Hero nav */
+.home-header--hero .home-menu a { color: rgba(245, 241, 233, 0.85); }
+.home-header--hero .home-menu a:hover,
+.home-header--hero .home-menu a:focus { color: var(--color-button-hover-text); background: var(--color-button-hover); outline: none; }
+.home-header--hero .home-menu a.active { color: #fff; background: var(--color-secondary); }
+
+/* ── Actions ── */
 .home-header-actions {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   flex-shrink: 0;
 }
 
@@ -86,27 +117,47 @@
   padding: 0;
   display: inline-grid;
   place-items: center;
-  color: rgba(245, 241, 233, 0.88);
-  background: rgba(245, 241, 233, 0.12);
-  backdrop-filter: blur(8px);
   cursor: pointer;
   line-height: 1;
   text-decoration: none;
   transition: color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
 }
 
-.home-icon-button:hover,
-.home-nav .home-account-link:hover,
-.home-link-button:hover,
-.home-icon-button:focus,
-.home-nav .home-account-link:focus,
-.home-link-button:focus {
+/* Solid icons */
+.home-header--solid .home-icon-button,
+.home-header--solid .home-nav .home-account-link {
+  color: var(--text-h);
+  background: transparent;
+}
+.home-header--solid .home-icon-button:hover,
+.home-header--solid .home-nav .home-account-link:hover,
+.home-header--solid .home-icon-button:focus,
+.home-header--solid .home-nav .home-account-link:focus {
   color: var(--color-button-hover-text);
   background: var(--color-button-hover);
   box-shadow: var(--shadow-button-hover);
   outline: none;
 }
 
+/* Hero icons */
+.home-header--hero .home-icon-button,
+.home-header--hero .home-nav .home-account-link {
+  color: rgba(245, 241, 233, 0.88);
+  background: rgba(245, 241, 233, 0.12);
+  backdrop-filter: blur(8px);
+}
+.home-header--hero .home-icon-button:hover,
+.home-header--hero .home-nav .home-account-link:hover,
+.home-header--hero .home-icon-button:focus,
+.home-header--hero .home-nav .home-account-link:focus {
+  color: var(--color-button-hover-text);
+  background: var(--color-button-hover);
+  box-shadow: var(--shadow-button-hover);
+  backdrop-filter: none;
+  outline: none;
+}
+
+/* SVG icons */
 .home-icon-button svg,
 .home-account-link svg {
   width: 20px;
@@ -119,14 +170,12 @@
   stroke-linejoin: round;
 }
 
-.home-cart-link {
-  position: relative;
-}
+/* Cart badge */
+.home-cart-link { position: relative; }
 
 .home-cart-link span {
   min-width: 18px;
   height: 18px;
-  border: 2px solid #091A10;
   border-radius: 999px;
   padding: 0 3px;
   position: absolute;
@@ -140,6 +189,62 @@
   font-size: 0.64rem;
   font-weight: 800;
   line-height: 1;
+  border: 2px solid transparent;
+}
+.home-header--solid .home-cart-link span { border-color: var(--color-surface); }
+.home-header--hero  .home-cart-link span { border-color: #091A10; }
+
+/* ── Language select overrides ── */
+.home-header--hero .home-language-select {
+  border: 1px solid rgba(211, 205, 184, 0.80);
+  background: rgba(253, 250, 244, 0.40);
+}
+.home-header--hero .home-language-select button {
+  color: rgba(245, 241, 233, 0.75);
+}
+
+.home-header--solid .home-language-select {
+  border: 1px solid var(--color-border);
+  background: transparent;
+}
+
+/* ── Search form ── */
+.home-search-form {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.home-search-input {
+  flex: 1;
+  height: 38px;
+  border-radius: 999px;
+  padding: 0 18px;
+  font: inherit;
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.home-header--solid .home-search-input {
+  border: 1.5px solid var(--color-border);
+  background: var(--color-page);
+  color: var(--text);
+}
+.home-header--solid .home-search-input::placeholder { color: var(--color-muted, rgba(0,0,0,0.38)); }
+
+.home-header--hero .home-search-input {
+  border: 1.5px solid rgba(245, 241, 233, 0.35);
+  background: rgba(245, 241, 233, 0.12);
+  color: #F5F1E9;
+  backdrop-filter: blur(8px);
+}
+.home-header--hero .home-search-input::placeholder { color: rgba(245, 241, 233, 0.5); }
+
+.home-search-input:focus {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px rgba(232, 104, 44, 0.15);
 }
 
 .home-link-button {
@@ -148,48 +253,4 @@
   font: inherit;
   font-size: 0.80rem;
   font-weight: 700;
-}
-
-.home-user {
-  max-width: 140px;
-  overflow: hidden;
-  color: rgba(245, 241, 233, 0.88);
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* On pages that DON'T wrap header in .home-viewport,
-   override to a normal solid header */
-:not(.home-viewport) > .home-header {
-  position: relative;
-  padding: 16px 24px;
-  background: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
-  backdrop-filter: none;
-}
-
-:not(.home-viewport) > .home-header .home-brand,
-:not(.home-viewport) > .home-header .home-menu a,
-:not(.home-viewport) > .home-header .home-menu button,
-:not(.home-viewport) > .home-header .home-user {
-  color: var(--text-h);
-}
-
-:not(.home-viewport) > .home-header .home-menu a:hover,
-:not(.home-viewport) > .home-header .home-menu button:hover {
-  color: var(--color-button-hover-text);
-  background: var(--color-button-hover);
-}
-
-:not(.home-viewport) > .home-header .home-icon-button,
-:not(.home-viewport) > .home-header .home-account-link {
-  color: var(--text-h);
-  background: transparent;
-  backdrop-filter: none;
-}
-
-:not(.home-viewport) > .home-header .home-icon-button:hover,
-:not(.home-viewport) > .home-header .home-account-link:hover {
-  color: var(--color-button-hover-text);
-  background: var(--color-button-hover);
 }

@@ -5,7 +5,7 @@ import { useAuth } from '../../context/useAuth';
 import { travelPhotos } from '../../assets/travelPhotos';
 import { loginWithProfile } from '../../services/authService';
 import AuthPageLayout from '../components/AuthPageLayout';
-import useAuthLanguage from '../hooks/useAuthLanguage';
+import useLanguage from '../../context/useLanguage';
 import { loginDe } from './login.de';
 import { loginEn } from './login.en';
 import LoginForm from './LoginForm';
@@ -18,7 +18,7 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const { language, changeLanguage } = useAuthLanguage(() => setError(''));
+  const { language, changeLanguage } = useLanguage();
   const { loginUser } = useAuth();
   const navigate = useNavigate();
   const text = language === 'de' ? loginDe : loginEn;

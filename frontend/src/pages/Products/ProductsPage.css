@@ -1,15 +1,184 @@
 @import './ProductsShell.css';
 @import './ProductVisual.css';
 @import './ProductCard.css';
-@import './ProductCollectionRail.css';
+@import './ProductSidebar.css';
 @import './ProductFilters.css';
 @import './ProductsResponsive.css';
 
+@keyframes skeleton-shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position:  400px 0; }
+}
+
+/* ══ Page layout ════════════════════════ */
+
+.products-layout {
+  width: min(1280px, calc(100% - 48px));
+  margin: 40px auto 96px;
+  display: grid;
+  grid-template-columns: 256px 1fr;
+  align-items: start;
+  gap: 28px;
+}
+
+.products-sidebar-area {
+  position: sticky;
+  top: calc(var(--header-h, 74px) + 20px);
+}
+
+.products-content {
+  min-width: 0;
+}
+
+/* ══ Active filter chips ════════════════ */
+
+.products-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.products-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 30px;
+  padding: 0 4px 0 12px;
+  border-radius: 999px;
+  background: rgba(232, 104, 44, 0.09);
+  border: 1px solid rgba(232, 104, 44, 0.22);
+  color: var(--color-secondary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.01em;
+}
+
+.products-chip button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(232, 104, 44, 0.14);
+  color: var(--color-secondary);
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 140ms ease;
+  flex-shrink: 0;
+}
+
+.products-chip button:hover {
+  background: rgba(232, 104, 44, 0.28);
+}
+
+/* ══ Product grid ═══════════════════════ */
+
 .products-grid {
-  width: min(1120px, calc(100% - 32px));
-  margin: 0 auto;
-  padding: 18px 0 72px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  gap: 22px;
+  margin-top: 20px;
 }
+
+/* ── List view ───────────────────────── */
+
+.products-grid--list {
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.products-grid--list .product-card {
+  flex-direction: row;
+  max-height: 200px;
+}
+
+.products-grid--list .product-card__visual {
+  width: 210px;
+  flex-shrink: 0;
+}
+
+.products-grid--list .product-visual {
+  height: 100%;
+  min-height: 0;
+}
+
+.products-grid--list .product-card__body {
+  padding: 18px 20px 16px;
+  justify-content: space-between;
+}
+
+.products-grid--list .product-card__view-hint {
+  display: none;
+}
+
+/* ══ Empty state ════════════════════════ */
+
+.products-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+  padding: 80px 32px;
+  border: 1.5px dashed var(--color-border);
+  border-radius: 20px;
+  color: var(--color-subtle);
+  background: var(--color-surface);
+  text-align: center;
+}
+
+.products-empty p {
+  margin: 0;
+  font-size: 0.96rem;
+  font-weight: 500;
+}
+
+/* ══ Skeleton loading ═══════════════════ */
+
+.product-card--skeleton {
+  pointer-events: none;
+  border: 1px solid rgba(26, 58, 39, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+.product-card--skeleton .product-card__body {
+  padding: 18px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.product-card__skeleton-visual {
+  height: 260px;
+  background: linear-gradient(
+    90deg,
+    rgba(125, 148, 133, 0.09) 25%,
+    rgba(125, 148, 133, 0.17) 50%,
+    rgba(125, 148, 133, 0.09) 75%
+  );
+  background-size: 800px 100%;
+  animation: skeleton-shimmer 1.4s infinite linear;
+}
+
+.skeleton-line {
+  height: 13px;
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    rgba(125, 148, 133, 0.09) 25%,
+    rgba(125, 148, 133, 0.17) 50%,
+    rgba(125, 148, 133, 0.09) 75%
+  );
+  background-size: 800px 100%;
+  animation: skeleton-shimmer 1.4s infinite linear;
+}
+
+.skeleton-line--title { height: 20px; width: 80%; }
+.skeleton-line--short { width: 45%; }

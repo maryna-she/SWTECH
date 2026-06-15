@@ -3,7 +3,7 @@ import { useCart } from '../../context/useCart';
 import HomeHeader from '../Home/HomeHeader';
 import { homeDe } from '../Home/home.de';
 import { homeEn } from '../Home/home.en';
-import useAuthLanguage from '../hooks/useAuthLanguage';
+import useLanguage from '../../context/useLanguage';
 import ProductVisual from '../Products/ProductVisual';
 import { useProductCatalog } from '../Products/useProductCatalog';
 import { cartDe } from './cart.de';
@@ -14,7 +14,7 @@ import './CartPage.css';
 const SHIPPING_PRICE = 8;
 
 const CartPage = () => {
-  const { language, changeLanguage } = useAuthLanguage();
+  const { language, changeLanguage } = useLanguage();
   const { items, updateQuantity, removeItem, clearCart } = useCart();
   const { products } = useProductCatalog();
   const headerText = language === 'de' ? homeDe : homeEn;

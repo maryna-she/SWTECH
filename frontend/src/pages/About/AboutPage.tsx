@@ -3,13 +3,13 @@ import { travelPhotos } from '../../assets/travelPhotos';
 import HomeHeader from '../Home/HomeHeader';
 import { homeDe } from '../Home/home.de';
 import { homeEn } from '../Home/home.en';
-import useAuthLanguage from '../hooks/useAuthLanguage';
+import useLanguage from '../../context/useLanguage';
 import { aboutDe } from './about.de';
 import { aboutEn } from './about.en';
 import './AboutPage.css';
 
 const AboutPage = () => {
-  const { language, changeLanguage } = useAuthLanguage();
+  const { language, changeLanguage } = useLanguage();
   const headerText = language === 'de' ? homeDe : homeEn;
   const text = language === 'de' ? aboutDe : aboutEn;
 

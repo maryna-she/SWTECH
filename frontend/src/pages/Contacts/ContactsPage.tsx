@@ -1,7 +1,7 @@
 import HomeHeader from '../Home/HomeHeader';
 import { homeDe } from '../Home/home.de';
 import { homeEn } from '../Home/home.en';
-import useAuthLanguage from '../hooks/useAuthLanguage';
+import useLanguage from '../../context/useLanguage';
 import ContactForm from './ContactForm';
 import { contactsDe } from './contacts.de';
 import { contactsEn } from './contacts.en';
@@ -11,7 +11,7 @@ const contactPhoto =
   'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80';
 
 const ContactsPage = () => {
-  const { language, changeLanguage } = useAuthLanguage();
+  const { language, changeLanguage } = useLanguage();
   const headerText = language === 'de' ? homeDe : homeEn;
   const text = language === 'de' ? contactsDe : contactsEn;
 

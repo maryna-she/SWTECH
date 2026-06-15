@@ -3,10 +3,14 @@ import type { Product, ProductCategory } from './products';
 export type ProductCategoryFilter = ProductCategory | 'all';
 export type ProductSort = 'featured' | 'priceAsc' | 'ratingDesc';
 
+export const PRICE_MAX = 800;
+
 export interface ProductFilterState {
   category: ProductCategoryFilter;
   query: string;
   sort: ProductSort;
+  priceMax: number;
+  minRating: number;
 }
 
 const readPrice = (price: string) => Number.parseFloat(price.replace(',', '.'));
@@ -31,7 +35,13 @@ export const filterProducts = (
         .join(' ')
         .toLowerCase();
 
-      return matchesCategory && (!query || searchable.includes(query));
+      const price = readPrice(product.price);
+      const matchesPrice = price <= filters.priceMax;
+
+      const rating = readRating(product.rating);
+      const matchesRating = rating >= filters.minRating;
+
+      return matchesCategory && matchesPrice && matchesRating && (!query || searchable.includes(query));
     })
     .sort((left, right) => {
       if (filters.sort === 'priceAsc') {

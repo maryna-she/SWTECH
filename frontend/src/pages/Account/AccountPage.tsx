@@ -6,7 +6,7 @@ import { travelPhotos } from '../../assets/travelPhotos';
 import HomeHeader from '../Home/HomeHeader';
 import { homeDe } from '../Home/home.de';
 import { homeEn } from '../Home/home.en';
-import useAuthLanguage from '../hooks/useAuthLanguage';
+import useLanguage from '../../context/useLanguage';
 import AccountActionCard from './AccountActionCard';
 import AccountOrderList from './AccountOrderList';
 import AccountStatCard from './AccountStatCard';
@@ -16,7 +16,7 @@ import { accountActions, accountStats } from './accountContent';
 import './AccountPage.css';
 
 const AccountPage = () => {
-  const { language, changeLanguage } = useAuthLanguage();
+  const { language, changeLanguage } = useLanguage();
   const { user, isAuthenticated, logoutUser } = useAuth();
   const { totalItems } = useCart();
   const navigate = useNavigate();

@@ -1,8 +1,9 @@
-import { Link } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/useCart';
 import { useAuth } from '../../context/useAuth';
 import landscapeLogo from '../../assets/layered-landscape-logo.svg';
-import type { Language } from '../hooks/useAuthLanguage';
+import type { Language } from '../../context/useLanguage';
 import AccountIcon from './AccountIcon';
 import HomeHeaderIcon from './HomeHeaderIcon';
 import HomeHeaderMenu from './HomeHeaderMenu';
@@ -15,26 +16,101 @@ interface HomeHeaderProps {
   onLanguageChange: (language: Language) => void;
 }
 
-// Zeigt Logo, Sprache und Konto-Aktionen.
 const HomeHeader = ({ text, language, onLanguageChange }: HomeHeaderProps) => {
   const { isAuthenticated } = useAuth();
   const { totalItems } = useCart();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const isHome = pathname === '/';
+
+  const [isHidden, setIsHidden] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const current = window.scrollY;
+      setIsScrolled(current > 80);
+
+      if (!isSearchOpen) {
+        if (current < 80) {
+          setIsHidden(false);
+        } else if (current > lastScrollY.current + 4) {
+          setIsHidden(true);
+        } else if (current < lastScrollY.current - 4) {
+          setIsHidden(false);
+        }
+      }
+
+      lastScrollY.current = current;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isSearchOpen]);
+
+  const openSearch = () => {
+    setIsHidden(false);
+    setIsSearchOpen(true);
+    setTimeout(() => searchInputRef.current?.focus(), 0);
+  };
+
+  const closeSearch = () => {
+    setIsSearchOpen(false);
+    setSearchQuery('');
+  };
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const q = searchQuery.trim();
+    if (q) navigate(`/products?q=${encodeURIComponent(q)}`);
+    closeSearch();
+  };
+
+  const variant = (isHome && !isScrolled) ? 'home-header--hero' : 'home-header--solid';
+  const hiddenClass = isHidden ? 'is-hidden' : '';
 
   return (
-    <header className="home-header">
+    <header className={`home-header ${variant} ${hiddenClass}`}>
       <Link to="/" className="home-brand" aria-label={text.homeLabel}>
         <img src={landscapeLogo} alt="" aria-hidden="true" />
         <span>Roamly</span>
       </Link>
 
       <nav className="home-nav" aria-label={text.navLabel}>
-        <HomeHeaderMenu text={text} />
+        {isSearchOpen ? (
+          <form className="home-search-form" onSubmit={handleSearchSubmit}>
+            <input
+              ref={searchInputRef}
+              type="search"
+              className="home-search-input"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder={text.searchPlaceholder}
+              onKeyDown={(e) => e.key === 'Escape' && closeSearch()}
+            />
+          </form>
+        ) : (
+          <HomeHeaderMenu text={text} />
+        )}
+
         <div className="home-header-actions">
           <HomeLanguageSelect
             language={language}
             label={text.navLabel}
             onChange={onLanguageChange}
           />
+          <button
+            type="button"
+            className="home-icon-button"
+            aria-label={isSearchOpen ? text.closeSearchLabel : text.searchLabel}
+            onClick={isSearchOpen ? closeSearch : openSearch}
+          >
+            <HomeHeaderIcon name={isSearchOpen ? 'close' : 'search'} />
+          </button>
           <button type="button" className="home-icon-button" aria-label={text.wishlistLabel}>
             <HomeHeaderIcon name="heart" />
           </button>

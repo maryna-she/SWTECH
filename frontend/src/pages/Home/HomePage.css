@@ -2,6 +2,8 @@
 @import './HomeHeader.css';
 @import './HomeLanguageSelect.css';
 @import './HomeHero.css';
+@import './HomeManifesto.css';
 @import './HomeTripPanel.css';
-@import './HomeHighlights.css';
+@import './HomeFeatured.css';
+@import './HomeReviews.css';
 @import './HomeResponsive.css';

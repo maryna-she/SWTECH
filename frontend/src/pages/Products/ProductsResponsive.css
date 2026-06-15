@@ -1,43 +1,124 @@
-@media (max-width: 920px) {
-  .product-collections {
+/* ── 1100px ───────────────────────────── */
+@media (max-width: 1100px) {
+  .products-layout {
+    grid-template-columns: 220px 1fr;
+    gap: 22px;
+  }
+
+  .products-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+/* ── 860px: tablets ─────────────────────  */
+@media (max-width: 860px) {
+  .products-layout {
+    grid-template-columns: 1fr;
+    width: calc(100% - 40px);
+    margin-top: 28px;
   }
 
-  .product-filters {
-    grid-template-columns: 1fr 1fr;
-    align-items: stretch;
+  .products-sidebar-area {
+    position: static;
   }
 
-  .product-filters__count {
+  .sidebar-panel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-radius: 16px;
+  }
+
+  .sidebar-section {
+    border-bottom: none;
+    border-right: 1px solid var(--color-border);
+  }
+
+  .sidebar-section:last-of-type {
+    border-right: none;
+  }
+
+  .sidebar-reset {
     grid-column: 1 / -1;
-    text-align: left;
+    border-top: 1px solid var(--color-border);
+    height: 40px;
   }
 
-  .products-grid,
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
   .product-detail {
     grid-template-columns: 1fr 1fr;
-  }
-
-  .product-detail {
     align-items: start;
   }
 }
 
-@media (max-width: 720px) {
-  .product-collections,
-  .product-filters,
-  .products-grid,
-  .product-detail,
-  .product-detail__facts {
+/* ── 600px: mobile ───────────────────── */
+@media (max-width: 600px) {
+  .products-layout {
+    width: calc(100% - 28px);
+    margin-top: 20px;
+    margin-bottom: 64px;
+  }
+
+  .sidebar-panel {
     grid-template-columns: 1fr;
   }
 
-  .product-collection {
-    min-height: 104px;
+  .sidebar-section {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
   }
 
-  .product-filters {
-    gap: 10px;
+  .sidebar-reset {
+    border-top: none;
+    grid-column: auto;
+  }
+
+  .products-toolbar {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .sort-pills {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    flex-shrink: 1;
+  }
+
+  .sort-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .products-toolbar__count {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .products-grid--list .product-card {
+    flex-direction: column;
+    max-height: none;
+  }
+
+  .products-grid--list .product-card__visual {
+    width: 100%;
+  }
+
+  .products-grid--list .product-visual {
+    min-height: 220px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .product-detail,
+  .product-detail__facts {
+    grid-template-columns: 1fr;
   }
 
   .product-detail {
@@ -46,6 +127,6 @@
   }
 
   .product-visual--hero {
-    min-height: 360px;
+    min-height: 300px;
   }
 }

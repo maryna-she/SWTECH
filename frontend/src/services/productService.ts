@@ -1,4 +1,5 @@
 import type { Product } from '../pages/Products/products';
+import { products as staticProducts } from '../pages/Products/products';
 import { PUBLIC_API } from './apiClient';
 
 interface BackendProduct {
@@ -9,22 +10,6 @@ interface BackendProduct {
   stockQuantity: number;
 }
 
-const accents = ['#2f6f4f', '#58715f', '#bf6f33', '#d4a340', '#347b88', '#1f5362'];
-
-const pickCategory = (name: string): Product['category'] => {
-  const normalized = name.toLowerCase();
-
-  if (normalized.includes('tent') || normalized.includes('camp') || normalized.includes('laterne')) {
-    return 'camping';
-  }
-
-  if (normalized.includes('surf') || normalized.includes('board') || normalized.includes('wetsuit')) {
-    return 'surfing';
-  }
-
-  return 'hiking';
-};
-
 const formatPrice = (price: number) =>
   new Intl.NumberFormat('de-DE', {
     style: 'currency',
@@ -32,35 +17,37 @@ const formatPrice = (price: number) =>
     maximumFractionDigits: 0,
   }).format(price);
 
-const toProduct = (product: BackendProduct, index: number): Product => {
-  const description = product.description || product.name;
+const toProduct = (backend: BackendProduct): Product => {
+  const matched = staticProducts.find(
+    (p) => p.title.en === backend.name || p.title.de === backend.name,
+  );
 
+  if (matched) {
+    return {
+      ...matched,
+      id: backend.id,
+      price: formatPrice(backend.price),
+    };
+  }
+
+  // fallback for unrecognised backend products
   return {
-    id: product.id,
-    category: pickCategory(product.name),
-    price: formatPrice(product.price),
-    rating: product.stockQuantity > 0 ? '4.6' : '4.0',
-    accent: accents[index % accents.length],
-    title: {
-      de: product.name,
-      en: product.name,
-    },
-    shortText: {
-      de: description,
-      en: description,
-    },
-    description: {
-      de: description,
-      en: description,
-    },
+    id: backend.id,
+    category: 'hiking',
+    price: formatPrice(backend.price),
+    rating: '4.5',
+    accent: '#2f6f4f',
+    title: { de: backend.name, en: backend.name },
+    shortText: { de: backend.description, en: backend.description },
+    description: { de: backend.description, en: backend.description },
     details: {
-      de: [`${product.stockQuantity} Stück verfügbar`],
-      en: [`${product.stockQuantity} items available`],
+      de: [`${backend.stockQuantity} Stück verfügbar`],
+      en: [`${backend.stockQuantity} items available`],
     },
   };
 };
 
 export const getProducts = async (): Promise<Product[]> => {
-  const response = await PUBLIC_API.get<BackendProduct[]>('/products');
+  const response = await PUBLIC_API.get<BackendProduct[]>('/products', { params: { pageSize: 100 } });
   return response.data.map(toProduct);
 };

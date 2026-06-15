@@ -7,7 +7,7 @@ interface ProductVisualProps {
   size?: 'card' | 'hero';
 }
 
-const categoryPhotos = {
+const categoryFallback = {
   hiking: travelPhotos.hiking,
   camping: travelPhotos.camping,
   surfing: travelPhotos.surfing,
@@ -15,17 +15,19 @@ const categoryPhotos = {
 
 const ProductVisual = ({ product, size = 'card' }: ProductVisualProps) => (
   <div
-    className={`product-visual product-visual--${size} product-visual--${product.category}`}
-    style={{
-      '--product-accent': product.accent,
-      '--product-photo': `url(${categoryPhotos[product.category]})`,
-    } as CSSProperties}
+    className={`product-visual product-visual--${size}`}
+    style={{ '--product-accent': product.accent } as CSSProperties}
     aria-hidden="true"
   >
-    <span className="product-visual__sun" />
-    <span className="product-visual__ridge product-visual__ridge--back" />
-    <span className="product-visual__ridge product-visual__ridge--front" />
-    <span className="product-visual__item" />
+    <img
+      src={product.image}
+      alt=""
+      className="product-visual__photo"
+      onError={(e) => {
+        (e.currentTarget as HTMLImageElement).src = categoryFallback[product.category];
+      }}
+      loading="lazy"
+    />
   </div>
 );
 

@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import HomeLanguageSelect from '../Home/HomeLanguageSelect';
-import type { Language } from '../hooks/useAuthLanguage';
+import type { Language } from '../../context/useLanguage';
 import AuthBrand from './AuthBrand';
 
 interface AuthPageLayoutProps {
