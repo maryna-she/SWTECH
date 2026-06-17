@@ -1,11 +1,9 @@
 package com.shopproject.order;
 
-import com.shopproject.products.Product;
 import com.shopproject.products.ProductEntity;
 import com.shopproject.products.ProductsRepository;
-import com.shopproject.user.model.User;
-import com.shopproject.user.model.UserEntity;
 import com.shopproject.user.UserRepository;
+import com.shopproject.user.model.UserEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,16 +11,18 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class OrderService {
+
     private final ShopOrderRepository shopOrderRepository;
     private final ProductsRepository productsRepository;
     private final UserRepository userRepository;
 
     public OrderService(ShopOrderRepository shopOrderRepository,
                         ProductsRepository productsRepository,
-                        UserRepository userRepository){
+                        UserRepository userRepository) {
         this.shopOrderRepository = shopOrderRepository;
         this.productsRepository = productsRepository;
         this.userRepository = userRepository;
@@ -78,6 +78,7 @@ public class OrderService {
 
         return toResponse(savedOrder);
     }
+
     @Transactional(readOnly = true)
     public List<OrderResponse> getAllOrders() {
         return shopOrderRepository.findAll()
@@ -98,7 +99,7 @@ public class OrderService {
     }
 
     @Transactional(readOnly = true)
-    public OrderResponse getOrderById(Long id) {
+    public OrderResponse getOrderById(UUID id) {
         ShopOrder order = shopOrderRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Order not found"));
 

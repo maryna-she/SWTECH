@@ -21,14 +21,14 @@ public class OrderController {
 
     @GetMapping
     public List<OrderResponse> getOrder(@RequestParam(required = false)String email){
-        if(email != null || !email.isBlank()){
+        if(email != null && !email.isBlank()){
             return orderService.getOrdersByCustomerEmail(email);
         }
         return orderService.getAllOrders();
     }
 
     @GetMapping("/{id}")
-    public OrderResponse getOrderById(@PathVariable Long id){
+    public OrderResponse getOrderById(@PathVariable UUID id){
         return orderService.getOrderById(id);
     }
 }

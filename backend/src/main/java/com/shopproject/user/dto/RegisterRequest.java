@@ -2,7 +2,7 @@ package com.shopproject.user.dto;
 
 public record RegisterRequest(
         String firstName,
-        String secondName,
+        String lastName,
         String email,
         String password
 ) {

@@ -9,7 +9,6 @@ import com.shopproject.user.UserRepository;
 import com.shopproject.user.dto.DeleteRequest;
 import com.shopproject.user.dto.RegisterRequest;
 import com.shopproject.user.model.*;
-import jakarta.persistence.EntityNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -44,7 +43,7 @@ public class UserService {
         UserEntity entity = new UserEntity(
                 null,
                 request.firstName(),
-                request.secondName(),
+                request.lastName(),
                 request.email(),
                 hashed,
                 UserRole.CUSTOMER,

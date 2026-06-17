@@ -1,6 +1,5 @@
 package com.shopproject.cart;
 
-import com.shopproject.products.ProductEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
