@@ -25,6 +25,8 @@ export interface ProductText {
   };
   viewProduct: string;
   addToCart: string;
+  saveToWishlist: string;
+  savedToWishlist: string;
   categoryLabel: string;
   priceLabel: string;
   priceUpTo: (max: number) => string;
@@ -36,6 +38,22 @@ export interface ProductText {
   backToProducts: string;
   notFoundTitle: string;
   notFoundText: string;
+  quantityLabel: string;
+  relatedLabel: string;
+  trustShipping: string;
+  trustReturns: string;
+  trustWarranty: string;
+  reviewsTitle: string;
+  reviewsCount: (n: number) => string;
+  reviewsEmpty: string;
+  writeReviewTitle: string;
+  reviewNameLabel: string;
+  reviewNamePlaceholder: string;
+  reviewTextLabel: string;
+  reviewTextPlaceholder: string;
+  reviewSubmit: string;
+  reviewThanks: string;
+  reviewRatingLabel: string;
   categories: {
     hiking: string;
     camping: string;
@@ -70,6 +88,8 @@ export const productsEn: ProductText = {
   },
   viewProduct: 'View',
   addToCart: 'Add to cart',
+  saveToWishlist: 'Save to wishlist',
+  savedToWishlist: 'Remove from wishlist',
   categoryLabel: 'Category',
   priceLabel: 'Price',
   priceUpTo: (max) => `Up to ${max} EUR`,
@@ -77,10 +97,26 @@ export const productsEn: ProductText = {
   ratingLabel: 'Rating',
   ratingAny: 'Any rating',
   resetFilters: 'Reset filters',
-  detailsLabel: 'Details',
+  detailsLabel: 'Specifications',
   backToProducts: 'Back to products',
   notFoundTitle: 'Product not found',
   notFoundText: 'This product is no longer in the assortment.',
+  quantityLabel: 'Quantity',
+  relatedLabel: 'More from this category',
+  trustShipping: 'Free shipping on orders over 80 EUR',
+  trustReturns: 'Free returns within 30 days',
+  trustWarranty: '2-year warranty on all products',
+  reviewsTitle: 'Customer reviews',
+  reviewsCount: (n) => `${n} ${n === 1 ? 'review' : 'reviews'}`,
+  reviewsEmpty: 'No reviews yet — be the first!',
+  writeReviewTitle: 'Write a review',
+  reviewNameLabel: 'Your name',
+  reviewNamePlaceholder: 'e.g. Anna M.',
+  reviewTextLabel: 'Your review',
+  reviewTextPlaceholder: 'What did you think about this product?',
+  reviewSubmit: 'Submit review',
+  reviewThanks: 'Thank you for your review!',
+  reviewRatingLabel: 'Your rating',
   categories: {
     hiking: 'Hiking',
     camping: 'Camping',

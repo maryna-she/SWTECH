@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react';
+import type { CSSProperties, ReactElement } from 'react';
 import { PRICE_MAX, type ProductCategoryFilter } from './productCatalogFilters';
 import type { ProductText } from './products.en';
 import './ProductSidebar.css';
@@ -48,7 +48,7 @@ const SurfingIcon = () => (
   </svg>
 );
 
-const categoryIcons: Record<ProductCategoryFilter, () => JSX.Element> = {
+const categoryIcons: Record<ProductCategoryFilter, () => ReactElement> = {
   all: AllIcon,
   hiking: HikingIcon,
   camping: CampingIcon,

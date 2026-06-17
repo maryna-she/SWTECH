@@ -95,6 +95,7 @@
 .product-card__meta {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .product-card__rating {
@@ -183,4 +184,35 @@
 
 .product-card__cart:active {
   transform: translateY(0);
+}
+
+/* ── Wishlist heart button ───────────── */
+
+.product-card__wishlist-btn {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(26, 58, 39, 0.30);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 200ms ease, background 200ms ease, transform 200ms ease;
+}
+
+.product-card__wishlist-btn:hover {
+  background: rgba(232, 104, 44, 0.10);
+  color: var(--color-secondary);
+  transform: scale(1.15);
+}
+
+.product-card__wishlist-btn.is-saved {
+  color: var(--color-secondary);
+}
+
+.product-card__wishlist-btn.is-saved:hover {
+  background: rgba(232, 104, 44, 0.15);
 }

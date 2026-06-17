@@ -60,6 +60,16 @@ p {
   margin: 0;
 }
 
+.home-kicker {
+  margin: 0;
+  color: var(--color-secondary);
+  font-family: var(--heading), system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 code {
   display: inline-flex;
   border-radius: 4px;

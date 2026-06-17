@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
+import { WishlistProvider } from './context/WishlistContext';
 import { LanguageProvider } from './context/LanguageContext';
 import Layout from './Layout';
 import ScrollToTop from './components/ScrollToTop';
@@ -14,12 +15,14 @@ import NotFoundPage from './pages/NotFound/NotFoundPage';
 import ProductDetailPage from './pages/Products/ProductDetailPage';
 import ProductsPage from './pages/Products/ProductsPage';
 import RegisterPage from './pages/Register/RegisterPage';
+import WishlistPage from './pages/Wishlist/WishlistPage';
 
 function App() {
   return (
     <LanguageProvider>
     <AuthProvider>
       <CartProvider>
+      <WishlistProvider>
         <BrowserRouter>
           <ScrollToTop />
           <Routes>
@@ -29,6 +32,7 @@ function App() {
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/products/:productId" element={<ProductDetailPage />} />
               <Route path="/cart" element={<CartPage />} />
+              <Route path="/wishlist" element={<WishlistPage />} />
               <Route path="/account" element={<AccountPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contacts" element={<ContactsPage />} />
@@ -40,6 +44,7 @@ function App() {
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </BrowserRouter>
+      </WishlistProvider>
       </CartProvider>
     </AuthProvider>
     </LanguageProvider>

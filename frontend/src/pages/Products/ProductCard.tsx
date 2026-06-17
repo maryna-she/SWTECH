@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/useCart';
+import { useWishlist } from '../../context/useWishlist';
 import type { Language } from '../../context/useLanguage';
 import type { Product } from './products';
 import type { ProductText } from './products.en';
@@ -19,8 +20,16 @@ const CartIcon = () => (
   </svg>
 );
 
+const HeartIcon = ({ filled }: { filled: boolean }) => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill={filled ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/>
+  </svg>
+);
+
 const ProductCard = ({ text, language, product }: ProductCardProps) => {
   const { addItem } = useCart();
+  const { toggleItem, isInWishlist } = useWishlist();
+  const saved = isInWishlist(product.id);
 
   return (
     <article className="product-card">
@@ -32,6 +41,14 @@ const ProductCard = ({ text, language, product }: ProductCardProps) => {
       <div className="product-card__body">
         <div className="product-card__meta">
           <span className="product-card__rating">★ {product.rating}</span>
+          <button
+            type="button"
+            className={`product-card__wishlist-btn${saved ? ' is-saved' : ''}`}
+            aria-label={saved ? text.savedToWishlist : text.saveToWishlist}
+            onClick={() => toggleItem(product.id)}
+          >
+            <HeartIcon filled={saved} />
+          </button>
         </div>
         <Link to={`/products/${product.id}`} className="product-card__name-link">
           <h2 className="product-card__title">{product.title[language]}</h2>

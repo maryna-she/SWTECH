@@ -6,7 +6,7 @@ export interface Product {
   price: string;
   rating: string;
   accent: string;
-  image: string;
+  images: string[];
   title: {
     de: string;
     en: string;
@@ -33,7 +33,11 @@ export const products: Product[] = [
     price: '129 EUR',
     rating: '4.8',
     accent: '#2f6f4f',
-    image: 'https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=600&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=800&q=80',
+    ],
     title: {
       de: 'Trailhead 38L Rucksack',
       en: 'Trailhead 38L Backpack',
@@ -57,7 +61,11 @@ export const products: Product[] = [
     price: '219 EUR',
     rating: '4.9',
     accent: '#466b52',
-    image: 'https://images.unsplash.com/photo-1531379296808-02421992e326?auto=format&fit=crop&w=600&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1531379296808-02421992e326?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80',
+    ],
     title: {
       de: 'Peak 3-Lagen Hardshelljacke',
       en: 'Peak 3-Layer Shell Jacket',
@@ -81,7 +89,11 @@ export const products: Product[] = [
     price: '79 EUR',
     rating: '4.7',
     accent: '#5a7a60',
-    image: 'https://images.unsplash.com/Ds4TsdS095U?auto=format&fit=crop&w=600&q=80',
+    images: [
+      'https://images.unsplash.com/Ds4TsdS095U?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=800&q=80',
+    ],
     title: {
       de: 'Merino 150 Baselayer',
       en: 'Merino 150 Base Layer',
@@ -105,7 +117,11 @@ export const products: Product[] = [
     price: '149 EUR',
     rating: '4.8',
     accent: '#3c6645',
-    image: 'https://images.unsplash.com/photo-1456613820599-bfe244172af5?auto=format&fit=crop&w=600&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1456613820599-bfe244172af5?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1632411316785-33d395035a3c?auto=format&fit=crop&w=800&q=80',
+    ],
     title: {
       de: 'Granite Trail Shoes',
       en: 'Granite Trail Shoes',
@@ -129,7 +145,11 @@ export const products: Product[] = [
     price: '119 EUR',
     rating: '4.7',
     accent: '#2e5e40',
-    image: 'https://images.unsplash.com/photo-1632411316785-33d395035a3c?auto=format&fit=crop&w=600&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1632411316785-33d395035a3c?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=800&q=80',
+    ],
     title: {
       de: 'Carbon Trail Stöcke',
       en: 'Carbon Trekking Poles',
@@ -155,7 +175,11 @@ export const products: Product[] = [
     price: '349 EUR',
     rating: '4.9',
     accent: '#c06b2f',
-    image: 'https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=600&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1558477280-1bfed08ea5db?auto=format&fit=crop&w=800&q=80',
+    ],
     title: {
       de: 'Ultralight 2-Personen Zelt',
       en: 'Ultralight 2-Person Tent',
@@ -179,7 +203,11 @@ export const products: Product[] = [
     price: '189 EUR',
     rating: '4.8',
     accent: '#b85e2a',
-    image: 'https://images.unsplash.com/photo-1558477280-1bfed08ea5db?auto=format&fit=crop&w=600&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1558477280-1bfed08ea5db?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80',
+    ],
     title: {
       de: 'Daunenschlafsack −5 °C',
       en: 'Down Sleeping Bag −5 °C',
@@ -203,7 +231,11 @@ export const products: Product[] = [
     price: '99 EUR',
     rating: '4.8',
     accent: '#cc7733',
-    image: 'https://images.unsplash.com/N561DZ3NfVM?auto=format&fit=crop&w=600&q=80',
+    images: [
+      'https://images.unsplash.com/N561DZ3NfVM?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1660876633753-975a18cf78da?auto=format&fit=crop&w=800&q=80',
+    ],
     title: {
       de: 'Flash Kochsystem',
       en: 'Flash Cooking System',
@@ -227,7 +259,11 @@ export const products: Product[] = [
     price: '139 EUR',
     rating: '4.7',
     accent: '#d4902e',
-    image: 'https://images.unsplash.com/photo-1660876633753-975a18cf78da?auto=format&fit=crop&w=600&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1660876633753-975a18cf78da?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/N561DZ3NfVM?auto=format&fit=crop&w=800&q=80',
+    ],
     title: {
       de: 'Ultralight Campingstuhl',
       en: 'Ultralight Camp Chair',
@@ -251,7 +287,11 @@ export const products: Product[] = [
     price: '69 EUR',
     rating: '4.9',
     accent: '#bf6020',
-    image: 'https://images.unsplash.com/JxfqcLB9bo0?auto=format&fit=crop&w=600&q=80',
+    images: [
+      'https://images.unsplash.com/JxfqcLB9bo0?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80',
+    ],
     title: {
       de: 'Trail Wasserfilter',
       en: 'Trail Water Filter',
@@ -277,7 +317,11 @@ export const products: Product[] = [
     price: '489 EUR',
     rating: '4.8',
     accent: '#2a7a8a',
-    image: 'https://images.unsplash.com/photo-1531722569936-825d3dd91b15?auto=format&fit=crop&w=600&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1531722569936-825d3dd91b15?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/stj-A6E6II8?auto=format&fit=crop&w=800&q=80',
+    ],
     title: {
       de: 'Fun Shape Surfboard 6\'2"',
       en: 'Fun Shape Surfboard 6\'2"',
@@ -301,7 +345,11 @@ export const products: Product[] = [
     price: '259 EUR',
     rating: '4.9',
     accent: '#1d6070',
-    image: 'https://images.unsplash.com/photo-1526485641275-3b11a42acd44?auto=format&fit=crop&w=600&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1526485641275-3b11a42acd44?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1531722569936-825d3dd91b15?auto=format&fit=crop&w=800&q=80',
+    ],
     title: {
       de: '4/3 Steamer Wetsuit',
       en: '4/3 Steamer Wetsuit',
@@ -325,7 +373,11 @@ export const products: Product[] = [
     price: '699 EUR',
     rating: '4.7',
     accent: '#35828f',
-    image: 'https://images.unsplash.com/stj-A6E6II8?auto=format&fit=crop&w=600&q=80',
+    images: [
+      'https://images.unsplash.com/stj-A6E6II8?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1526485641275-3b11a42acd44?auto=format&fit=crop&w=800&q=80',
+    ],
     title: {
       de: 'Classic Longboard 9\'0"',
       en: 'Classic Longboard 9\'0"',
@@ -349,7 +401,11 @@ export const products: Product[] = [
     price: '89 EUR',
     rating: '4.7',
     accent: '#246878',
-    image: 'https://images.unsplash.com/mfzdRsWsiRA?auto=format&fit=crop&w=600&q=80',
+    images: [
+      'https://images.unsplash.com/mfzdRsWsiRA?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1531722569936-825d3dd91b15?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=800&q=80',
+    ],
     title: {
       de: 'Surf & Dry Rucksack 30L',
       en: 'Surf & Dry Backpack 30L',
@@ -373,7 +429,11 @@ export const products: Product[] = [
     price: '39 EUR',
     rating: '4.6',
     accent: '#2e7282',
-    image: 'https://images.unsplash.com/4rvc6HWITpY?auto=format&fit=crop&w=600&q=80',
+    images: [
+      'https://images.unsplash.com/4rvc6HWITpY?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/mfzdRsWsiRA?auto=format&fit=crop&w=800&q=80',
+    ],
     title: {
       de: 'Pro Surf Leine 6\'',
       en: 'Pro Surf Leash 6\'',

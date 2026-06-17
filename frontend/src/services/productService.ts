@@ -37,6 +37,7 @@ const toProduct = (backend: BackendProduct): Product => {
     price: formatPrice(backend.price),
     rating: '4.5',
     accent: '#2f6f4f',
+    images: ['https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80'],
     title: { de: backend.name, en: backend.name },
     shortText: { de: backend.description, en: backend.description },
     description: { de: backend.description, en: backend.description },

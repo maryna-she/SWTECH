@@ -5,6 +5,7 @@ import { travelPhotos } from '../../assets/travelPhotos';
 interface ProductVisualProps {
   product: Product;
   size?: 'card' | 'hero';
+  imageUrl?: string;
 }
 
 const categoryFallback = {
@@ -13,14 +14,14 @@ const categoryFallback = {
   surfing: travelPhotos.surfing,
 };
 
-const ProductVisual = ({ product, size = 'card' }: ProductVisualProps) => (
+const ProductVisual = ({ product, size = 'card', imageUrl }: ProductVisualProps) => (
   <div
     className={`product-visual product-visual--${size}`}
     style={{ '--product-accent': product.accent } as CSSProperties}
     aria-hidden="true"
   >
     <img
-      src={product.image}
+      src={imageUrl ?? product.images[0]}
       alt=""
       className="product-visual__photo"
       onError={(e) => {

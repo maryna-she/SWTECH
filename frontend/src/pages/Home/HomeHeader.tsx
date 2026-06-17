@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/useCart';
+import { useWishlist } from '../../context/useWishlist';
 import { useAuth } from '../../context/useAuth';
 import landscapeLogo from '../../assets/layered-landscape-logo.svg';
 import type { Language } from '../../context/useLanguage';
@@ -19,6 +20,7 @@ interface HomeHeaderProps {
 const HomeHeader = ({ text, language, onLanguageChange }: HomeHeaderProps) => {
   const { isAuthenticated } = useAuth();
   const { totalItems } = useCart();
+  const { totalItems: wishlistTotal } = useWishlist();
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const isHome = pathname === '/';
@@ -111,9 +113,14 @@ const HomeHeader = ({ text, language, onLanguageChange }: HomeHeaderProps) => {
           >
             <HomeHeaderIcon name={isSearchOpen ? 'close' : 'search'} />
           </button>
-          <button type="button" className="home-icon-button" aria-label={text.wishlistLabel}>
+          <Link
+            to="/wishlist"
+            className="home-icon-button home-cart-link"
+            aria-label={text.wishlistLabel}
+          >
             <HomeHeaderIcon name="heart" />
-          </button>
+            {wishlistTotal > 0 && <span>{wishlistTotal}</span>}
+          </Link>
           <Link to="/cart" className="home-icon-button home-cart-link" aria-label={text.cartLabel}>
             <HomeHeaderIcon name="bag" />
             {totalItems > 0 && <span>{totalItems}</span>}
