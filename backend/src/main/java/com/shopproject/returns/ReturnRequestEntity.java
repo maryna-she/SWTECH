@@ -4,38 +4,41 @@ package com.shopproject.returns;
 import com.shopproject.order.OrderItem;
 import com.shopproject.order.ShopOrder;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.UUID;
 
 
 @Setter
 @Getter
 @Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ReturnRequestEntity
 {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
+    private UUID id;
 
+    @Column
+    private UUID orderItemId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id", nullable = false)
-    private ShopOrder shopOrder;
+    @Column
+    private UUID customerId;
 
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "oder_item_id", nullable = false)
-    private OrderItem orderItem;
-
-
+    @Column
     private String returnReason;
 
+    @Column
+    private ReturnStatus returnStatus = ReturnStatus.REQUESTED;
 
-    private ReturnStatus returnStatus;
 
-
-    public ReturnRequestEntity()
+    public ReturnRequestEntity(UUID orderItemId, UUID customerId, String returnReason)
     {
-        this.returnStatus = ReturnStatus.REQUESTED;
+        this.orderItemId = orderItemId;
+        this.customerId = customerId;
+        this.returnReason = returnReason;
     }
 }
