@@ -1,8 +1,6 @@
 package com.shopproject.user.service;
 
 import com.shopproject.exception.*;
-import com.shopproject.products.Product;
-import com.shopproject.products.ProductEntity;
 import com.shopproject.security.crypto.PasswordEncoder;
 import com.shopproject.user.UserMapper;
 import com.shopproject.user.UserRepository;
