@@ -1,10 +1,9 @@
 package com.shopproject.order;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+import java.util.UUID;
 
-public interface OrderItemRepository extends CrudRepository<OrderItem, Long>
-{
-    OrderItem findById(long id);
+public interface OrderItemRepository extends JpaRepository<OrderItem, UUID> {
 }
+
