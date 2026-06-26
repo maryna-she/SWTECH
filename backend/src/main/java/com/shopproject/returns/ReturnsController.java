@@ -1,8 +1,12 @@
 package com.shopproject.returns;
 
 import com.shopproject.exception.ResourceNotFoundException;
+import com.shopproject.exception.UnauthorizedException;
+import com.shopproject.order.OrderItem;
+import com.shopproject.order.OrderItemRepository;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 
@@ -10,37 +14,34 @@ import java.util.UUID;
 @RequestMapping(path = "users/{customerId}/returns")
 public class ReturnsController
 {
-    private final ReturnsRepository returnsRepository;
+    private final ReturnsService returnsService;
 
 
-    public ReturnsController(ReturnsRepository returnsRepository)
+    public ReturnsController(ReturnsService returnsService)
     {
-        this.returnsRepository = returnsRepository;
+        this.returnsService = returnsService;
     }
 
 
     @GetMapping
     public List<ReturnRequestEntity> findAll(@PathVariable UUID customerId)
     {
-        return this.returnsRepository.findAllByCustomerId(customerId);
+        return this.returnsService.findAllByCustomerId(customerId);
     }
 
 
     @PostMapping
     public ReturnRequestEntity save(@PathVariable UUID customerId,
                                     @RequestParam UUID orderItemId,
-                                    @RequestParam String returnReason)
+                                    @RequestParam String returnReason) throws RuntimeException
     {
-        return returnsRepository.save(new ReturnRequestEntity(orderItemId, customerId, returnReason));
+        return this.returnsService.save(customerId, orderItemId, returnReason);
     }
 
 
     @GetMapping(path = "/{id}")
     public ReturnRequestEntity findById(@PathVariable UUID customerId, @PathVariable UUID id)
     {
-        return this.returnsRepository.findByCustomerIdAndId(customerId, id)
-                .orElseThrow(() -> new ResourceNotFoundException("Could not find return request " + id +
-                        "belonging to user " + customerId + "."));
+        return this.returnsService.findByIdAndCustomerId(id, customerId);
     }
-
 }

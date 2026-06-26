@@ -9,7 +9,6 @@ import java.util.UUID;
 
 public interface ReturnsRepository extends JpaRepository<ReturnRequestEntity, UUID>
 {
-    Optional<ReturnRequestEntity> findByCustomerIdAndId(UUID customerId, UUID id);
-
-    List<ReturnRequestEntity> findAllByCustomerId(UUID customerId);
+    @Override
+    Optional<ReturnRequestEntity> findById(UUID customerId);
 }
