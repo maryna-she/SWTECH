@@ -4,6 +4,10 @@ import com.shopproject.exception.ResourceNotFoundException;
 import com.shopproject.exception.UnauthorizedException;
 import com.shopproject.order.OrderItem;
 import com.shopproject.order.OrderItemRepository;
+import com.shopproject.user.UserRepository;
+import com.shopproject.user.model.User;
+import com.shopproject.user.model.UserEntity;
+import com.shopproject.user.service.AuthService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.query.Order;
@@ -14,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+
 @Service
 public class ReturnsService
 {
@@ -23,21 +28,29 @@ public class ReturnsService
     private final ReturnsRepository returnsRepository;
 
 
+    private final AuthService authService;
+
+
     public ReturnsService(OrderItemRepository orderItemRepository,
-                          ReturnsRepository returnsRepository)
+                          ReturnsRepository returnsRepository,
+                          AuthService authService)
     {
         this.orderItemRepository = orderItemRepository;
         this.returnsRepository = returnsRepository;
+        this.authService = authService;
     }
 
+
     @Transactional
-    public List<ReturnRequestEntity> findAllByCustomerId(UUID userId)
+    public List<ReturnRequestEntity> findAllByCustomerId(String authHeader)
     {
+        User user = authorizeUser(authHeader);
+
         List<ReturnRequestEntity> returnRequestEntities = new ArrayList<>();
 
         for (ReturnRequestEntity entity : this.returnsRepository.findAll())
         {
-            if (userId.compareTo(entity.getOrderItem().getShopOrder().getCustomer().getId()) == 0)
+            if (user.id().compareTo(entity.getOrderItem().getShopOrder().getCustomer().getId()) == 0)
             {
                 returnRequestEntities.add(entity);
             }
@@ -47,38 +60,55 @@ public class ReturnsService
     }
 
 
-    private OrderItem authorizeCustomer(UUID id, UUID customerId)
+    private User authorizeUser(String authHeader)
     {
-        OrderItem orderItem = this.orderItemRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Could not resolve order item with id " + id));
+        User user = this.authService.getCurrentUser(authHeader);
 
-        if (customerId.compareTo(orderItem.getShopOrder().getCustomer().getId()) != 0)
+        if (user == null)
         {
-            throw new UnauthorizedException("User has no permission to access the requested resource.");
+            throw new UnauthorizedException("No permission.");
         }
         else
         {
-            return orderItem;
+            return user;
         }
     }
 
+
     @Transactional
-    public ReturnRequestEntity save(UUID customerId, UUID orderItemId, String returnReason)
+    public ReturnRequestEntity save(String authHeader, UUID orderItemId, String returnReason)
     {
-        return this.returnsRepository.save(new ReturnRequestEntity(
-                authorizeCustomer(orderItemId, customerId),
-                returnReason)
-        );
+        User user = authorizeUser(authHeader);
+
+        OrderItem orderItem = this.orderItemRepository.findById(orderItemId)
+                .orElseThrow(() -> new ResourceNotFoundException("Could not find order item with ID: " + orderItemId));
+
+        if (user.id().compareTo(orderItem.getShopOrder().getCustomer().getId()) == 0)
+        {
+            return this.returnsRepository.save(new ReturnRequestEntity(orderItem, returnReason));
+        }
+        else
+        {
+            throw new UnauthorizedException("No permission to access order item with ID: " + orderItem.getId());
+        }
     }
 
+
     @Transactional
-    public ReturnRequestEntity findByIdAndCustomerId(UUID id, UUID customerId)
+    public ReturnRequestEntity findByIdAndCustomerId(UUID id, String authHeader)
     {
-        ReturnRequestEntity returnRequestEntity = this.returnsRepository.findById(id)
-                .orElseThrow(() -> new ReturnNotFoundException(id));
+        User user = authorizeUser(authHeader);
 
-        authorizeCustomer(returnRequestEntity.getOrderItem().getId(), customerId);
+        ReturnRequestEntity rr = this.returnsRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Could not find return request with ID: " + id));
 
-        return returnRequestEntity;
+        if (user.id().compareTo(rr.getOrderItem().getShopOrder().getCustomer().getId()) == 0)
+        {
+            return rr;
+        }
+        else
+        {
+            throw new UnauthorizedException("No permission to access return request with ID: " + rr.getId());
+        }
     }
 }
