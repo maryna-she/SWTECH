@@ -42,7 +42,7 @@ public class ReturnsService
 
 
     @Transactional
-    public List<ReturnRequestEntity> findAllByCustomerId(String authHeader)
+    public List<ReturnRequestEntity> findAllByUserId(String authHeader)
     {
         User user = authorizeUser(authHeader);
 
@@ -60,6 +60,7 @@ public class ReturnsService
     }
 
 
+    @NotNull
     private User authorizeUser(String authHeader)
     {
         User user = this.authService.getCurrentUser(authHeader);

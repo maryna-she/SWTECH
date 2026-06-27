@@ -26,11 +26,11 @@ public class ReturnsController
     }
 
 
-    @Operation(summary = "Alle Rücksendungen suchen")
+    @Operation(summary = "Alle Rücksendungen eines Benutzers suchen")
     @GetMapping
     public List<ReturnRequestEntity> findAll(@RequestHeader(HttpHeaders.AUTHORIZATION) String authHeader)
     {
-        return this.returnsService.findAllByCustomerId(authHeader);
+        return this.returnsService.findAllByUserId(authHeader);
     }
 
 
