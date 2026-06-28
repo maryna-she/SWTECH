@@ -24,12 +24,10 @@ import static org.mockito.Mockito.*;
 
 /**
  * Unit-Tests für den UserService.
- *
  * Die Tests prüfen die minimale Geschäftslogik für die Registrierung:
  * - Benutzer erfolgreich registrieren
  * - Passwort gehasht speichern
  * - doppelte E-Mail-Adressen ablehnen
- *
  * Die Abhängigkeiten werden mit Mockito simuliert,
  * damit keine echte Datenbank benötigt wird.
  */
@@ -53,7 +51,7 @@ class UserServiceTest {
      * und das Passwort gehasht in der UserEntity landet.
      */
     @Test
-    void registerCustomer_shouldSaveUserWithHashedPassword() {
+    void registerCustomer_SaveUserWithHashedPassword() {
         // Arrange: Registrierungsdaten vorbereiten
         RegisterRequest request = new RegisterRequest(
                 "Peter",
@@ -107,7 +105,7 @@ class UserServiceTest {
      * wenn die E-Mail-Adresse bereits existiert.
      */
     @Test
-    void registerCustomer_shouldThrowException_whenEmailAlreadyExists() {
+    void registerCustomer_ThrowException_whenEmailAlreadyExists() {
         // Arrange: Registrierungsdaten mit bereits vorhandener E-Mail vorbereiten
         RegisterRequest request = new RegisterRequest(
                 "Peter",
