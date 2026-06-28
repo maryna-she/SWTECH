@@ -1,38 +1,54 @@
 package com.shopproject.returns;
 
+import com.shopproject.exception.ResourceNotFoundException;
+import com.shopproject.exception.UnauthorizedException;
+import com.shopproject.order.OrderItem;
+import com.shopproject.order.OrderItemRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
-
+@Tag(name = "Returns", description = "Endpoints für Rücksendungen")
 @RestController
-@RequestMapping(path = "/returns")
+@RequestMapping(path = "api/returns")
 public class ReturnsController
 {
-    private final ReturnsRepository returnsRepository;
+    private final ReturnsService returnsService;
 
 
-    public ReturnsController(ReturnsRepository returnsRepository)
+    public ReturnsController(ReturnsService returnsService)
     {
-        this.returnsRepository = returnsRepository;
+        this.returnsService = returnsService;
     }
 
+
+    @Operation(summary = "Alle Rücksendungen eines Benutzers suchen")
     @GetMapping
-    public List<ReturnRequestEntity> findAll()
+    public List<ReturnRequestEntity> findAll(@RequestHeader(HttpHeaders.AUTHORIZATION) String authHeader)
     {
-        return returnsRepository.findAll();
+        return this.returnsService.findAllByUserId(authHeader);
     }
 
+
+    @Operation(summary = "Neue Rücksendung speichern")
     @PostMapping
-    public ReturnRequestEntity save(@RequestBody ReturnRequestEntity returnRequestEntity)
+    public ReturnRequestEntity save(@RequestHeader (HttpHeaders.AUTHORIZATION) String authHeader,
+                                    @RequestParam UUID orderItemId,
+                                    @RequestParam String returnReason)
     {
-        return returnsRepository.save(returnRequestEntity);
+        return this.returnsService.save(authHeader, orderItemId, returnReason);
     }
 
+
+    @Operation(summary = "Einzelne Rücksendung anhand der ID suchen")
     @GetMapping(path = "/{id}")
-    public ReturnRequestEntity findById(@PathVariable Long id)
+    public ReturnRequestEntity findById(@PathVariable UUID id,
+                                        @RequestHeader (HttpHeaders.AUTHORIZATION) String authHeader)
     {
-        return this.returnsRepository.findById(id)
-                .orElseThrow(() -> new ReturnNotFoundException(id));
+        return this.returnsService.findByIdAndCustomerId(id, authHeader);
     }
-
 }
