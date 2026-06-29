@@ -1,21 +1,34 @@
 import type { CSSProperties } from 'react';
 import type { Product } from './products';
+import { travelPhotos } from '../../assets/travelPhotos';
 
 interface ProductVisualProps {
   product: Product;
   size?: 'card' | 'hero';
+  imageUrl?: string;
 }
 
-const ProductVisual = ({ product, size = 'card' }: ProductVisualProps) => (
+const categoryFallback = {
+  hiking: travelPhotos.hiking,
+  camping: travelPhotos.camping,
+  surfing: travelPhotos.surfing,
+};
+
+const ProductVisual = ({ product, size = 'card', imageUrl }: ProductVisualProps) => (
   <div
-    className={`product-visual product-visual--${size} product-visual--${product.category}`}
+    className={`product-visual product-visual--${size}`}
     style={{ '--product-accent': product.accent } as CSSProperties}
     aria-hidden="true"
   >
-    <span className="product-visual__sun" />
-    <span className="product-visual__ridge product-visual__ridge--back" />
-    <span className="product-visual__ridge product-visual__ridge--front" />
-    <span className="product-visual__item" />
+    <img
+      src={imageUrl ?? product.images[0]}
+      alt=""
+      className="product-visual__photo"
+      onError={(e) => {
+        (e.currentTarget as HTMLImageElement).src = categoryFallback[product.category];
+      }}
+      loading="lazy"
+    />
   </div>
 );
 

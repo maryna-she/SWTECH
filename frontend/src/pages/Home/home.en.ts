@@ -3,6 +3,9 @@ export interface HomeText {
   homeLabel: string;
   home: string;
   shop: string;
+  searchLabel: string;
+  searchPlaceholder: string;
+  closeSearchLabel: string;
   wishlistLabel: string;
   cartLabel: string;
   products: string;
@@ -13,15 +16,17 @@ export interface HomeText {
   categoryItems: string[];
   accountLabel: string;
   logout: string;
-  kicker: string;
   title: string;
   intro: string;
   createAccount: string;
   existingAccount: string;
   tripCategoriesLabel: string;
-  highlightsLabel: string;
   cards: { category: string; title: string }[];
-  highlights: { title: string; text: string }[];
+  featuredKicker: string;
+  featuredTitle: string;
+  reviewsKicker: string;
+  reviewsTitle: string;
+  reviews: { text: string; name: string; productLabel: string; productId: string }[];
 }
 
 export const homeEn: HomeText = {
@@ -29,6 +34,9 @@ export const homeEn: HomeText = {
   homeLabel: 'Roamly home',
   home: 'Home',
   shop: 'Shop',
+  searchLabel: 'Search products',
+  searchPlaceholder: 'Search…',
+  closeSearchLabel: 'Close search',
   wishlistLabel: 'Open wishlist',
   cartLabel: 'Open cart',
   products: 'All products',
@@ -39,21 +47,38 @@ export const homeEn: HomeText = {
   categoryItems: ['Hiking', 'Camping', 'Surfing'],
   accountLabel: 'Open account page',
   logout: 'Log out',
-  kicker: 'Travel shop for every route',
   title: 'Plan your next outdoor trip with Roamly.',
-  intro: 'Find hiking, camping, and surfing essentials in one place. Create an account to save your cart and keep your orders easy to find.',
+  intro: 'Gear up. Head out. Don\'t look back.',
   createAccount: 'Create account',
   existingAccount: 'I already have an account',
   tripCategoriesLabel: 'Featured travel categories',
-  highlightsLabel: 'Roamly highlights',
   cards: [
     { category: 'Hiking', title: 'Mountain gear' },
     { category: 'Camping', title: 'Night setup' },
     { category: 'Surfing', title: 'Coast kit' },
   ],
-  highlights: [
-    { title: 'Choose a category', text: 'Browse products grouped around the way you travel.' },
-    { title: 'Save your cart', text: 'Register once and come back to your trip plan later.' },
-    { title: 'Track orders', text: 'Keep your account and future purchases in one simple place.' },
+  featuredKicker: 'Our top picks',
+  featuredTitle: 'Popular this week',
+  reviewsKicker: 'Customer reviews',
+  reviewsTitle: 'What people say',
+  reviews: [
+    {
+      text: 'Packed this for a three-day loop in the Dolomites. Zero regrets — it carried everything and the hip belt never slipped.',
+      name: 'Sarah M.',
+      productLabel: 'Trailhead 38L Backpack',
+      productId: 'trailhead-pack-38',
+    },
+    {
+      text: 'Tent was up in under ten minutes in the rain. Solid kit — I\'ve used cheaper tents and this one is worth every euro.',
+      name: 'Tom K.',
+      productLabel: 'Ultralight 2-Person Tent',
+      productId: 'ultralight-tent-2p',
+    },
+    {
+      text: 'Keeps me warm in the Baltic in late October. Genuinely surprised how flexible and easy to get into it is.',
+      name: 'Lena W.',
+      productLabel: '4/3 Steamer Wetsuit',
+      productId: 'steamer-43-wetsuit',
+    },
   ],
 };

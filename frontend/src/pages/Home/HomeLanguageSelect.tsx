@@ -1,4 +1,4 @@
-import type { Language } from '../hooks/useAuthLanguage';
+import type { Language } from '../../context/useLanguage';
 
 interface HomeLanguageSelectProps {
   language: Language;

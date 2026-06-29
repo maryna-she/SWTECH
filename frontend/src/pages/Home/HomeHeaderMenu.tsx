@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import type { HomeText } from './home.en';
 
 interface HomeHeaderMenuProps {
@@ -7,10 +7,10 @@ interface HomeHeaderMenuProps {
 
 const HomeHeaderMenu = ({ text }: HomeHeaderMenuProps) => (
   <div className="home-menu">
-    <Link to="/">{text.home}</Link>
-    <Link to="/products">{text.shop}</Link>
-    <button type="button">{text.about}</button>
-    <button type="button">{text.contacts}</button>
+    <NavLink to="/" end>{text.home}</NavLink>
+    <NavLink to="/products">{text.shop}</NavLink>
+    <NavLink to="/about">{text.about}</NavLink>
+    <NavLink to="/contacts">{text.contacts}</NavLink>
   </div>
 );
 

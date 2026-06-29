@@ -74,7 +74,7 @@ public class UserController {
             @ApiResponse(responseCode = "204", description = "Erfolgreich abgemeldet oder Token ungültig/fehlend")
     })
     @PostMapping(path = "/logout")
-    public ResponseEntity<Void> logout(@RequestHeader(HttpHeaders.AUTHORIZATION) String authHeader) {
+    public ResponseEntity<Void> logout(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader) {
         log.info("Received POST /api/auth/logout request");
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             String token = authHeader.substring(7);

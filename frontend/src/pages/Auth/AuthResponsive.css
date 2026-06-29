@@ -17,25 +17,26 @@
   .auth-brand {
     min-height: 260px;
     grid-row: 1;
-    padding: 66px 18px 22px;
   }
 
   .auth-brand > img {
-    width: min(98%, 470px);
-    max-height: 300px;
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    object-fit: cover;
   }
 
   .auth-panel {
     min-height: auto;
-    padding: 28px 24px 34px;
+    padding: 24px 24px 34px;
   }
 
   .auth-close {
-    background: rgba(255, 250, 241, 0.86);
+    background: rgba(253, 250, 244, 0.90);
   }
 
   .auth-modal-top {
-    margin-bottom: 24px;
+    margin-bottom: 28px;
   }
 
   .auth-logo {
@@ -102,29 +103,28 @@
   }
 
   .auth-panel {
-    padding: 24px 20px;
+    padding: 24px 18px;
   }
 
   .auth-brand {
     min-height: 210px;
-    padding: 64px 22px 22px;
   }
 
   .auth-brand > img {
-    width: min(96%, 330px);
-    max-height: 205px;
+    width: 100%;
+    height: 100%;
+    max-height: none;
   }
 
   .auth-form-box {
-    border-radius: 14px;
-    padding: 22px 18px;
+    padding: 0;
   }
 
   .auth-shell--login .auth-form-box,
   .auth-shell--register .auth-form-box {
     height: auto;
     min-height: auto;
-    width: min(100%, 410px);
+    width: 100%;
   }
 }
 

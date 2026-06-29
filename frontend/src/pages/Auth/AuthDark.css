@@ -1,13 +1,14 @@
-/* Hält Auth-Seiten auch im Dark Mode im hellen Roamly-Stil. */
+/* Keeps auth pages in light Roamly style even in dark mode. */
 @media (prefers-color-scheme: dark) {
   .auth-shell {
     background:
-      radial-gradient(circle at 12% 18%, var(--color-secondary-soft), transparent 28rem),
-      linear-gradient(135deg, #f7f1e5 0%, var(--color-surface) 58%, var(--color-surface-soft) 100%);
+      radial-gradient(circle at 6% 94%, var(--color-secondary-soft), transparent 20rem),
+      radial-gradient(circle at 94% 8%, rgba(26, 58, 39, 0.06), transparent 22rem),
+      linear-gradient(135deg, #F2EEE6 0%, var(--color-surface) 55%, var(--color-surface-soft) 100%);
   }
 
   .auth-submit {
-    color: #fffaf1;
+    color: #FDFAF4;
     background: var(--color-primary);
   }
 }
