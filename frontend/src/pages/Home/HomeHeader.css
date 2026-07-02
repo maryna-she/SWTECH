@@ -1,77 +1,109 @@
-/* Kopfzeile mit Logo, Navigation und Konto-Aktionen. */
-.home-header {
-  width: min(1120px, calc(100% - 32px));
-  margin: 0 auto;
-  padding: 24px 0;
-  display: grid;
-  grid-template-columns: minmax(210px, 260px) minmax(280px, 1fr) minmax(210px, 260px);
-  align-items: center;
-  gap: 18px;
+/* Smart fixed header — dark-transparent on home, solid on all other pages. */
+:root {
+  --header-h: 74px;
 }
 
+.home-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  width: 100%;
+  padding: 14px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  transition:
+    transform 320ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 300ms ease,
+    border-color 300ms ease;
+}
+
+/* Hide on scroll down */
+.home-header.is-hidden {
+  transform: translateY(-100%);
+}
+
+/* ── Solid (shop, about, contacts…) ── */
+.home-header--solid {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ── Hero (home page, transparent → solid on scroll) ── */
+.home-header--hero {
+  background: linear-gradient(to bottom, rgba(9, 26, 16, 0.55), transparent);
+  border-bottom: none;
+}
+
+/* ── Brand ── */
 .home-brand {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-  color: var(--text-h);
-  font-size: 1.48rem;
+  gap: 12px;
+  font-family: var(--heading), system-ui, sans-serif;
+  font-size: 1.28rem;
   font-weight: 800;
+  letter-spacing: -0.03em;
   line-height: 1;
   text-decoration: none;
+  flex-shrink: 0;
+  transition: color 200ms ease;
 }
+
+.home-header--solid .home-brand { color: var(--color-ink); }
+.home-header--hero  .home-brand { color: #F5F1E9; }
 
 .home-brand img {
-  width: 58px;
-  height: 58px;
+  width: 40px;
+  height: 40px;
 }
 
+/* ── Nav ── */
 .home-nav {
   display: contents;
 }
 
 .home-menu {
-  grid-column: 2;
-  justify-self: center;
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 4px;
 }
 
-.home-menu a,
-.home-menu button {
+.home-menu a {
   border: 0;
   border-radius: 999px;
-  margin: -6px -10px;
-  padding: 6px 10px;
-  color: var(--text-h);
+  padding: 7px 14px;
   background: transparent;
   font: inherit;
-  font-size: 0.88rem;
-  font-weight: 750;
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   text-decoration: none;
   cursor: pointer;
+  transition: color 180ms ease, background-color 180ms ease;
 }
 
-.home-menu a:hover,
-.home-menu button:hover,
-.home-menu a:focus,
-.home-menu button:focus {
-  color: var(--color-button-hover-text);
-  background: var(--color-button-hover);
-  outline: none;
-}
+/* Solid nav */
+.home-header--solid .home-menu a { color: var(--text); }
+.home-header--solid .home-menu a:hover,
+.home-header--solid .home-menu a:focus { color: var(--color-button-hover-text); background: var(--color-button-hover); outline: none; }
+.home-header--solid .home-menu a.active { color: #fff; background: var(--color-secondary); }
 
-.home-menu button:hover,
-.home-menu button:focus {
-  background: var(--color-button-hover);
-}
+/* Hero nav */
+.home-header--hero .home-menu a { color: rgba(245, 241, 233, 0.85); }
+.home-header--hero .home-menu a:hover,
+.home-header--hero .home-menu a:focus { color: var(--color-button-hover-text); background: var(--color-button-hover); outline: none; }
+.home-header--hero .home-menu a.active { color: #fff; background: var(--color-secondary); }
 
+/* ── Actions ── */
 .home-header-actions {
-  grid-column: 3;
-  justify-self: end;
   display: flex;
   align-items: center;
-  gap: 11px;
+  gap: 4px;
+  flex-shrink: 0;
 }
 
 .home-icon-button,
@@ -85,49 +117,140 @@
   padding: 0;
   display: inline-grid;
   place-items: center;
-  color: var(--text-h);
-  background: transparent;
   cursor: pointer;
   line-height: 1;
   text-decoration: none;
+  transition: color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
 }
 
-.home-icon-button:hover,
-.home-nav .home-account-link:hover,
-.home-link-button:hover,
-.home-icon-button:focus,
-.home-nav .home-account-link:focus,
-.home-link-button:focus {
+/* Solid icons */
+.home-header--solid .home-icon-button,
+.home-header--solid .home-nav .home-account-link {
+  color: var(--text-h);
+  background: transparent;
+}
+.home-header--solid .home-icon-button:hover,
+.home-header--solid .home-nav .home-account-link:hover,
+.home-header--solid .home-icon-button:focus,
+.home-header--solid .home-nav .home-account-link:focus {
   color: var(--color-button-hover-text);
   background: var(--color-button-hover);
   box-shadow: var(--shadow-button-hover);
   outline: none;
 }
 
+/* Hero icons */
+.home-header--hero .home-icon-button,
+.home-header--hero .home-nav .home-account-link {
+  color: rgba(245, 241, 233, 0.88);
+  background: rgba(245, 241, 233, 0.12);
+  backdrop-filter: blur(8px);
+}
+.home-header--hero .home-icon-button:hover,
+.home-header--hero .home-nav .home-account-link:hover,
+.home-header--hero .home-icon-button:focus,
+.home-header--hero .home-nav .home-account-link:focus {
+  color: var(--color-button-hover-text);
+  background: var(--color-button-hover);
+  box-shadow: var(--shadow-button-hover);
+  backdrop-filter: none;
+  outline: none;
+}
+
+/* SVG icons */
 .home-icon-button svg,
 .home-account-link svg {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   display: block;
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.85;
+  stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-.home-link-button {
-  width: auto;
-  padding: 0 12px;
-  font: inherit;
-  font-size: 0.86rem;
-  font-weight: 750;
+/* Cart badge */
+.home-cart-link { position: relative; }
+
+.home-cart-link span {
+  min-width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  padding: 0 3px;
+  position: absolute;
+  top: -3px;
+  right: -5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #FDFAF4;
+  background: var(--color-secondary);
+  font-size: 0.64rem;
+  font-weight: 800;
+  line-height: 1;
+  border: 2px solid transparent;
+}
+.home-header--solid .home-cart-link span { border-color: var(--color-surface); }
+.home-header--hero  .home-cart-link span { border-color: #091A10; }
+
+/* ── Language select overrides ── */
+.home-header--hero .home-language-select {
+  border: 1px solid rgba(211, 205, 184, 0.80);
+  background: rgba(253, 250, 244, 0.40);
+}
+.home-header--hero .home-language-select button {
+  color: rgba(245, 241, 233, 0.75);
 }
 
-.home-user {
-  max-width: 180px;
-  overflow: hidden;
-  color: var(--text-h);
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.home-header--solid .home-language-select {
+  border: 1px solid var(--color-border);
+  background: transparent;
+}
+
+/* ── Search form ── */
+.home-search-form {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.home-search-input {
+  flex: 1;
+  height: 38px;
+  border-radius: 999px;
+  padding: 0 18px;
+  font: inherit;
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.home-header--solid .home-search-input {
+  border: 1.5px solid var(--color-border);
+  background: var(--color-page);
+  color: var(--text);
+}
+.home-header--solid .home-search-input::placeholder { color: var(--color-muted, rgba(0,0,0,0.38)); }
+
+.home-header--hero .home-search-input {
+  border: 1.5px solid rgba(245, 241, 233, 0.35);
+  background: rgba(245, 241, 233, 0.12);
+  color: #F5F1E9;
+  backdrop-filter: blur(8px);
+}
+.home-header--hero .home-search-input::placeholder { color: rgba(245, 241, 233, 0.5); }
+
+.home-search-input:focus {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px rgba(232, 104, 44, 0.15);
+}
+
+.home-link-button {
+  width: auto;
+  padding: 0 14px;
+  font: inherit;
+  font-size: 0.80rem;
+  font-weight: 700;
 }

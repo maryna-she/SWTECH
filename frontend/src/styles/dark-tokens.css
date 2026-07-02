@@ -1,37 +1,42 @@
-/* Farbwerte für Systeme mit dunklem Modus. */
+/* Dark mode overrides. */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-ink: #fffaf1;
-    --color-muted: #cec6b3;
-    --color-subtle: #9a927f;
-    --color-page: #0d110c;
-    --color-surface: #172218;
-    --color-surface-soft: #26341f;
-    --color-border: #3b4e37;
-    --color-primary: #e8dcc5;
-    --color-primary-strong: #fff3dc;
-    --color-primary-soft: rgba(232, 220, 197, 0.13);
-    --color-secondary: #f0a35b;
-    --color-secondary-soft: rgba(240, 163, 91, 0.18);
-    --color-button-hover: #ffc727;
-    --color-button-hover-strong: #f0b400;
-    --color-button-hover-text: #1c1604;
-    --shadow-button-hover: 0 12px 26px rgba(255, 199, 39, 0.24);
-    --color-danger: #ff7a8b;
-    --color-danger-soft: rgba(255, 122, 139, 0.12);
-    --color-success: #8fd4a7;
-    --shadow-soft: 0 24px 70px rgba(0, 0, 0, 0.34);
-    --shadow-control: 0 12px 28px rgba(240, 163, 91, 0.16);
+    --color-ink:          #F0EDE4;
+    --color-muted:        #C0BAA8;
+    --color-subtle:       #8A9E90;
+    --color-page:         #0C1C10;
+    --color-surface:      #142318;
+    --color-surface-soft: #1E3225;
+    --color-border:       #2A4035;
 
-    --text: var(--color-muted);
-    --text-h: var(--color-ink);
-    --bg: var(--color-page);
-    --border: var(--color-border);
-    --code-bg: var(--color-surface-soft);
-    --accent: var(--color-primary);
-    --accent-bg: var(--color-primary-soft);
-    --accent-border: rgba(232, 220, 197, 0.42);
-    --social-bg: rgba(32, 51, 54, 0.7);
-    --shadow: var(--shadow-soft);
+    --color-primary:        #DDD5C0;
+    --color-primary-strong: #F0E8D4;
+    --color-primary-soft:   rgba(221, 213, 192, 0.13);
+
+    --color-secondary:      #F07840;
+    --color-secondary-soft: rgba(240, 120, 64, 0.18);
+
+    --color-button-hover:        #F07840;
+    --color-button-hover-strong: #E06228;
+    --color-button-hover-text:   #1A0E00;
+    --shadow-button-hover: 0 10px 24px rgba(240, 120, 64, 0.26);
+
+    --color-danger:      #FF8080;
+    --color-danger-soft: rgba(255, 128, 128, 0.12);
+    --color-success:     #80C8A0;
+
+    --shadow-soft:    0 24px 70px rgba(0, 0, 0, 0.38);
+    --shadow-control: 0 12px 28px rgba(240, 120, 64, 0.16);
+
+    --text:          var(--color-muted);
+    --text-h:        var(--color-ink);
+    --bg:            var(--color-page);
+    --border:        var(--color-border);
+    --code-bg:       var(--color-surface-soft);
+    --accent:        var(--color-primary);
+    --accent-bg:     var(--color-primary-soft);
+    --accent-border: rgba(221, 213, 192, 0.42);
+    --social-bg:     rgba(20, 35, 24, 0.78);
+    --shadow:        var(--shadow-soft);
   }
 }

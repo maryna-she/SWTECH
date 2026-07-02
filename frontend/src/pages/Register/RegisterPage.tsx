@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import AuthPageLayout from '../components/AuthPageLayout';
-import useAuthLanguage from '../hooks/useAuthLanguage';
+import { travelPhotos } from '../../assets/travelPhotos';
+import useLanguage from '../../context/useLanguage';
 import { registerDe } from './register.de';
 import { registerEn } from './register.en';
 import RegisterForm from './RegisterForm';
@@ -9,7 +10,7 @@ import '../Auth/Auth.css';
 
 const RegisterPage = () => {
   // Verbindet Uebersetzung, Layout und Registrierungsformular.
-  const { language, changeLanguage } = useAuthLanguage();
+  const { language, changeLanguage } = useLanguage();
   const text = language === 'de' ? registerDe : registerEn;
   const form = useRegisterForm(text);
 
@@ -25,7 +26,7 @@ const RegisterPage = () => {
   return (
     <AuthPageLayout
       variant="register"
-      brand={{ ariaLabel: text.register.ariaBrand }}
+      brand={{ ariaLabel: text.register.ariaBrand, imageSrc: travelPhotos.auth }}
       header={{
         kicker: text.register.headerKicker,
         title: text.register.heading,

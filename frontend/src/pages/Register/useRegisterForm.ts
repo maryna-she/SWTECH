@@ -2,8 +2,10 @@ import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/useAuth';
+import { loginWithProfile } from '../../services/authService';
 import { register } from '../../services/registerService';
 import { getPasswordScore } from './passwordScore';
+import { splitRegisterName } from './registerName';
 import type { RegisterText } from './register.en';
 
 const isConflictError = (err: unknown) => (
@@ -44,9 +46,10 @@ const useRegisterForm = (text: RegisterText) => {
 
     setLoading(true);
     try {
-      const res = await register({ name, email, password });
-      loginUser(res.token, { email: res.email, name: res.name, role: res.role });
-      navigate('/');
+      await register({ ...splitRegisterName(name), email, password });
+      const res = await loginWithProfile({ email, password });
+      loginUser(res.token, res.user);
+      navigate('/account');
     } catch (err: unknown) {
       setError(
         isConflictError(err)

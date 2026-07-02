@@ -1,0 +1,421 @@
+@import '../Home/HomeShell.css';
+@import '../Home/HomeHeader.css';
+@import '../Home/HomeLanguageSelect.css';
+
+.account-shell {
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(234, 228, 213, 0.80), rgba(238, 232, 218, 0.92)),
+    var(--color-page);
+}
+
+.account-page {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto 56px;
+  padding: 36px;
+  border: 1px solid rgba(26, 58, 39, 0.12);
+  border-radius: 20px;
+  background: rgba(245, 241, 233, 0.94);
+  box-shadow: 0 28px 72px rgba(12, 28, 16, 0.12);
+}
+
+.account-hero {
+  min-height: 320px;
+  border-radius: 16px;
+  padding: 36px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+  gap: 28px;
+  align-items: end;
+  color: #F5F1E9;
+  background:
+    linear-gradient(100deg, rgba(12, 28, 16, 0.90), rgba(12, 28, 16, 0.26)),
+    url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80') center / cover;
+}
+
+.account-page__header {
+  max-width: 690px;
+}
+
+.account-kicker,
+.account-trip > div > p,
+.account-section-heading p {
+  margin: 0 0 16px;
+  color: var(--color-secondary);
+  font-family: var(--heading), system-ui, sans-serif;
+  font-size: 0.70rem;
+  font-weight: 800;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
+
+.account-page h1 {
+  margin: 0;
+  color: inherit;
+  font-size: clamp(2.7rem, 6vw, 5.4rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.92;
+}
+
+.account-page__header p:last-child {
+  max-width: 520px;
+  margin: 18px 0 0;
+  color: rgba(245, 241, 233, 0.82);
+  font-size: 1.06rem;
+  line-height: 1.68;
+}
+
+.account-identity {
+  border: 1px solid rgba(245, 241, 233, 0.24);
+  border-radius: 14px;
+  padding: 18px;
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  background: rgba(245, 241, 233, 0.14);
+  backdrop-filter: blur(14px);
+}
+
+.account-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #1A3A27;
+  background: #F5F1E9;
+  font-family: var(--heading), system-ui, sans-serif;
+  font-size: 1.10rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.account-identity strong,
+.account-identity span {
+  min-width: 0;
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.account-identity strong {
+  font-size: 1.06rem;
+  font-weight: 700;
+}
+
+.account-identity span {
+  margin-top: 5px;
+  color: rgba(245, 241, 233, 0.72);
+  font-size: 0.88rem;
+}
+
+.account-stats {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.account-stat,
+.account-profile,
+.account-actions article,
+.account-orders article {
+  border: 1px solid rgba(26, 58, 39, 0.12);
+  border-radius: 14px;
+  background: rgba(253, 250, 244, 0.60);
+}
+
+.account-stat {
+  min-height: 112px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: box-shadow 200ms ease, transform 200ms ease;
+}
+
+.account-stat:hover {
+  box-shadow: 0 12px 30px rgba(12, 28, 16, 0.10);
+  transform: translateY(-2px);
+}
+
+.account-stat strong {
+  color: #1A3A27;
+  font-family: var(--heading), system-ui, sans-serif;
+  font-size: 2.20rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.account-stat span {
+  color: var(--color-secondary);
+  font-family: var(--heading), system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.account-layout {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.account-profile {
+  padding: 26px;
+}
+
+.account-profile dl,
+.account-trip dl {
+  margin: 0;
+  display: grid;
+  gap: 20px;
+}
+
+.account-profile div,
+.account-trip dl div {
+  display: grid;
+  gap: 6px;
+}
+
+.account-profile dt,
+.account-trip dt {
+  color: var(--color-secondary);
+  font-family: var(--heading), system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.account-profile dd,
+.account-trip dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: #1A3A27;
+  font-size: 1.04rem;
+  font-weight: 600;
+}
+
+.account-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.account-actions article {
+  min-height: 210px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.account-actions article:hover {
+  border-color: rgba(232, 104, 44, 0.24);
+  box-shadow: 0 14px 36px rgba(12, 28, 16, 0.10);
+}
+
+.account-actions h2,
+.account-trip h2,
+.account-section-heading h2 {
+  margin: 0;
+  color: #1A3A27;
+  font-size: 1.28rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+}
+
+.account-actions p,
+.account-trip span,
+.account-orders p {
+  margin: 14px 0 22px;
+  color: rgba(26, 58, 39, 0.68);
+  line-height: 1.65;
+}
+
+.account-actions a,
+.account-actions button,
+.account-trip a {
+  min-height: 40px;
+  border: 1px solid rgba(26, 58, 39, 0.24);
+  border-radius: 999px;
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #1A3A27;
+  background: transparent;
+  font: inherit;
+  font-family: var(--heading), system-ui, sans-serif;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.account-actions a,
+.account-trip a {
+  align-self: flex-start;
+}
+
+.account-actions button {
+  grid-column: 1 / -1;
+  justify-self: start;
+  background: #1A3A27;
+  color: #F5F1E9;
+  border-color: #1A3A27;
+}
+
+.account-actions a:hover,
+.account-actions a:focus,
+.account-actions button:hover,
+.account-actions button:focus,
+.account-trip a:hover,
+.account-trip a:focus {
+  color: var(--color-button-hover-text);
+  background: var(--color-button-hover);
+  border-color: var(--color-button-hover);
+  box-shadow: var(--shadow-button-hover);
+  outline: none;
+}
+
+.account-trip {
+  margin-top: 18px;
+  border-radius: 16px;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
+  overflow: hidden;
+  background: rgba(230, 224, 208, 0.90);
+}
+
+.account-trip img {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  display: block;
+  object-fit: cover;
+}
+
+.account-trip > div {
+  padding: 32px;
+}
+
+.account-trip > div > span {
+  display: block;
+}
+
+.account-trip dl {
+  margin: 26px 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.account-orders {
+  margin-top: 28px;
+}
+
+.account-section-heading {
+  margin-bottom: 16px;
+}
+
+.account-section-heading p {
+  color: var(--color-secondary);
+}
+
+.account-order-list {
+  display: grid;
+  gap: 12px;
+}
+
+.account-orders article {
+  padding: 18px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(160px, 0.8fr) auto;
+  gap: 16px;
+  align-items: center;
+  transition: box-shadow 200ms ease;
+}
+
+.account-orders article:hover {
+  box-shadow: 0 10px 26px rgba(12, 28, 16, 0.08);
+}
+
+.account-orders span {
+  display: block;
+  color: var(--color-secondary);
+  font-family: var(--heading), system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+}
+
+.account-orders strong {
+  margin-top: 4px;
+  display: block;
+  color: #1A3A27;
+  font-weight: 700;
+}
+
+.account-orders p {
+  margin: 0;
+}
+
+.account-orders em {
+  border-radius: 999px;
+  padding: 7px 14px;
+  color: #1A3A27;
+  background: rgba(232, 104, 44, 0.18);
+  font-size: 0.76rem;
+  font-style: normal;
+  font-family: var(--heading), system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 960px) {
+  .account-hero,
+  .account-layout,
+  .account-trip {
+    grid-template-columns: 1fr;
+  }
+
+  .account-stats,
+  .account-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .account-trip img {
+    min-height: 260px;
+  }
+
+  .account-trip dl,
+  .account-orders article {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .account-page {
+    padding: 18px;
+  }
+
+  .account-hero {
+    padding: 24px;
+  }
+
+  .account-stats,
+  .account-actions {
+    grid-template-columns: 1fr;
+  }
+}

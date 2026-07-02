@@ -1,75 +1,112 @@
-/* Passt die Startseite an dunkle und kleine Bildschirme an. */
-@media (prefers-color-scheme: dark) {
-  .home-trip-panel {
-    background:
-      linear-gradient(180deg, rgba(23, 34, 24, 0.72), rgba(38, 52, 31, 0.7)),
-      url('../../assets/layered-landscape-logo.svg') center 24% / 220px no-repeat;
-  }
-}
-
-@media (max-width: 860px) {
+@media (max-width: 1024px) {
   .home-header {
-    grid-template-columns: 1fr auto;
-  }
-
-  .home-menu {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    justify-self: start;
-  }
-
-  .home-header-actions {
-    grid-column: 2;
-    grid-row: 1;
+    padding: 18px 28px;
   }
 
   .home-hero {
-    min-height: auto;
-    padding-top: 26px;
-    grid-template-columns: 1fr;
+    padding: 40px 28px;
   }
 
-  .home-trip-panel {
-    min-height: 420px;
+  .home-hero-scroll {
+    right: 28px;
   }
 
+  .home-categories {
+    padding: 60px 28px;
+  }
 }
 
-@media (max-width: 560px) {
-  .home-brand {
-    font-size: 1.28rem;
+@media (max-width: 840px) {
+  .home-stats-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .home-brand img {
-    width: 50px;
-    height: 50px;
+  .home-stats-strip > div {
+    border-bottom: 1px solid rgba(245, 241, 233, 0.08);
   }
 
-  .home-header {
+  .home-stats-strip > div:nth-child(2) {
+    border-right: 0;
+  }
+
+  /* Bento grid collapses to stacked on tablet */
+  .home-trip-panel {
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 12px;
+  }
+
+  .home-trip-card:first-child {
+    grid-row: auto;
+  }
+
+  .home-trip-card {
+    height: 280px;
+  }
+
+  .home-section-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .home-cta__inner h2 {
+    font-size: clamp(2rem, 8vw, 3.2rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .home-header {
+    padding: 16px 20px;
   }
 
   .home-menu {
-    grid-column: 1;
-    width: 100%;
-    justify-self: start;
-    justify-content: flex-start;
-    gap: 16px;
-    flex-wrap: wrap;
+    display: none;
   }
 
-  .home-header-actions {
-    grid-column: 1;
-    grid-row: 3;
-    justify-self: start;
-    flex-wrap: wrap;
+  .home-brand {
+    font-size: 1.12rem;
   }
 
-  .home-trip-panel {
-    grid-template-columns: 1fr;
+  .home-brand img {
+    width: 40px;
+    height: 40px;
   }
 
-  .home-map-card--large {
-    min-height: 220px;
+  .home-hero {
+    padding: 28px 20px 36px;
+  }
+
+  .home-hero h1 {
+    font-size: clamp(2.4rem, 12vw, 4rem);
+  }
+
+  .home-hero-scroll {
+    display: none;
+  }
+
+  .home-primary-action,
+  .home-secondary-action {
+    min-height: 46px;
+    padding: 0 20px;
+    font-size: 0.74rem;
+  }
+
+  .home-stats-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-stats-strip > div {
+    padding: 20px 22px;
+  }
+
+  .home-categories {
+    padding: 44px 20px;
+  }
+
+  .home-highlights__label,
+  .home-highlight {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }

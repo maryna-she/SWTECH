@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import type { User } from '../types';
 import { AuthContext } from './authContextCore';
+import { logout as backendLogout } from '../services/authService';
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   // Speichert Login-Daten und macht sie für alle Seiten verfügbar.
@@ -19,6 +20,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const logoutUser = () => {
+    backendLogout().catch(() => {});
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     setToken(null);

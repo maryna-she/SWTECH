@@ -1,5 +1,6 @@
 export interface RegisterRequest {
-  name: string;
+  firstName: string;
+  secondName: string;
   email: string;
   password: string;
 }
@@ -11,14 +12,21 @@ export interface LoginRequest {
 
 export interface AuthResponse {
   token: string;
+}
+
+export interface User {
+  id?: string;
   email: string;
   name: string;
   role: 'CUSTOMER' | 'ADMIN';
 }
 
-export interface User {
+export interface BackendUser {
+  id: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  name: string;
   role: 'CUSTOMER' | 'ADMIN';
+  isDeleted: boolean;
 }
 
