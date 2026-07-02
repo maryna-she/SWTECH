@@ -35,15 +35,12 @@ class SecurityConfiguration {
         http
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
 
-                // 1. Отключение CSRF: безопасно, так как используются JWT-токены, а не Session Cookies
                 .csrf(AbstractHttpConfigurer::disable)
 
-                // 2. Отключение управления сессиями на стороне сервера
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
-                // 3. Настройка правил доступа
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/register", "/api/auth/login", "/api/auth/logout", "/products/**").permitAll()
+                        .requestMatchers("/api/auth/register", "/api/auth/login", "/api/auth/logout", "/products/**", "/api/reviews/product/*").permitAll()
                         // Alles für Swagger-UI
                         .requestMatchers(
                                 "/v3/api-docs/**",
